@@ -13,9 +13,9 @@ export const Routing = ({login}: LoginProps) => {
 
     return (
         <Routes>
-            <Route path='/' element={login ? <AvailableStudents/> : <Login login={login}/>}/>
-            <Route path='/to-talk' element={<ToTalk/>}/>
-            <Route path='/cv/:id' element={<Cv/>}/>
+            <Route path='/' element={login ? <AvailableStudents/> : <Login/>}/>
+            <Route path='/to-talk' element={login ? <ToTalk/> : <Login/>}/>
+            <Route path='/cv/:id' element={login ? <Cv/> : <Login/>}/>
         </Routes>
     )
 }
