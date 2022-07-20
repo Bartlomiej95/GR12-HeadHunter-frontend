@@ -1,7 +1,12 @@
 import React from "react";
+import './AvailableStudents.css';
+import {Menu} from "../../components/Menu/Menu";
 
 export const AvailableStudents = () => {
-    return(
-        <h1>Dostępni kursanci</h1>
+    return (
+        <section className="AvailableStudents">
+            <Menu/>
+            <div></div>
+        </section>
     )
 }
