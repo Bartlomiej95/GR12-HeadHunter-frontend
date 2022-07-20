@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import {Routing} from "./components/Routing/Routing";
 
 function App() {
   return (
     <div className="App">
-      <h1>Cześć Grupo 12 :)</h1>
+      <Routing/>
     </div>
   );
 }
