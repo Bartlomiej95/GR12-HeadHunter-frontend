@@ -1,6 +1,10 @@
 import React from "react";
 
-export const Login = () => {
+interface LoginProps {
+    login: boolean
+}
+
+export const Login = (props: LoginProps) => {
     return(
         <h1>Login</h1>
     )
