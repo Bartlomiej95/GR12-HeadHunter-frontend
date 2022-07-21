@@ -1,0 +1,53 @@
+.contactInfo {
+    display: block;
+    width: 250px;
+    background-color: var(--section-bgcolor);
+    text-align: center;
+    padding-bottom: 16px;
+}
+
+.contactInfo button {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 200px;
+    height: 39px;
+    font-weight: normal;
+}
+
+.contactInfo p {
+    margin: 0;
+    color: var(--default-font-color);
+}
+
+.contactInfo svg {
+    padding-right: 8px;
+}
+
+.contactInfo svg.avatar {
+    margin: 30px 50px 12px 50px;
+    padding: 0;
+}
+
+p.github {
+    color: var(--coursant-cv-github-icon);
+    margin-bottom: 19px;
+}
+
+p.fullName {
+    font-size: 24px;
+}
+
+p.phone, p.email, p.about {
+    text-align: left;
+    margin-left: 22px;
+}
+
+p.about {
+    color: var(--coursant-cv-about-color);
+    margin-top: 18px;
+}
+
+p.aboutDescription {
+    margin: 0 28px 30px 22px;
+    text-align: left;
+}
