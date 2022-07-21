@@ -10,7 +10,7 @@ interface LoginProps {
 }
 
 export const Routing = ({login}: LoginProps) => {
-
+    login = false;
     return (
         <Routes>
             <Route path='/' element={login ? <AvailableStudents/> : <Login/>}/>
