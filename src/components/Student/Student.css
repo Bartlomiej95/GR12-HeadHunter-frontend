@@ -1,0 +1,57 @@
+* {
+    overflow: hidden;
+}
+.Student {
+    background-color: #222324;
+}
+
+.oneStudent {
+    display: flex;
+    justify-content: space-between;
+    background-color: #292A2B;
+    cursor: pointer;
+}
+
+.oneStudent > p:nth-of-type(1) {
+    font-size: 18px;
+    color: #F7F7F7;
+    padding: 10px 38px;
+    width: 100%;
+}
+
+.oneStudent > div:nth-of-type(1) {
+    display: flex;
+    column-gap: 37px;
+    align-items: center;
+    width: 30%;
+}
+
+.oneStudent__desc {
+    display: flex;
+    background-color: #222324;
+    width: 100%;
+}
+
+.oneStudent__desc--item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: .1em solid #292A2B;
+    min-width: 100px;
+    padding-left: 10px;
+
+}
+.oneStudent__desc--item:nth-child(7) {
+    min-width: 120px;
+}
+.oneStudent__desc--item p {
+    font-size: 12px;
+    color: #CFCFCF;
+    line-height: 1.6;
+    place-self: flex-start;
+}
+
+.oneStudent__desc--item p:nth-child(2){
+    font-size: 15px;
+    text-align: left;
+}
