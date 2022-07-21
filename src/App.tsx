@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './App.css';
 import {Routing} from "./components/Routing/Routing";
 import megaK from './assets/img/megak.png';
 import {Avatar} from "./components/Avatar/Avatar";
 import {DownArrow} from "@styled-icons/boxicons-solid";
+import {Context} from "./provider/Provider";
 
 function App() {
-    const [login, setLogin] = useState<boolean>(true)
+    const {login} = useContext(Context)
     return (
         <div className="App">
             {login ? <header className="Header">

@@ -1,10 +1,53 @@
 .t-login{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
   width: 100%;
-  height: 2000px;
   &__div{
-    display: block;
-    margin: auto auto;
-    width: ;
-    min-height: 400px;
+   display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
   }
+  &__input{
+    width: 350px;
+    height: 40px;
+    background: #292A2B 0% 0% no-repeat padding-box;
+    opacity: 1;
+    color: #7E7E7E;
+    border: none;
+    margin: 10px;
+    border-radius: 2px;
+    padding: 6.5px 17px;
+  }
+  &__wrap{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__images{
+    display: flex;
+    justify-content: center;
+  }
+  &__img{
+    width: 124px;
+    height: 76px;
+  }
+  &__p{
+    text-align: right;
+    font: normal normal medium 14px/24px Catamaran;
+    letter-spacing: 0.7px;
+    color: #F7F7F7;
+    opacity: 1;
+  }
+  &__text-register{
+    color: #F7F7F7;
+    opacity: 1;
+
+    &--strong{
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
 }

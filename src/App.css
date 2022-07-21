@@ -1,56 +1,56 @@
-.App {
-    background-color: #222224;
-}
+/*.App {*/
+/*    background-color: #222224;*/
+/*}*/
 
-.Header {
-    width: 100%;
-    height: 80px;
-    background-color: #1E1E1F;
-    padding: 25px 0;
-}
+/*.Header {*/
+/*    width: 100%;*/
+/*    height: 80px;*/
+/*    background-color: #1E1E1F;*/
+/*    padding: 25px 0;*/
+/*}*/
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1430px;
-    margin: 0 auto;
-}
+/*.container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    max-width: 1430px;*/
+/*    margin: 0 auto;*/
+/*}*/
 
-.container div {
-    display: flex;
-    align-items: center;
-}
+/*.container div {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
 
-.container img {
-    width: 50%;
-}
+/*.container img {*/
+/*    width: 50%;*/
+/*}*/
 
-.Header__user {
-    display: flex;
-    align-items: center;
-}
+/*.Header__user {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
 
-.Header__user div {
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
-}
+/*.Header__user div {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    column-gap: 20px;*/
+/*}*/
 
-.Header__user p {
-    color: #F7F7F7;
-    margin-left: 12px;
-}
-.Avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-}
+/*.Header__user p {*/
+/*    color: #F7F7F7;*/
+/*    margin-left: 12px;*/
+/*}*/
+/*.Avatar {*/
+/*    width: 45px;*/
+/*    height: 45px;*/
+/*    border-radius: 50%;*/
+/*}*/
 
-.Avatar img {
-    width: 100%;
-}
+/*.Avatar img {*/
+/*    width: 100%;*/
+/*}*/
 
-h1 {
-    color: white;
-}
+/*h1 {*/
+/*    color: white;*/
+/*}*/
