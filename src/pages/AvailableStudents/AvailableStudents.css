@@ -3,3 +3,26 @@
     margin: 0 auto;
     background-color: #292A2B;
 }
+
+.AvailableStudents hr {
+    margin: 0 20px;
+    border: .1em solid #222224;
+    background-color: #222224;
+}
+
+.oneStudent {
+    display: flex;
+    justify-content: space-between;
+    padding: 21px 38px;
+}
+
+.oneStudent p {
+    font-size: 18px;
+    color: #F7F7F7;
+}
+
+.oneStudent div {
+    display: flex;
+    align-items: center;
+    column-gap: 34px;
+}
