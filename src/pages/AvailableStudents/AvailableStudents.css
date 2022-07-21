@@ -10,10 +10,19 @@
     background-color: #222224;
 }
 
+.students {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    margin: 18px 20px;
+    background-color: #1E1E1F;
+}
+
 .oneStudent {
     display: flex;
     justify-content: space-between;
     padding: 21px 38px;
+    background-color: #292A2B;
 }
 
 .oneStudent p {
