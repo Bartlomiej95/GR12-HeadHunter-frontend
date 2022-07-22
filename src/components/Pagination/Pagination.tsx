@@ -17,8 +17,8 @@ export const Pagination = () => {
                 <div className="select">
                     <p className="baseOption" onMouseEnter={() => setSelect(true)}><span>{number}</span><DownArrow size={10}/></p>
                     <div className={select ? 'options active' : 'options'}>
-                        <p className="option" onClick={()=>setNumber(number === 20 ? 10 : 20)}><span>{number === 20 ? 10 : 20}</span></p>
-                        <p className="option" onClick={()=>setNumber(number === 50 ? 10 : 50)}><span>{number === 50 ? 10 : 50}</span></p>
+                        <p className="option" onClick={()=>setNumber(number === 20 ? 10 : 20)}><span>{number === 10 ? 20 : 10}</span></p>
+                        <p className="option" onClick={()=>setNumber(number === 50 ? 20 : 50)}><span>{number === 50 ? 20 : 50}</span></p>
                     </div>
                 </div>
             </div>
