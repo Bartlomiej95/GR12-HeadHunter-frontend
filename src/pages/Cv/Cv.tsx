@@ -8,9 +8,7 @@ export const Cv = () => {
     return <>
         <div className="wrapper">
             <NavLink to="/" className="goBack"><ChevronLeft size={30} color="#CFCFCF"/>Wróć</NavLink>
-            <div className="cvWrapper">
-                <CoursantInfo/>
-            </div>
+            <CoursantInfo/>
         </div>
     </>
 }

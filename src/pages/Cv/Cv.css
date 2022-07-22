@@ -7,11 +7,6 @@ body {
     background-color: var(--main-bgcolor);
 }
 
-.cvWrapper {
-    display: block;
-    width: var(--cv-wrapper-width);
-}
-
 .goBack {
     width: var(--go-back-width);
     color: white;
