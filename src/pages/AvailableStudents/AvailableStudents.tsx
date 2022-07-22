@@ -3,6 +3,7 @@ import './AvailableStudents.css';
 import {Menu} from "../../components/Menu/Menu";
 import {Tools} from "../../components/Tools/Tools";
 import {Student} from "../../components/Student/Student";
+import {Pagination} from "../../components/Pagination/Pagination";
 
 
 export const AvailableStudents = () => {
@@ -17,6 +18,7 @@ export const AvailableStudents = () => {
                     <Student/>
                 </div>
             </div>
+            <Pagination/>
         </section>
     )
 }

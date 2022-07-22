@@ -87,7 +87,7 @@ export const Student = () => {
             )
         } else if (window.location.href === "http://localhost:3000/to-talk") {
             return (
-                users.filter(user => !user.reservation).map(user => (
+                users.filter(user => user.reservation).map(user => (
                     <div className="oneStudent" key={user.id}>
                         <div>
                             <p>Rezerwacja do <strong>18.07.2022</strong></p>
