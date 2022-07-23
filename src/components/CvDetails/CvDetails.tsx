@@ -3,6 +3,7 @@ import './CvDetails.css';
 import {CvLabel} from "../CvLabel/CvLabel";
 import {DegreeDetail} from "../DegreeDetail/DegreeDetail";
 import {ExpectationDetail} from "../ExpectationDetail/ExpectationDetail";
+import {CvLabelWithLinks} from "../CvLabelWithLinks/CvLabelWithLinks";
 
 export const CvDetails = () => {
     return <>
@@ -42,10 +43,26 @@ export const CvDetails = () => {
                     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
                     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
             </CvLabel>
-            <CvLabel title="Portfolio"/>
-            <CvLabel title="Kursy"/>
-            <CvLabel title="Projekt w zespole Scrumowym"/>
-            <CvLabel title="Projekt na zaliczenie"/>
+            <CvLabelWithLinks
+                title="Portfolio"
+                projectUrlList={[
+                    "https://github.com",
+                ]}
+            />
+            <CvLabelWithLinks
+                title="Projekt w zespole Scrumowym"
+                projectUrlList={[
+                    "https://github.com",
+                    "https://google.com"
+                ]}
+            />
+            <CvLabelWithLinks
+                title="Projekt na zaliczenie"
+                projectUrlList={[
+                    "https://loremipsum/dolor/sit/amet",
+                    "https://lorem/ipsum/dolor/amet"
+                ]}
+            />
         </section>
     </>
 }
