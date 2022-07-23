@@ -7,6 +7,7 @@
     color: #F7F7F7;
     cursor: pointer;
     transition: .3s;
+    z-index: 99;
 }
 .Button:hover {
     box-shadow: 0 0.5em 0.5em -0.4em #E02735;

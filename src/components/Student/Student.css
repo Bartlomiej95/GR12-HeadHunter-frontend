@@ -9,18 +9,25 @@
     cursor: pointer;
 }
 
-.oneStudent > p:nth-of-type(1) {
+.studentName {
+    display: flex;
+    column-gap: 63px;
     font-size: 18px;
     color: #F7F7F7;
     padding: 10px 38px;
-    width: 100%;
+    flex-grow: 1;
 }
 
-.oneStudent > div:nth-of-type(1) {
+.studentName div:nth-of-type(2) {
     display: flex;
-    column-gap: 37px;
     align-items: center;
-    width: 30%;
+    column-gap: 12px;
+}
+
+.studentButtons {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
 }
 
 .oneStudent__desc {
@@ -52,4 +59,20 @@
 .oneStudent__desc--item p:nth-child(2){
     font-size: 15px;
     text-align: left;
+}
+
+.reservation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reservation span:first-child{
+    font-size: 14px;
+    color: #CFCFCF;
+}
+.reservation span:last-child{
+    font-size: 16px;
+    color: #F7F7F7;
+    letter-spacing: 1.6px;
 }
