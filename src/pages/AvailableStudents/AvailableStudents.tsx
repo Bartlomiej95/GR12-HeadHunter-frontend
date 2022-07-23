@@ -9,7 +9,7 @@ import {Pagination} from "../../components/Pagination/Pagination";
 export const AvailableStudents = () => {
     return (
         <section>
-            <Menu/>
+            {/*<Menu/>*/}
 
             <div className="AvailableStudents">
                 <Tools/>
