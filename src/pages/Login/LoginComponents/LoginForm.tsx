@@ -1,16 +1,18 @@
 import React, {useContext, useState} from "react";
 import logo from "../../../assets/img/logo.webp";
-import {Context} from "../../../provider/Provider";
 import {LOGInHost} from "../../../utils/dictionaries";
-import {Message} from "./Message";
 import {Link} from "react-router-dom";
+import {ErrorMessage} from "../ErrorMessage/Message";
 
 export const LoginForm = () =>{
 
-    const {setLogin, messageLogin, setMessageLogin, setErrorLogin} = useContext(Context);
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     let fetchLogin = {logedIn: '', message: ""};
+
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     const logIn = async () => {
@@ -26,8 +28,8 @@ export const LoginForm = () =>{
             .then(data => fetchLogin = data);
 
         if(!fetchLogin.logedIn){
-            setMessageLogin(true)
-            setErrorLogin(fetchLogin.message)
+            setError(true);
+            setErrorMessage(fetchLogin.message)
         }
     }
 
@@ -59,7 +61,11 @@ export const LoginForm = () =>{
                     </div>
                 </div>
 
-                {messageLogin? <Message /> : null}
+                {error ? <ErrorMessage
+                    error={error}
+                    setError={setError}
+                    message={errorMessage}
+                />: null}
 
             </div>
 

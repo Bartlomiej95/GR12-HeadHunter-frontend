@@ -1,21 +1,24 @@
-import React, {useContext} from "react";
-import {Context} from "../../../provider/Provider";
+import React, {Dispatch, SetStateAction, useContext} from "react";
+
+
 
 interface MessageProps {
-    message: string
+    error: boolean
+    setError: Dispatch<SetStateAction<boolean>>
+    message : string
 }
 
-export const ErrorMessage = () => {
+export const ErrorMessage = (Props:MessageProps) => {
 
     const close = () =>{
-        console.log('rh')
-
+        Props.setError(false);
+        console.log(Props.error)
     }
 
     return(
         <div id="message" className="t-login__message">
+            {Props.message}
             <span className="t-login__closebtn" onClick={close} >&times;</span>
-
         </div>
     )
 }

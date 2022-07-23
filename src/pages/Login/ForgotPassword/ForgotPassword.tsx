@@ -1,8 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from "../../../assets/img/logo.webp";
 import {Link} from "react-router-dom";
+import {ErrorMessage} from "../ErrorMessage/Message";
 
 export const ForgotPassword = () => {
+    const [email, setEmail ] = useState('');
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const resetPassword = ()=>{
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!(email.match(re))){
+            setError(true);
+            setErrorMessage('Email jest niepoprawny ');
+            return;
+        }
+        console.log(email);
+        console.log('ok');
+    }
+
     return(
         <div className="t-login__div">
             <div className="t-login__images">
@@ -21,13 +37,20 @@ export const ForgotPassword = () => {
             <input className="c-input"
                    placeholder="Email"
                    type="email"
+                   onChange={e => setEmail(e.target.value)}
             />
 
             <div className="t-login__alignment">
-
                 <Link to="../"> <button className="c-btn">Anuluj</button></Link>
-                <button className="c-btn">Przejdź dalej</button>
+                <button className="c-btn" onClick={resetPassword}>Przejdź dalej</button>
             </div>
+
+            {error ? <ErrorMessage
+                error={error}
+                setError={setError}
+                message={errorMessage}
+            />: null}
+
         </div>
     )
 }
