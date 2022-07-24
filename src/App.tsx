@@ -5,7 +5,6 @@ import megaK from './assets/img/megak.png';
 import {Avatar} from "./components/Avatar/Avatar";
 import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Menu} from "./components/Menu/Menu";
-import {Filter} from "./components/Filter/Filter";
 
 function App() {
     const [login, setLogin] = useState<boolean>(true)

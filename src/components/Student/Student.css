@@ -35,16 +35,18 @@
     display: flex;
     background-color: #222324;
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .oneStudent__desc--item {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    row-gap: 18px;
+    flex-grow: 1;
     border-right: .1em solid #292A2B;
     min-width: 100px;
-    padding-left: 10px;
+    padding: 17px 10px;
 
 }
 .oneStudent__desc--item:nth-child(7) {
@@ -52,8 +54,9 @@
 }
 .oneStudent__desc--item p {
     font-size: 12px;
+    letter-spacing: -.2px;
     color: #CFCFCF;
-    line-height: 1.6;
+    /*line-height: ;*/
     place-self: flex-start;
 }
 

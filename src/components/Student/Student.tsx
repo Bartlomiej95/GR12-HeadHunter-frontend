@@ -39,7 +39,7 @@ export const Student = () => {
 
                         </div>
                         <div className="oneStudent__desc"
-                             style={show === index ? {transition: '0.4s', height: '155px'} : {
+                             style={show === index ? {transition: '0.4s', height: '110px'} : {
                                  transition: '0.4s',
                                  height: '0px'
                              }}>
@@ -118,7 +118,7 @@ export const Student = () => {
 
                         </div>
                         <div className="oneStudent__desc"
-                             style={show === index ? {transition: '0.4s', height: '155px'} : {
+                             style={show === index ? {transition: '0.4s', height: '110px'} : {
                                  transition: '0.4s',
                                  height: '0px'
                              }}>

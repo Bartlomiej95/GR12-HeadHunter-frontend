@@ -5,9 +5,10 @@ import {Student} from "../../components/Student/Student";
 import {Pagination} from "../../components/Pagination/Pagination";
 import {Filter} from "../../components/Filter/Filter";
 
-
 export const AvailableStudents = () => {
-    const [filter, setFilter] = useState(false)
+
+    const [filter, setFilter] = useState<boolean>(false)
+
     return (
         <>
             <section>
