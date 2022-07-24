@@ -1,5 +1,6 @@
 .App {
-    background-color: var(--main-bgcolor);
+    background-color: var(--main-bgcolor);'
+    min-height: 100vh;
 }
 
 .Header {
@@ -45,6 +46,7 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    background-color: #fff;
 }
 
 .Avatar img {
