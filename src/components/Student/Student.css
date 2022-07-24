@@ -11,6 +11,7 @@
 
 .studentName {
     display: flex;
+    align-items: center;
     column-gap: 63px;
     font-size: 18px;
     color: #F7F7F7;
