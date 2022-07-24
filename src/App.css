@@ -1,5 +1,6 @@
 .App {
     background-color: var(--main-bgcolor);
+    min-height: 100vh;
 }
 
 .Header {
