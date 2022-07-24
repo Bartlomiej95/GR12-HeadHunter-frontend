@@ -10,10 +10,10 @@ export const CvDetails = () => {
         <section className="CvDetails">
             <CvLabel title="Oceny">
                 <div className="Degree">
-                    <DegreeDetail title="Ocena przejścia kursu" degree={5}/>
-                    <DegreeDetail title="Ocena aktywności i zaangażowania na kursie" degree={3}/>
-                    <DegreeDetail title="Ocena kodu w projekcie własnym" degree={4}/>
-                    <DegreeDetail title="Ocena pracy w zespole w Scrum" degree={5}/>
+                    <DegreeDetail title="Ocena przejścia kursu" degree={3}/>
+                    <DegreeDetail title="Ocena aktywności i zaangażowania na kursie" degree={5}/>
+                    <DegreeDetail title="Ocena kodu w projekcie własnym" degree={2}/>
+                    <DegreeDetail title="Ocena pracy w zespole w Scrum" degree={4}/>
                 </div>
             </CvLabel>
             <CvLabel title="Oczekiwanie w stosunku do zatrudnienia">
