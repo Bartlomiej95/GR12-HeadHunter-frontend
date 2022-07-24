@@ -45,20 +45,20 @@ export const CvDetails = () => {
             </CvLabel>
             <CvLabelWithLinks
                 title="Portfolio"
-                projectUrlList={[
+                urlList={[
                     "https://github.com",
                 ]}
             />
             <CvLabelWithLinks
                 title="Projekt w zespole Scrumowym"
-                projectUrlList={[
+                urlList={[
                     "https://github.com",
                     "https://google.com"
                 ]}
             />
             <CvLabelWithLinks
                 title="Projekt na zaliczenie"
-                projectUrlList={[
+                urlList={[
                     "https://loremipsum/dolor/sit/amet",
                     "https://lorem/ipsum/dolor/amet"
                 ]}

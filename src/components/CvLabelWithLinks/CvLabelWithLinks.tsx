@@ -3,13 +3,13 @@ import './CvLabelWithLinks.css';
 import {ProjectOneLink} from "../ProjectOneLink/ProjectOneLink";
 
 interface Props {
-    projectUrlList: string[] | null;
+    urlList: string[] | null;
     title?: string;
     children?: ReactNode;
 }
 
 export const CvLabelWithLinks = (props: Props) => {
-    if (props.projectUrlList === null || props.projectUrlList.length === 0) {
+    if (props.urlList === null || props.urlList.length === 0) {
         return <>
             <div className="CvLabelWithLinks">
                 <p className="LabelTitle">{props.title}</p>
@@ -22,7 +22,7 @@ export const CvLabelWithLinks = (props: Props) => {
             <div className="CvLabelWithLinks">
                 <p className="LabelTitle">{props.title}</p>
                 {
-                    props.projectUrlList.map((element, index) => {
+                    props.urlList.map((element, index) => {
                         return <ProjectOneLink link={element} key={index}/>
                     })
                 }

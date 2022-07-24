@@ -20,7 +20,9 @@ export const ContactInfo = () => {
                 <Envelope size={22} className="EnvelopeIcon"/>jankowalski@gmail.com
             </p>
             <p className="about">O mnie</p>
-            <p className="aboutDescription">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</p>
+            <p className="Bio">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
+                duo</p>
             <Button text="Brak zainteresowania"/>
             <Button text="Zatrudniony"/>
         </div>
