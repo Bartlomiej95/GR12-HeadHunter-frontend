@@ -1,0 +1,16 @@
+.projectUrl {
+    color: var(--links-color);
+    padding-left: 26px
+}
+
+svg.clip {
+    transform: rotate(270deg);
+    padding-bottom: 12px;
+    height: 24px;
+    color: var(--coursant-cv-clip-icon);
+}
+
+.CvLabel a {
+    display: block;
+}
+

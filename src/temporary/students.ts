@@ -76,7 +76,8 @@ export const users: Students[] = [
         freePractice: "Tak",
         commercialExp: "6 miesięcy",
         reservation: true,
-    },{
+    },
+    {
         id: 1,
         name: "Jan",
         lastName: "Kowalski",

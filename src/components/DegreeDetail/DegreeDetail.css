@@ -1,0 +1,27 @@
+.DegreeDetails {
+    width: 163.5px;
+}
+
+.MaxPoints {
+    color: var(--max-degree-font-color);
+    font-weight: normal;
+    padding-right: 12.5px;
+}
+
+.Points {
+    color: var(--default-font-color);
+    font-weight: bold;
+}
+
+p.Title {
+    font-size: 14px;
+    background-color: var(--fields-bgcolor);
+}
+
+svg.StarGrey {
+    color: var(--coursant-cv-unselected-star-color);
+}
+
+svg.StarRed {
+    color: var(--coursant-cv-selected-star-color);
+}
