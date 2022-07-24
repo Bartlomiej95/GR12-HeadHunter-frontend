@@ -6,6 +6,10 @@
     font-size: 18px;
 }
 
+.Menu.hide {
+    display: none;
+}
+
 .Menu__link {
     position: relative;
     color: #CFCFCF;

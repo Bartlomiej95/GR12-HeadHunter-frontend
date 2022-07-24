@@ -5,9 +5,14 @@ import {ChevronLeft} from "@styled-icons/boxicons-solid";
 import {CoursantInfo} from "../../components/CoursantInfo/CoursantInfo";
 
 export const Cv = () => {
+    const refr = () => {
+        setTimeout(() => {
+            window.location.reload()
+        }, 1)
+    }
     return <>
         <div className="wrapper">
-            <NavLink to="/" className="goBack"><ChevronLeft size={30} color="#CFCFCF"/>Wróć</NavLink>
+            <NavLink to="/to-talk" className="goBack" onClick={refr}><ChevronLeft size={30} color="#CFCFCF"/>Wróć</NavLink>
             <CoursantInfo/>
         </div>
     </>

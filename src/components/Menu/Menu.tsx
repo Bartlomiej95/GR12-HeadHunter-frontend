@@ -9,7 +9,7 @@ export const Menu = () => {
 
 
     return (
-        <div className="Menu">
+        <div className={window.location.href === 'http://localhost:3000/cv' ? "Menu hide" : "Menu"}>
             <NavLink to='/' className="Menu__link" onClick={() => {
                 setUnderlineOne(true)
                 setUnderlineTwo(false)
