@@ -1,13 +1,14 @@
 import React from "react";
 import './ContactInfo.css';
-import {Envelope, Phone, UserCircle} from "@styled-icons/boxicons-solid";
+import {Envelope, Phone} from "@styled-icons/boxicons-solid";
 import {Github} from "@styled-icons/boxicons-logos";
 import {Button} from "../Button/Button";
+import {CvAvatar} from "../Avatar/CvAvatar";
 
 export const ContactInfo = () => {
     return <>
         <div className="contactInfo">
-            <UserCircle size={150} color="#ddd" className="avatar"/>
+            <CvAvatar githubUsername="nestjs"/>
             <p className="fullName">Jan Kowalski</p>
             <p className="github">
                 <Github size={22}/>jankowalski
