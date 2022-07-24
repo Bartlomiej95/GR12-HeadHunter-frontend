@@ -1,5 +1,5 @@
 .App {
-    background-color: #222224;
+    background-color: var(--main-bgcolor);
 }
 
 .Header {

@@ -51,3 +51,11 @@ p.aboutDescription {
     margin: 0 28px 30px 22px;
     text-align: left;
 }
+
+svg.PhoneIcon {
+    color: var(--coursant-cv-phone-icon-color);
+}
+
+svg.EnvelopeIcon {
+    color: var(--coursant-cv-mail-icon-color);
+}
