@@ -4,6 +4,8 @@ import {Button} from "../Button/Button";
 import {ChevronDown} from "@styled-icons/boxicons-solid";
 import './Student.css';
 import {Avatar} from "../Avatar/Avatar";
+import {Cv} from "../../pages/Cv/Cv";
+import {NavLink} from "react-router-dom";
 
 export const Student = () => {
 
@@ -103,7 +105,7 @@ export const Student = () => {
                                 </div>
                             </div>
                             <div className="studentButtons">
-                                <Button text='Pokaż CV'/>
+                                <NavLink to={`/cv/${user.id}`}><Button text='Pokaż CV'/></NavLink>
                                 <Button text='Brak zainteresowania'/>
                                 <Button text='Zatrudniony'/>
                                 <ChevronDown onClick={() => toggle(index)} size={30} color="#666666"

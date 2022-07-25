@@ -1,61 +1,105 @@
 .contactInfo {
-    display: block;
-    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    height: 718px;
+    padding: 25px 0;
     background-color: var(--section-bgcolor);
-    text-align: center;
-    padding-bottom: 16px;
 }
 
-.contactInfo button {
-    margin-top: 6px;
-    margin-bottom: 6px;
-    width: 200px;
-    height: 39px;
-    font-weight: normal;
+/*.contactInfo button {*/
+/*    margin-top: 6px;*/
+/*    margin-bottom: 6px;*/
+/*    width: 200px;*/
+/*    height: 39px;*/
+/*    font-weight: normal;*/
+/*}*/
+
+/*.contactInfo p {*/
+/*    margin: 0;*/
+/*    color: var(--default-font-color);*/
+/*}*/
+
+/*.contactInfo svg {*/
+/*    padding-right: 8px;*/
+/*}*/
+
+/*.contactInfo svg.avatar {*/
+/*    margin: 30px 50px 12px 50px;*/
+/*    padding: 0;*/
+/*}*/
+
+/*p.github {*/
+/*    color: var(--coursant-cv-github-icon);*/
+/*    margin-bottom: 19px;*/
+/*}*/
+
+/*p.fullName {*/
+/*    font-size: 24px;*/
+/*    line-height: 39px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*p.phone, p.email, p.about {*/
+/*    text-align: left;*/
+/*    margin-left: 22px;*/
+/*}*/
+
+/*p.about {*/
+/*    color: var(--coursant-cv-about-color);*/
+/*    margin-top: 18px;*/
+/*}*/
+
+/*p.Bio {*/
+/*    margin: 0 28px 30px 22px;*/
+/*    text-align: left;*/
+/*}*/
+
+/*svg.PhoneIcon {*/
+/*    color: var(--coursant-cv-phone-icon-color);*/
+/*}*/
+
+/*svg.EnvelopeIcon {*/
+/*    color: var(--coursant-cv-mail-icon-color);*/
+/*}*/
+
+.Cv-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.contactInfo p {
-    margin: 0;
-    color: var(--default-font-color);
-}
-
-.contactInfo svg {
-    padding-right: 8px;
-}
-
-.contactInfo svg.avatar {
-    margin: 30px 50px 12px 50px;
-    padding: 0;
-}
-
-p.github {
-    color: var(--coursant-cv-github-icon);
-    margin-bottom: 19px;
-}
-
-p.fullName {
+.Cv-user p:nth-child(1) {
     font-size: 24px;
+    line-height: 39px;
+    font-weight: 600;
+    color: #F7F7F7;
 }
 
-p.phone, p.email, p.about {
-    text-align: left;
-    margin-left: 22px;
+.Cv-user p:nth-child(2) {
+    display: flex;
+    align-items: center;
+    column-gap: 9px;
+    color: #0B8BD4;
 }
 
-p.about {
-    color: var(--coursant-cv-about-color);
-    margin-top: 18px;
+.Cv-contact {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    width: 100%;
+    padding-left: 25px;
 }
 
-p.Bio {
-    margin: 0 28px 30px 22px;
-    text-align: left;
+.Cv-contact p {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
 }
 
-svg.PhoneIcon {
-    color: var(--coursant-cv-phone-icon-color);
-}
-
-svg.EnvelopeIcon {
-    color: var(--coursant-cv-mail-icon-color);
+.Cv-contact p span {
+    font-size: 16px;
+    line-height: 27px;
+    color: #F7F7F7;
 }

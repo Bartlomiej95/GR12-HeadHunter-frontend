@@ -32,7 +32,7 @@ export const users: Students[] = [
         commercialExp: "6 miesięcy",
         reservation: false,
     },{
-        id: 1,
+        id: 2,
         name: "Jan",
         lastName: "Kowalski",
         ratingCourse: 5,
@@ -47,7 +47,7 @@ export const users: Students[] = [
         commercialExp: "6 miesięcy",
         reservation: false,
     },{
-        id: 1,
+        id: 3,
         name: "Jan",
         lastName: "Kowalski",
         ratingCourse: 5,
@@ -62,7 +62,7 @@ export const users: Students[] = [
         commercialExp: "6 miesięcy",
         reservation: false,
     },{
-        id: 1,
+        id: 4,
         name: "Jan",
         lastName: "Kowalski",
         ratingCourse: 5,
