@@ -1,16 +1,32 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {users} from "../../temporary/students";
 import {Button} from "../Button/Button";
 import {ChevronDown} from "@styled-icons/boxicons-solid";
 import './Student.css';
 import {Avatar} from "../Avatar/Avatar";
-import {Cv} from "../../pages/Cv/Cv";
 import {NavLink} from "react-router-dom";
 
 export const Student = () => {
 
     const [show, setShow] = useState<boolean | null | number>(false)
+    const [student, setStudent] = useState([])
 
+    const getStudents = async() => {
+        try {
+            const res = await fetch('http://localhost:3001/student/freelist');
+            const data = await res.json();
+            setStudent(data)
+            console.log(data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        getStudents()
+    }, [])
+
+    console.log(student)
     const toggle = (index: number) => {
         if (show === index) {
             return setShow(null)

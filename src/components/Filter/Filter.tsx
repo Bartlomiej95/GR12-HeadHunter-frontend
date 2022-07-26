@@ -1,17 +1,19 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import './Filter.css';
-import {DownArrow, Star, UpArrow} from "@styled-icons/boxicons-solid";
+import {DownArrow, UpArrow} from "@styled-icons/boxicons-solid";
 import {Button} from "../Button/Button";
+import {Rating} from "./Rating/Rating";
+import {SelectedRating} from "./Stars/Stars";
 
 interface FilterProps {
     filter: Dispatch<SetStateAction<boolean>>
 }
 
 export interface Filtered {
-    ratingCourse: number[],
-    ratingActiveInCourse: number[],
-    ratingCode: number[],
-    ratingScrum: number[],
+    ratingCourse: SelectedRating | {},
+    ratingActiveInCourse: SelectedRating | {},
+    ratingCode: SelectedRating | {},
+    ratingScrum: SelectedRating | {},
     placeWork: string,
     cityWork: string,
     contractType: string,
@@ -23,10 +25,10 @@ export interface Filtered {
 export const Filter = (props: FilterProps) => {
 
     const [chooseFilter, setChooseFilter] = useState<Filtered>({
-        ratingCourse: [],
-        ratingActiveInCourse: [],
-        ratingCode: [],
-        ratingScrum: [],
+        ratingCourse: {},
+        ratingActiveInCourse: {},
+        ratingCode: {},
+        ratingScrum: {},
         placeWork: '',
         cityWork: '',
         contractType: '',
@@ -34,6 +36,19 @@ export const Filter = (props: FilterProps) => {
         freeWork: null,
         commercialExp: '',
     })
+
+    const setRating = (obj: SelectedRating, name: string) => {
+        if (name === 'ratingCourse') {
+            setChooseFilter({...chooseFilter, ratingCourse: obj})
+        } else if (name === 'ratingActiveInCourse') {
+            setChooseFilter({...chooseFilter, ratingActiveInCourse: obj})
+        } else if (name === 'ratingCode') {
+            setChooseFilter({...chooseFilter, ratingCode: obj})
+        } else if (name === 'ratingScrum') {
+            setChooseFilter({...chooseFilter, ratingScrum: obj})
+        }
+    }
+
     return (
         <>
             <div className="filter-bg" onClick={() => props.filter(false)}></div>
@@ -43,86 +58,11 @@ export const Filter = (props: FilterProps) => {
                     <button className="Filter-clearAll">Wyczyść wszystkie</button>
                 </div>
                 <div className="Filter-ratings">
-                    <div className="Stars">
-                        <p>Ocena przejścia kursu</p>
-                        <div className="Stars-wrap">
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>5</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>4</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>3</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>2</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>1</p> <Star
-                                size={13} className="Star"/></div>
-                        </div>
-                    </div>
-                    <div className="Stars">
-                        <p>Ocena aktywności i zaangażowania na kursie</p>
-                        <div className="Stars-wrap">
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>5</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>4</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>3</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>2</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>1</p> <Star
-                                size={13} className="Star"/></div>
-                        </div>
-                    </div>
-                    <div className="Stars">
-                        <p>Ocena kodu w projekcie własnym</p>
-                        <div className="Stars-wrap">
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>5</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>4</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>3</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>2</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>1</p> <Star
-                                size={13} className="Star"/></div>
-                        </div>
-                    </div>
-                    <div className="Stars">
-                        <p>Ocena pracy w zespole w Scrum</p>
-                        <div className="Stars-wrap">
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>5</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>4</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>3</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>2</p> <Star
-                                size={13} className="Star"/></div>
-                            <div className="Stars-item" onClick={e => e.currentTarget.classList.toggle('active')}>
-                                <p>1</p> <Star
-                                size={13} className="Star"/></div>
-                        </div>
-                    </div>
+                    <Rating title="Ocena przejścia kursu" rating={setRating} name="ratingCourse"/>
+                    <Rating title="Ocena aktywności i zaangażowania na kursie" rating={setRating}
+                            name="ratingActiveInCourse"/>
+                    <Rating title="Ocena kodu w projekcie własnym" rating={setRating} name="ratingCode"/>
+                    <Rating title="Ocena pracy w zespole w Scrum" rating={setRating} name="ratingScrum"/>
                 </div>
                 <div className="Filter-place">
                     <p>Preferowane miejsce pracy</p>
