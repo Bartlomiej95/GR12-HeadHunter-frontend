@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const ProjectOneLink = (props: Props) => {
-    return <>
+    return <div className="project-links">
         <a
             href={props.link}
             className="projectUrl"
@@ -18,5 +18,5 @@ export const ProjectOneLink = (props: Props) => {
             <Paperclip className="clip"/>
             {props.link}
         </a>
-    </>
+    </div>
 }
