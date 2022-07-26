@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import '../../styles/style.scss';
 import {LoginForm} from "./LoginComponents/LoginForm";
 import {Route, Routes} from "react-router-dom";
-import {Register} from "./Register/Register";
+import {R} from "./Register/r";
 import {ForgotPassword} from "./ForgotPassword/ForgotPassword";
 
 export const Login = () => {
@@ -12,7 +12,7 @@ export const Login = () => {
 
             <Routes>
                 <Route path="/" element={<LoginForm/>} />
-                <Route path="/register" element={<Register/>} />
+                <Route path="/register" element={<R/>} />
                 <Route path="/forgot-password" element={<ForgotPassword/>} />
             </Routes>
         </div>

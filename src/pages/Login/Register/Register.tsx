@@ -1,79 +1,49 @@
 import React, {useState} from "react";
-import logo from "../../../assets/img/logo.webp";
-import {Link} from "react-router-dom";
-import {ErrorMessage} from "../ErrorMessage/Message";
+import {LOGInHost, RecruiterAddPost} from "../../../utils/dictionaries";
 
-export const Register = () => {
-
+export const Register = ()=>{
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordCheck, setPasswordCheck] = useState('');
-    const [role, setRole] = useState('HR');
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    const [name, setName] = useState('');
+    const [company, setCompany] = useState('hr');
+    const [maxReservedStudents, setMaxReservedStudents] = useState(0);
+    let action = {actionStatus: " ", message: ""}
 
-    const register = ()=>{
-
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if(!(email.match(re))){
-            setError(true);
-            setErrorMessage('Email jest niepoprawny ');
-            return;
-        }
-        if(!(password === passwordCheck)){
-            setError(true);
-            setErrorMessage('Podane hasło musi być takie same. ');
-            return;
-        }
-        else {
-            console.log(email, password,passwordCheck,role)
-            console.log('register')
-            return;
-        }
-
-
+    const add = async () =>{
+        await fetch(RecruiterAddPost, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+            body: JSON.stringify({
+                email,
+                "fullName": name,
+                company,
+                maxReservedStudents
+            })
+        })  .then(response => response.json())
+            .then(data => action = data)
+        console.log(email,name,company,maxReservedStudents)
+        console.log('----')
+        console.log(action)
     }
 
     return(
-        <div className="t-login__div">
-            <div className="t-login__images">
-                <img  className="e-start-logo" src={logo} alt=""/>
-            </div>
-            <div className="register__h1">
-                <h1>Zarejestruj się</h1>
-            </div>
-            <input className="c-input"
-                   placeholder="Email"
-                   type="email"
-                   onChange={e=>setEmail(e.target.value)}
-                   />
-            <input className="c-input"
-                   placeholder="Hasło"
-                   type="password"
-                   onChange={e=>setPassword(e.target.value)}
-                   />
-            <input  className="c-input"
-                    placeholder="Powtórz hasło"
-                    type="password"
-                    onChange={e=>setPasswordCheck(e.target.value)}
-                    />
-            <select className="c-input"
-                    onChange={e=>setRole(e.target.value)}>
-                <option>HR</option>
-                <option>Kursant</option>
+        <div className="u-flex  u-flex__column">
+            <h1>Panel dodawania kursantów</h1>
+            <input type="text"
+                   placeholder="Email" className="c-input c-input--border"
+                   onChange={e=> setEmail(e.target.value)}/>
+            <input type="text"
+                   placeholder="Nazwa" className="c-input c-input--border"
+                   onChange={e=> setName(e.target.value)}/>
+            <select className="c-input c-input--border" onChange={e=> setCompany(e.target.value)}>
+                <option value="hr">HR</option>
+                <option value="cursant">Kursant</option>
             </select>
-            <div className="t-login__alignment">
-                <Link to="../"> <button className="c-btn">Anuluj</button></Link>
-                <button className="c-btn" onClick={register}>Zarejestruj się</button>
-            </div>
-
-            {error ? <ErrorMessage
-                error={error}
-                setError={setError}
-                message={errorMessage}
-            />: null}
-
+            <input type="number"
+                   placeholder="Liczba zarezerwowanych kursantów "
+                   className="c-input c-input--border"
+                   onChange={e => setMaxReservedStudents(Number(e.target.value))}/>
+            <button className="c-btn" onClick={add}>Dodaj</button>
         </div>
     )
 }
