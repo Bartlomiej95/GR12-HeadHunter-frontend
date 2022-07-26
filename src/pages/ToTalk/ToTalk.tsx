@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState} from "react";
 import {Tools} from "../../components/Tools/Tools";
 import {Student} from "../../components/Student/Student";
 import {Pagination} from "../../components/Pagination/Pagination";
