@@ -8,62 +8,6 @@
     background-color: var(--section-bgcolor);
 }
 
-/*.contactInfo button {*/
-/*    margin-top: 6px;*/
-/*    margin-bottom: 6px;*/
-/*    width: 200px;*/
-/*    height: 39px;*/
-/*    font-weight: normal;*/
-/*}*/
-
-/*.contactInfo p {*/
-/*    margin: 0;*/
-/*    color: var(--default-font-color);*/
-/*}*/
-
-/*.contactInfo svg {*/
-/*    padding-right: 8px;*/
-/*}*/
-
-/*.contactInfo svg.avatar {*/
-/*    margin: 30px 50px 12px 50px;*/
-/*    padding: 0;*/
-/*}*/
-
-/*p.github {*/
-/*    color: var(--coursant-cv-github-icon);*/
-/*    margin-bottom: 19px;*/
-/*}*/
-
-/*p.fullName {*/
-/*    font-size: 24px;*/
-/*    line-height: 39px;*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*p.phone, p.email, p.about {*/
-/*    text-align: left;*/
-/*    margin-left: 22px;*/
-/*}*/
-
-/*p.about {*/
-/*    color: var(--coursant-cv-about-color);*/
-/*    margin-top: 18px;*/
-/*}*/
-
-/*p.Bio {*/
-/*    margin: 0 28px 30px 22px;*/
-/*    text-align: left;*/
-/*}*/
-
-/*svg.PhoneIcon {*/
-/*    color: var(--coursant-cv-phone-icon-color);*/
-/*}*/
-
-/*svg.EnvelopeIcon {*/
-/*    color: var(--coursant-cv-mail-icon-color);*/
-/*}*/
-
 .Cv-user {
     display: flex;
     flex-direction: column;
@@ -102,4 +46,32 @@
     font-size: 16px;
     line-height: 27px;
     color: #F7F7F7;
+}
+
+.Cv-about {
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-right: 28px;
+}
+
+.Cv-about p:nth-child(1) {
+    font-size: 16px;
+    line-height: 27px;
+    color: #4D4D4D;
+    font-weight: 600;
+}
+
+.Cv-about p:nth-child(2) {
+    font-size: 16px;
+    line-height: 27px;
+    color: #F7F7F7;
+}
+
+.Cv-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    width: 100%;
+    padding: 0 22px;
 }

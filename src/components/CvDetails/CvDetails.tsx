@@ -46,7 +46,7 @@ export const CvDetails = () => {
             <CvLabelWithLinks
                 title="Portfolio"
                 urlList={[
-                    "https://github.com",
+                    // "https://github.com",
                 ]}
             />
             <CvLabelWithLinks

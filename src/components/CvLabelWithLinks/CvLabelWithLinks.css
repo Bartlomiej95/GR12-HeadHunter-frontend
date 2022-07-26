@@ -1,6 +1,5 @@
 .CvLabelWithLinks {
-    margin: 0;
-    padding-left: 0;
+    padding: 18px 0;
     color: var(--default-font-color);
     width: 1176px;
 }

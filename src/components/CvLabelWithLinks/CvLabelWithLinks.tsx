@@ -1,33 +1,24 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import './CvLabelWithLinks.css';
 import {ProjectOneLink} from "../ProjectOneLink/ProjectOneLink";
 
 interface Props {
-    urlList: string[] | null;
-    title?: string;
-    children?: ReactNode;
+    urlList: string[];
+    title: string;
 }
 
 export const CvLabelWithLinks = (props: Props) => {
-    if (props.urlList === null || props.urlList.length === 0) {
-        return <>
-            <div className="CvLabelWithLinks">
-                <p className="LabelTitle">{props.title}</p>
-                <p>Osoba nie posiada strony www z portfolio.</p>
-            </div>
-        </>
+    return <>
+        <p className="LabelTitle">{props.title}</p>
+        <div className="CvLabelWithLinks">
 
-    } else {
-        return <>
-            <div className="CvLabelWithLinks">
-                <p className="LabelTitle">{props.title}</p>
-                {
-                    props.urlList.map((element, index) => {
+            {
+                props.urlList.length === 0 ?
+                    <p>Osoba nie posiada strony www z portfolio.</p> : props.urlList.map((element, index) => {
                         return <ProjectOneLink link={element} key={index}/>
                     })
-                }
-                <div className="Details">{props.children}</div>
-            </div>
-        </>
-    }
+            }
+        </div>
+    </>
+    // }
 }

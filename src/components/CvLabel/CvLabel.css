@@ -13,8 +13,9 @@
     font-size: 20px;
     font-weight: bold;
     padding-left: 26px;
+    color: #F7F7F7;
 }
 
-.CvLabel p {
-    padding-left: 26px;
+.Details {
+    padding: 25px 26px;
 }
