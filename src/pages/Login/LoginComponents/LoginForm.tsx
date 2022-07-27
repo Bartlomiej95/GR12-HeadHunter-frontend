@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {ErrorMessage} from "../ErrorMessage/Message";
 import {Context} from "../../../provider/Provider";
 
+
 export const LoginForm = () =>{
 
     const {login, setLogin} = useContext(Context)
@@ -32,6 +33,7 @@ export const LoginForm = () =>{
             setErrorMessage(fetchLogin.message)
         }
         else if (fetchLogin.logedIn){
+            document.cookie = 'login=true'
             setLogin(true);
         }
     }

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
 import {Routing} from "./components/Routing/Routing";
 import megaK from './assets/img/megak.png';
@@ -6,9 +6,16 @@ import {Avatar} from "./components/Avatar/Avatar";
 import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Context} from "./provider/Provider";
 import {Menu} from "./components/Menu/Menu";
+// import Cookies from "universal-cookie";
 
 function App() {
     const {login} = useContext(Context)
+    // const cookies = new Cookies();
+    useEffect(()=>{
+      // document.cookie = 'darkmode=true'
+      //   console.log(cookies.getAll())
+        })
+
     return (
         <div className="App">
             {login ?

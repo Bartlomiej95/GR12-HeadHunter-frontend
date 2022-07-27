@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import {LOGInHost, RecruiterAddPost} from "../../../utils/dictionaries";
+import {ErrorMessage} from "../ErrorMessage/Message";
 
 export const Register = ()=>{
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [company, setCompany] = useState('hr');
     const [maxReservedStudents, setMaxReservedStudents] = useState(0);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     let action = {actionStatus: " ", message: ""}
 
     const add = async () =>{
@@ -24,6 +27,12 @@ export const Register = ()=>{
         console.log(email,name,company,maxReservedStudents)
         console.log('----')
         console.log(action)
+        if(!action.actionStatus){
+            setError(true);
+            setErrorMessage(action.message)
+        } else {
+            setErrorMessage(action.message)
+        }
     }
 
     return(
@@ -44,6 +53,11 @@ export const Register = ()=>{
                    className="c-input c-input--border"
                    onChange={e => setMaxReservedStudents(Number(e.target.value))}/>
             <button className="c-btn" onClick={add}>Dodaj</button>
+            {error ? <ErrorMessage
+                error={error}
+                setError={setError}
+                message={errorMessage}
+            />: null}
         </div>
     )
 }
