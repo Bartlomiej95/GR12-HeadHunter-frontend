@@ -3,7 +3,7 @@ import './CvLabelWithLinks.css';
 import {ProjectOneLink} from "../ProjectOneLink/ProjectOneLink";
 
 interface Props {
-    urlList: string[];
+    urlList: string[] | null | undefined
     title: string;
 }
 
@@ -13,7 +13,7 @@ export const CvLabelWithLinks = (props: Props) => {
         <div className="CvLabelWithLinks">
 
             {
-                props.urlList.length === 0 ?
+                props.urlList === null || props.urlList === undefined ?
                     <p>Osoba nie posiada strony www z portfolio.</p> : props.urlList.map((element, index) => {
                         return <ProjectOneLink link={element} key={index}/>
                     })
