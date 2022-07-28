@@ -10,16 +10,32 @@ interface FilterProps {
 }
 
 export interface Filtered {
-    ratingCourse: SelectedRating | {},
-    ratingActiveInCourse: SelectedRating | {},
-    ratingCode: SelectedRating | {},
-    ratingScrum: SelectedRating | {},
-    placeWork: string,
-    cityWork: string,
-    contractType: string,
-    salaryPrice: null | number,
-    freeWork: null | number,
-    commercialExp: null | string,
+    ratingCourse: SelectedRating | {}
+    ratingActiveInCourse: SelectedRating | {}
+    ratingCode: SelectedRating | {}
+    ratingScrum: SelectedRating | {}
+    placeWork: SelectedPlace,
+    contractType: SelectedContract
+    salaryPrice: SalaryPrice
+    freeWork: null | boolean
+    commercialExp: number
+}
+
+interface SelectedPlace {
+    remoteWork: boolean
+    officeWork: boolean
+}
+
+interface SelectedContract {
+    contractOfEmployment: boolean
+    b2b: boolean
+    contractOfMandate: boolean
+    contractWork: boolean
+}
+
+interface SalaryPrice {
+    from: string | number
+    to: string | number
 }
 
 export const Filter = (props: FilterProps) => {
@@ -29,12 +45,22 @@ export const Filter = (props: FilterProps) => {
         ratingActiveInCourse: {},
         ratingCode: {},
         ratingScrum: {},
-        placeWork: '',
-        cityWork: '',
-        contractType: '',
-        salaryPrice: null,
+        placeWork: {
+            remoteWork: false,
+            officeWork: false,
+        },
+        contractType: {
+            contractOfEmployment: false,
+            b2b: false,
+            contractOfMandate: false,
+            contractWork: false,
+        },
+        salaryPrice: {
+            from: '',
+            to: '',
+        },
         freeWork: null,
-        commercialExp: '',
+        commercialExp: 0,
     })
 
     const setRating = (obj: SelectedRating, name: string) => {
@@ -49,13 +75,38 @@ export const Filter = (props: FilterProps) => {
         }
     }
 
+    const clearAll = () => {
+        setChooseFilter({
+            ratingCourse: {},
+            ratingActiveInCourse: {},
+            ratingCode: {},
+            ratingScrum: {},
+            placeWork: {
+                remoteWork: false,
+                officeWork: false,
+            },
+            contractType: {
+                contractOfEmployment: false,
+                b2b: false,
+                contractOfMandate: false,
+                contractWork: false,
+            },
+            salaryPrice: {
+                from: '',
+                to: '',
+            },
+            freeWork: null,
+            commercialExp: 0,
+        })
+    }
+
     return (
         <>
             <div className="filter-bg" onClick={() => props.filter(false)}></div>
             <div className="Filter">
                 <div className="Filter-header">
                     <h4>Filtrowanie</h4>
-                    <button className="Filter-clearAll">Wyczyść wszystkie</button>
+                    <button className="Filter-clearAll" onClick={clearAll}>Wyczyść wszystkie</button>
                 </div>
                 <div className="Filter-ratings">
                     <Rating title="Ocena przejścia kursu" rating={setRating} name="ratingCourse"/>
@@ -67,15 +118,41 @@ export const Filter = (props: FilterProps) => {
                 <div className="Filter-place">
                     <p>Preferowane miejsce pracy</p>
                     <div className="Filter-select">
-                        <p>Praca zdalna</p>
-                        <p>Praca w biurze</p>
+                        <p className={chooseFilter.placeWork.remoteWork ? "active" : ""}
+                           onClick={() => setChooseFilter({
+                               ...chooseFilter,
+                               placeWork: {...chooseFilter.placeWork, remoteWork: !chooseFilter.placeWork.remoteWork}
+                           })}>Praca zdalna</p>
+                        <p className={chooseFilter.placeWork.officeWork ? "active" : ""}
+                           onClick={() => setChooseFilter({
+                               ...chooseFilter,
+                               placeWork: {...chooseFilter.placeWork, officeWork: !chooseFilter.placeWork.officeWork}
+                           })}>Praca w biurze</p>
                     </div>
                 </div>
                 <div className="Filter-contract">
                     <p>Oczekiwany typ kontraktu</p>
                     <div className="Filter-select">
-                        <p>Umowa o pracę</p><p>B2B</p>
-                        <p>Umowa zlecenie</p><p>Umowa o dzieło</p>
+                        <p className={chooseFilter.contractType.contractOfEmployment ? "active" : ""}
+                           onClick={() => setChooseFilter({
+                               ...chooseFilter,
+                               contractType: {...chooseFilter.contractType, contractOfEmployment: !chooseFilter.contractType.contractOfEmployment}
+                           })}>Umowa o pracę</p>
+                        <p className={chooseFilter.contractType.b2b ? "active" : ""}
+                           onClick={() => setChooseFilter({
+                               ...chooseFilter,
+                               contractType: {...chooseFilter.contractType, b2b: !chooseFilter.contractType.b2b}
+                           })}>B2B</p>
+                        <p className={chooseFilter.contractType.contractOfMandate ? "active" : ""}
+                           onClick={() => setChooseFilter({
+                               ...chooseFilter,
+                               contractType: {...chooseFilter.contractType, contractOfMandate: !chooseFilter.contractType.contractOfMandate}
+                           })}>Umowa zlecenie</p>
+                        <p className={chooseFilter.contractType.contractWork ? "active" : ""}
+                           onClick={() => setChooseFilter({
+                               ...chooseFilter,
+                               contractType: {...chooseFilter.contractType, contractWork: !chooseFilter.contractType.contractWork}
+                           })}>Umowa o dzieło</p>
                     </div>
                 </div>
                 <div className="Filter-price">
@@ -83,30 +160,30 @@ export const Filter = (props: FilterProps) => {
                     <div className="Filter-inputs">
                         <div className="Filter-input">
                             <label>Od</label>
-                            <input type="text" placeholder="np. 1000 zł"/>
+                            <input type="text" placeholder="np. 1000 zł" value={chooseFilter.salaryPrice.from} onChange={(e)=>setChooseFilter({...chooseFilter, salaryPrice: {...chooseFilter.salaryPrice, from: Number(e.target.value)}})}/>
                         </div>
                         <div className="Filter-input">
                             <label>Do</label>
-                            <input type="text" placeholder="np. 10000 zł"/>
+                            <input type="text" placeholder="np. 10000 zł" value={chooseFilter.salaryPrice.to} onChange={(e)=>setChooseFilter({...chooseFilter, salaryPrice: {...chooseFilter.salaryPrice, to: Number(e.target.value)}})}/>
                         </div>
                     </div>
                 </div>
                 <div className="Filter-free">
                     <p>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</p>
                     <div className="Filter-radio">
-                        <input type="radio" name="free" id="tak"/> <label htmlFor="tak">Tak</label>
+                        <input type="radio" name="free" id="yes" onClick={() => setChooseFilter({...chooseFilter, freeWork: true})}/> <label htmlFor="yes">Tak</label>
                     </div>
                     <div className="Filter-radio">
-                        <input type="radio" name="free" id="nie"/> <label htmlFor="nie">Nie</label>
+                        <input type="radio" name="free" id="no" onClick={() => setChooseFilter({...chooseFilter, freeWork: false})}/> <label htmlFor="no">Nie</label>
                     </div>
                 </div>
                 <div className="Filter-exp">
                     <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
                     <div className="Filter-month">
-                        <p>0 miesięcy</p>
+                        <p style={chooseFilter.commercialExp > 0 ? {color: '#F7F7F7'} : {}}>{chooseFilter.commercialExp} miesięcy</p>
                         <div>
-                            <UpArrow size={10} color="#7E7E7E" className="Filter-arrow"/>
-                            <DownArrow size={10} color="#7E7E7E" className="Filter-arrow"/>
+                            <UpArrow size={10} color="#7E7E7E" className="Filter-arrow" onClick={() => setChooseFilter({...chooseFilter, commercialExp: chooseFilter.commercialExp + 1})}/>
+                            <DownArrow size={10} color="#7E7E7E" className="Filter-arrow" onClick={() => setChooseFilter({...chooseFilter, commercialExp: chooseFilter.commercialExp === 0 ? 0 : chooseFilter.commercialExp - 1})}/>
                         </div>
                     </div>
                 </div>
