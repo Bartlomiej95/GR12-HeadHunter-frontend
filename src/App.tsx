@@ -6,15 +6,29 @@ import {Avatar} from "./components/Avatar/Avatar";
 import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Context} from "./provider/Provider";
 import {Menu} from "./components/Menu/Menu";
-// import Cookies from "universal-cookie";
+import {CheckLogin, RecruiterAddPost, RegisterActive} from "./utils/dictionaries";
+
+
 
 function App() {
-    const {login} = useContext(Context)
-    // const cookies = new Cookies();
-    useEffect(()=>{
-      // document.cookie = 'darkmode=true'
-      //   console.log(cookies.getAll())
-        })
+    const {login , setLogin} = useContext(Context)
+    useEffect(()=> {
+        const logIn = async ()=>{
+            await fetch(CheckLogin, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'},
+                credentials: "include",
+            })
+                .then(response => response.json())
+                .then(data =>{
+                        if(data.logedIn){
+                            setLogin(true)
+                        }
+                        //console.log(data)
+                    })
+        }
+        logIn()
+    })
 
     return (
         <div className="App">

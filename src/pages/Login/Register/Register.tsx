@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {LOGInHost, RecruiterAddPost} from "../../../utils/dictionaries";
 import {ErrorMessage} from "../ErrorMessage/Message";
+import {Button} from "../../../components/Button/Button";
 
 export const Register = ()=>{
     const [email, setEmail] = useState('');
@@ -53,6 +54,7 @@ export const Register = ()=>{
                    className="c-input c-input--border"
                    onChange={e => setMaxReservedStudents(Number(e.target.value))}/>
             <button className="c-btn" onClick={add}>Dodaj</button>
+
             {error ? <ErrorMessage
                 error={error}
                 setError={setError}
