@@ -8,7 +8,7 @@ import {Context} from "../../../provider/Provider";
 
 export const LoginForm = () =>{
 
-    const {login, setLogin} = useContext(Context)
+    const {login, setLogin, setName, setLastName} = useContext(Context)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState(' ');
     let fetchLogin = {logedIn: '', message: ""};

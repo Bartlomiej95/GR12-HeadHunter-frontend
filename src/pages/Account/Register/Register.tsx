@@ -5,7 +5,8 @@ import {Button} from "../../../components/Button/Button";
 
 export const Register = ()=>{
     const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [company, setCompany] = useState('hr');
     const [maxReservedStudents, setMaxReservedStudents] = useState(0);
     const [error, setError] = useState(false);
@@ -19,15 +20,14 @@ export const Register = ()=>{
             credentials: "include",
             body: JSON.stringify({
                 email,
-                "fullName": name,
+                firstName,
+                lastName,
                 company,
                 maxReservedStudents
             })
         })  .then(response => response.json())
             .then(data => action = data)
-        console.log(email,name,company,maxReservedStudents)
-        console.log('----')
-        console.log(action)
+
         if(!action.actionStatus){
             setError(true);
             setErrorMessage(action.message)
@@ -43,12 +43,14 @@ export const Register = ()=>{
                    placeholder="Email" className="c-input c-input--border"
                    onChange={e=> setEmail(e.target.value)}/>
             <input type="text"
-                   placeholder="Nazwa" className="c-input c-input--border"
-                   onChange={e=> setName(e.target.value)}/>
-            <select className="c-input c-input--border" onChange={e=> setCompany(e.target.value)}>
-                <option value="hr">HR</option>
-                <option value="cursant">Kursant</option>
-            </select>
+                   placeholder="Imie" className="c-input c-input--border"
+                   onChange={e=> setFirstName(e.target.value)}/>
+            <input type="text"
+                   placeholder="Nazwisko" className="c-input c-input--border"
+                   onChange={e=> setLastName(e.target.value)}/>
+            {/*<select className="c-input c-input--border" onChange={e=> setCompany(e.target.value)}>*/}
+            {/*    <option value="hr">HR</option>*/}
+            {/*</select>*/}
             <input type="number"
                    placeholder="Liczba zarezerwowanych kursantów "
                    className="c-input c-input--border"

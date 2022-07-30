@@ -11,7 +11,8 @@ import {CheckLogin, RecruiterAddPost, RegisterActive} from "./utils/dictionaries
 
 
 function App() {
-    const {login , setLogin} = useContext(Context)
+    const {login, setLogin, name, setName, lastName, setLastName, setRole} = useContext(Context)
+    //const {login , setLogin} = useContext(Context)
     useEffect(()=> {
         const logIn = async ()=>{
             await fetch(CheckLogin, {
@@ -23,8 +24,10 @@ function App() {
                 .then(data =>{
                         if(data.logedIn){
                             setLogin(true)
+                            setName(data.message.firstName)
+                            setLastName(data.message.lasyName)
+                            setRole(data.message.role)
                         }
-                        //console.log(data)
                     })
         }
         logIn()
@@ -42,7 +45,7 @@ function App() {
                             <div className="Header__user">
                                 <Avatar/>
                                 <div>
-                                    <p>Mateusz Kowalski</p>
+                                    <p>{name} {lastName}</p>
                                     <p><DownArrow color="#9E9E9E" size={10}/></p>
                                 </div>
                             </div>
