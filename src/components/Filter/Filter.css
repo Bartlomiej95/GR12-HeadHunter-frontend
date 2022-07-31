@@ -71,6 +71,11 @@
     padding: 4px 10px;
     background-color: #292A2B;
     cursor: pointer;
+    transition: .3s background-color;
+}
+
+.Filter-select p.active {
+    background-color: #E02735;
 }
 
 .Filter-inputs {
@@ -135,8 +140,8 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    border: 1px solid #292A2B;
-    box-shadow: inset 0 0 0 4px #666666;
+    border: 1px solid #E02735;
+    box-shadow: inset 0 0 0 4px #E02735;
 }
 
 .Filter-month {
@@ -205,6 +210,7 @@
     padding: 0 8px;
     background-color: #292A2B;
     cursor: pointer;
+    transition: .3s;
 }
 
 .Stars-item p {
