@@ -7,12 +7,13 @@ import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Context} from "./provider/Provider";
 import {Menu} from "./components/Menu/Menu";
 import {CheckLogin, RecruiterAddPost, RegisterActive} from "./utils/dictionaries";
+import {Header} from "./components/Header/Header";
 
 
 
 function App() {
     const {login, setLogin, name, setName, lastName, setLastName, setRole} = useContext(Context)
-    //const {login , setLogin} = useContext(Context)
+
     useEffect(()=> {
         const logIn = async ()=>{
             await fetch(CheckLogin, {
@@ -37,20 +38,7 @@ function App() {
         <div className="App">
             {login ?
                 <>
-                    <header className="Header">
-                        <div className="container">
-                            <div>
-                                <img src={megaK} alt="Logo"/>
-                            </div>
-                            <div className="Header__user">
-                                <Avatar/>
-                                <div>
-                                    <p>{name} {lastName}</p>
-                                    <p><DownArrow color="#9E9E9E" size={10}/></p>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
+                    <Header/>
                     <div>
                         <Menu/>
                     </div>
