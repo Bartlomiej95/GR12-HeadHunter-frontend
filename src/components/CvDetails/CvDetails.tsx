@@ -1,67 +1,113 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './CvDetails.css';
 import {CvLabel} from "../CvLabel/CvLabel";
 import {DegreeDetail} from "../DegreeDetail/DegreeDetail";
 import {ExpectationDetail} from "../ExpectationDetail/ExpectationDetail";
 import {CvLabelWithLinks} from "../CvLabelWithLinks/CvLabelWithLinks";
+import {getStudentData} from "../../utils/get-student-data";
 
 export const CvDetails = () => {
+    const [studentData, setStudentData] = useState({
+        courseCompletion: 0,
+        courseEngagment: 0,
+        projectDegree: 0,
+        teamProjectDegree: 0,
+        bonusProjectUrls: [],
+        portfolioUrls: [],
+        projectUrls: [],
+        expectedContractType: '',
+        targetWorkCity: '',
+        expectedTypeWork: '',
+        expectedSalary: '',
+        canTakeApprenticeship: false,
+        monthsOfCommercialExp: 0,
+        education: '',
+        workExperience: '',
+        courses: '',
+        reservationStatus: '',
+    });
+
+    // target id from url
+    // const {id} = useParams();
+
+    // tmp id from database to test
+    const id = 'c05cf975-3da4-47c9-a11d-be009f000071'
+
+    useEffect(() => {
+        (async () => {
+            const student = await getStudentData(id);
+
+            setStudentData({
+                courseCompletion: student.courseCompletion,
+                courseEngagment: student.courseEngagment,
+                projectDegree: student.projectDegree,
+                teamProjectDegree: student.teamProjectDegree,
+                bonusProjectUrls: student.bonusProjectUrls,
+                portfolioUrls: student.portfolioUrls,
+                projectUrls: student.projectUrls,
+                expectedContractType: student.expectedContractType,
+                targetWorkCity: student.targetWorkCity,
+                expectedTypeWork: student.expectedTypeWork,
+                expectedSalary: student.expectedSalary,
+                canTakeApprenticeship: student.canTakeApprenticeship,
+                monthsOfCommercialExp: student.monthsOfCommercialExp,
+                education: student.education,
+                workExperience: student.workExperience,
+                courses: student.courses,
+                reservationStatus: student.reservationStatus,
+            });
+        })()
+    }, []);
+
+    console.log(studentData);
+
     return <>
         <section className="CvDetails">
             <CvLabel title="Oceny">
                 <div className="Degree">
-                    <DegreeDetail title="Ocena przejścia kursu" degree={3}/>
-                    <DegreeDetail title="Ocena aktywności i zaangażowania na kursie" degree={5}/>
-                    <DegreeDetail title="Ocena kodu w projekcie własnym" degree={2}/>
-                    <DegreeDetail title="Ocena pracy w zespole w Scrum" degree={4}/>
+                    <DegreeDetail title="Ocena przejścia kursu" degree={studentData.courseCompletion}/>
+                    <DegreeDetail title="Ocena aktywności i zaangażowania na kursie"
+                                  degree={studentData.courseEngagment}/>
+                    <DegreeDetail title="Ocena kodu w projekcie własnym" degree={studentData.projectDegree}/>
+                    <DegreeDetail title="Ocena pracy w zespole w Scrum" degree={studentData.teamProjectDegree}/>
                 </div>
             </CvLabel>
             <CvLabel title="Oczekiwanie w stosunku do zatrudnienia">
                 <div className="WorkExpectation">
-                    <ExpectationDetail title="Preferowane miejsce pracy">Biuro</ExpectationDetail>
                     <ExpectationDetail
-                        title="Docelowe miasto, gdzie chce pracować kandydat">Warszawa</ExpectationDetail>
-                    <ExpectationDetail title="Oczekiwany typ kontraktu">Umowa o pracę</ExpectationDetail>
-                    <ExpectationDetail title="Oczekiwane wynagrodzenie miesięczne netto">8 000 zł</ExpectationDetail>
+                        title="Preferowane miejsce pracy">{studentData.expectedTypeWork}</ExpectationDetail>
                     <ExpectationDetail
-                        title="Zgoda na odbycie bezpłatnych praktyk/stażu na początek">TAK</ExpectationDetail>
-                    <ExpectationDetail title="Komercyjne doświadczenie w programowaniu">6 miesięcy</ExpectationDetail>
+                        title="Docelowe miasto, gdzie chce pracować kandydat">{studentData.targetWorkCity}</ExpectationDetail>
+                    <ExpectationDetail
+                        title="Oczekiwany typ kontraktu">{studentData.expectedContractType}</ExpectationDetail>
+                    <ExpectationDetail
+                        title="Oczekiwane wynagrodzenie miesięczne netto">{studentData.expectedSalary} zł</ExpectationDetail>
+                    <ExpectationDetail
+                        title="Zgoda na odbycie bezpłatnych praktyk/stażu na początek">{studentData.canTakeApprenticeship ? 'TAK' : 'NIE'}</ExpectationDetail>
+                    <ExpectationDetail
+                        title="Komercyjne doświadczenie w programowaniu">{studentData.monthsOfCommercialExp} miesięcy</ExpectationDetail>
                 </div>
             </CvLabel>
             <CvLabel title="Edukacja">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>{studentData.education}</p>
             </CvLabel>
             <CvLabel title="Kursy">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>{studentData.courses}</p>
             </CvLabel>
             <CvLabel title="Doświadczenie zawodowe">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>{studentData.workExperience}</p>
             </CvLabel>
             <CvLabelWithLinks
                 title="Portfolio"
-                urlList={[
-                    // "https://github.com",
-                ]}
+                urlList={studentData.portfolioUrls}
             />
             <CvLabelWithLinks
                 title="Projekt w zespole Scrumowym"
-                urlList={[
-                    "https://github.com",
-                    "https://google.com"
-                ]}
+                urlList={studentData.bonusProjectUrls}
             />
             <CvLabelWithLinks
                 title="Projekt na zaliczenie"
-                urlList={[
-                    "https://loremipsum/dolor/sit/amet",
-                    "https://lorem/ipsum/dolor/amet"
-                ]}
+                urlList={studentData.projectUrls}
             />
         </section>
     </>
