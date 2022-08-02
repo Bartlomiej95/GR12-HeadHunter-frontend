@@ -38,7 +38,7 @@ export const Register = ()=>{
 
     return(
         <div className="u-flex  u-flex__column">
-            <h1>Panel dodawania kursantów</h1>
+            <h1>Panel dodawania HR</h1>
             <input type="text"
                    placeholder="Email" className="c-input c-input--border"
                    onChange={e=> setEmail(e.target.value)}/>

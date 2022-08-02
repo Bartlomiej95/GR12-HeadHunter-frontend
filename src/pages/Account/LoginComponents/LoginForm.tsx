@@ -27,13 +27,13 @@ export const LoginForm = () =>{
             })
         })  .then(response => response.json())
             .then(data => fetchLogin = data)
+            //.then(data => console.log(data))
 
         if(!fetchLogin.logedIn){
             setError(true);
             setErrorMessage(fetchLogin.message)
         }
         else if (fetchLogin.logedIn){
-            document.cookie = 'login=true'
             setLogin(true);
         }
     }

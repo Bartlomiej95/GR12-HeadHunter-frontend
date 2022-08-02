@@ -6,9 +6,11 @@ import {ToTalk} from "../../pages/ToTalk/ToTalk";
 import {Cv} from "../../pages/Cv/Cv";
 import {Admin} from "../../pages/Account/Admin";
 import {RegisterPassword} from "../../pages/Account/Register/RegisterPassword";
-import {PassChange} from "../../pages/Account/PassChange/PassChange";
+import {PassChange} from "../../pages/Account/Change/PassChange";
 import {Context} from "../../provider/Provider";
 import {NoPermission} from "../../pages/Account/NoPermission/NoPermission";
+import {EmailChange} from "../../pages/Account/Change/EmailChange";
+
 
 interface LoginProps {
     login: boolean
@@ -17,17 +19,24 @@ interface LoginProps {
 
 export const Routing = ({login}: LoginProps) => {
     const {role} = useContext(Context);
-    let access = false;
+    let accessAdmin = false;
     if(role === "admin"){
-        access = true
+        accessAdmin = true
     }
+    const RoleHome = ()=>{
+        if (role === "admin"){return(<Admin/>)}
+        else if (role === 'recruiter'){return (<AvailableStudents/>)}
+        else {return (Login())}
+    }
+
     return (
         <Routes>
-            <Route path='/*' element={login ? <AvailableStudents/> : <Login/>}/>
+            <Route path='/*' element={RoleHome()}/>
             <Route path='/to-talk' element={login ? <ToTalk/> : <Login/>}/>
             <Route path='/cv/:id' element={login ? <Cv/> : <Login/>}/>
-            <Route path='/admin' element={access ? <Admin/> : <NoPermission/>}/>
-            <Route path='/passchange' element={<PassChange/>}/>
+            {/*<Route path='/admin' element={accessAdmin ? <Admin/> : <NoPermission/>}/>*/}
+            <Route path='/passchange' element={login ? <PassChange/>: <NoPermission/>}/>
+            <Route path='/emailchange' element={login ? <EmailChange/>: <NoPermission/>}/>
             <Route path='/register/recruiter/:urlCode' element={<RegisterPassword/>}/>
         </Routes>
     )

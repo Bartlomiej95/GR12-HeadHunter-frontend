@@ -1,19 +1,15 @@
 import React, {useContext, useEffect} from 'react';
 import './App.css';
 import {Routing} from "./components/Routing/Routing";
-import megaK from './assets/img/megak.png';
-import {Avatar} from "./components/Avatar/Avatar";
-import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Context} from "./provider/Provider";
 import {Menu} from "./components/Menu/Menu";
-import {CheckLogin, RecruiterAddPost, RegisterActive} from "./utils/dictionaries";
+import {CheckLogin} from "./utils/dictionaries";
 import {Header} from "./components/Header/Header";
 
 
 
 function App() {
-    const {login, setLogin, name, setName, lastName, setLastName, setRole} = useContext(Context)
-
+    const {login, setLogin, name, setName, lastName, setLastName, setRole , role} = useContext(Context)
     useEffect(()=> {
         const logIn = async ()=>{
             await fetch(CheckLogin, {
@@ -36,14 +32,8 @@ function App() {
 
     return (
         <div className="App">
-            {login ?
-                <>
-                    <Header/>
-                    <div>
-                        <Menu/>
-                    </div>
-                </>
-                : null}
+            {login ? <Header/> : null}
+            {role === "recruiter"? <Menu/> : null}
             <Routing login={login}/>
         </div>
 

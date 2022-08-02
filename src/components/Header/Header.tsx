@@ -4,11 +4,12 @@ import {Avatar} from "../Avatar/Avatar";
 import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Context} from "../../provider/Provider";
 import {LogoutHost} from "../../utils/dictionaries";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export const Header = ()=>{
     const {login, setLogin, name, setName, lastName, setLastName, setRole} = useContext(Context);
     const [openMenu, setOpenMenu] = useState(false);
+    const navigate = useNavigate();
 
     const LogOut = async () =>{
         await fetch(LogoutHost, {
@@ -21,11 +22,12 @@ export const Header = ()=>{
         })
         setOpenMenu(false);
         setLogin(false);
+        setRole(false)
+        navigate('/');
     }
     const isActive = () =>{
         setOpenMenu(!openMenu)
     }
-
     return(
         <div>
             <header className="Header">
@@ -44,9 +46,11 @@ export const Header = ()=>{
                             </div>
                         </div>
                         <nav className={ "header-menu__list"} style={openMenu? {}: {display: "none"}} >
-                            <div className="header-menu__item"><p>Profil</p></div>
                             <div className="header-menu__item">
-                                <Link to="passchange" className="link-decoration">Ustawienia</Link>
+                                <Link to="emailchange" className="link-decoration">Zmień email</Link>
+                            </div>
+                            <div className="header-menu__item">
+                                <Link to="passchange" className="link-decoration">Zmień hasło</Link>
                             </div>
                             <div className="header-menu__item" onClick={LogOut}><p>Wyloguj się</p></div>
                         </nav>
