@@ -19,10 +19,11 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
 
     const getStudents = async () => {
         try {
-            const res = await fetch('http://localhost:3001/student/freelist');
+            const res = await fetch('http://localhost:3001/student/freelist', {
+                credentials: "include"
+            });
             const data = await res.json();
-            setStudent(data)
-            console.log(data)
+            console.log(await data)
         } catch (e) {
             console.log(e)
         }
@@ -32,7 +33,6 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
         getStudents()
     }, [])
 
-    console.log(student)
     const toggle = (index: number) => {
         if (show === index) {
             return setShow(null)

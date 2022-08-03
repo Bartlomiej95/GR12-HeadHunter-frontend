@@ -5,30 +5,28 @@ import megaK from './assets/img/megak.png';
 import {Avatar} from "./components/Avatar/Avatar";
 import {DownArrow} from "@styled-icons/boxicons-solid";
 import {Context} from "./provider/Provider";
-import {Menu} from "./components/Menu/Menu";
 import {CheckLogin, RecruiterAddPost, RegisterActive} from "./utils/dictionaries";
-
 
 
 function App() {
     const {login, setLogin, name, setName, lastName, setLastName, setRole} = useContext(Context)
     //const {login , setLogin} = useContext(Context)
-    useEffect(()=> {
-        const logIn = async ()=>{
+    useEffect(() => {
+        const logIn = async () => {
             await fetch(CheckLogin, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'},
                 credentials: "include",
             })
                 .then(response => response.json())
-                .then(data =>{
-                        if(data.logedIn){
-                            setLogin(true)
-                            setName(data.message.firstName)
-                            setLastName(data.message.lasyName)
-                            setRole(data.message.role)
-                        }
-                    })
+                .then(data => {
+                    if (data.logedIn) {
+                        setLogin(true)
+                        setName(data.message.firstName)
+                        setLastName(data.message.lasyName)
+                        setRole(data.message.role)
+                    }
+                })
         }
         logIn()
     })
@@ -51,9 +49,6 @@ function App() {
                             </div>
                         </div>
                     </header>
-                    <div>
-                        <Menu/>
-                    </div>
                 </>
                 : null}
             <Routing login={login}/>
