@@ -139,7 +139,7 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
         }
     }
 
-    const handleAddToTalkStudent = async(id: string) => {
+    const handleAddToTalkStudent = async (id: string) => {
         await fetch(`http://localhost:3001/recruiter/addstudent/${id}`, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
@@ -150,6 +150,31 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
                 console.log(data.actionStatus)
             })
 
+    }
+
+    const handleRemoveStudentFromTalk = async (id: string) => {
+        await fetch(`http://localhost:3001/recruiter/pushback/${id}`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.actionStatus)
+            })
+
+    }
+
+    const handleHiredStudent = async(id: string) => {
+        await fetch('http://localhost:3001/student/hired', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.actionStatus)
+            })
     }
 
     const checkUrl = () => {
@@ -329,9 +354,9 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
                                     </div>
                                 </div>
                                 <div className="studentButtons">
-                                    <NavLink to={`/cv/${user.id}`}><Button text='Pokaż CV'/></NavLink>
-                                    <Button text='Brak zainteresowania'/>
-                                    <Button text='Zatrudniony'/>
+                                    <NavLink to={`/cv/${user.id}`}><Button text='Pokaż CV' click={()=>{}} id={user.id}/></NavLink>
+                                    <Button text='Brak zainteresowania' click={handleRemoveStudentFromTalk} id={user.id}/>
+                                    <Button text='Zatrudniony' click={handleHiredStudent} id={user.id}/>
                                     <ChevronDown onClick={() => toggle(index)} size={30} color="#666666"
                                                  style={show === index ? {
                                                      transform: 'rotateX(180deg)',
