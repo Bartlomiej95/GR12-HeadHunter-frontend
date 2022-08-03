@@ -315,7 +315,7 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
             return (
                 talkStudents
                     .filter((user: any) => user.reservationStatus)
-                    .map((user, index) => (
+                    .map((user: Student, index) => (
                         <div className="Student">
                             <div className="oneStudent" key={user.id}>
                                 <div className="studentName" onClick={() => toggle(index)}>
