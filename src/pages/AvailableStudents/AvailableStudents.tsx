@@ -61,14 +61,16 @@ export const AvailableStudents = () => {
         setFiltered(obj)
     }
 
+    const [search, setSearch] = useState<string>('')
+
     return (
         <>
             <section>
                 <div className="AvailableStudents">
-                    <Tools filter={setFilter}/>
+                    <Tools filter={setFilter} setSearch={setSearch} search={search}/>
                     <hr/>
                     <div className="students">
-                        <Student filtered={filtered} activeFilter={activeFilter}/>
+                        <Student filtered={filtered} activeFilter={activeFilter} search={search}/>
                     </div>
                 </div>
                 <Pagination/>
