@@ -63,6 +63,10 @@ export const AvailableStudents = () => {
 
     const [search, setSearch] = useState<string>('')
 
+    const countElements = (num: number) => {
+        return num
+    }
+
     return (
         <>
             <section>
@@ -70,10 +74,10 @@ export const AvailableStudents = () => {
                     <Tools filter={setFilter} setSearch={setSearch} search={search}/>
                     <hr/>
                     <div className="students">
-                        <Student filtered={filtered} activeFilter={activeFilter} search={search}/>
+                        <Student filtered={filtered} activeFilter={activeFilter} search={search} countElements={countElements}/>
                     </div>
                 </div>
-                <Pagination/>
+                <Pagination count={countElements}/>
             </section>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </>

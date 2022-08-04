@@ -2,13 +2,18 @@ import React, {useState} from "react";
 import {ChevronLeft, ChevronRight, DownArrow} from "@styled-icons/boxicons-solid";
 import './Pagination.css';
 
+interface PaginationProps {
+    count: (num: number) => number
+}
 
-export const Pagination = () => {
+export const Pagination = (props: PaginationProps) => {
 
     const [select, setSelect] = useState(false);
     const [number, setNumber] = useState(10)
 
     window.onclick = () => setSelect(false);
+
+    props.count(number)
 
     return (
         <div className="Pagination">

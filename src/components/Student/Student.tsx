@@ -10,6 +10,7 @@ interface StudentProps {
     filtered: Filtered
     activeFilter: boolean
     search: string
+    countElements: (num: number) => number
 }
 
 interface Student {
