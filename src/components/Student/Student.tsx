@@ -13,7 +13,7 @@ interface StudentProps {
 }
 
 interface Student {
-    canTakeApprenticeship: boolean
+    canTakeApprenticeship: string
     courseCompletion: number
     courseEngagment: number
     expectedContractType: string
@@ -253,8 +253,8 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
                             </div>
                         ))
                     :
-                    users
-                        .filter(user => !user.reservationStatus)
+                    students
+                        .filter((user: any) => !user.reservationStatus)
                         .filter(user => user.monthsOfCommercialExp >= setFiltered().commercialExp)
                         .filter(user => (user.expectedSalary >= setFiltered().salaryPrice[0] && (setFiltered().salaryPrice[1] ? user.expectedSalary <= setFiltered().salaryPrice[1] : user.expectedSalary >= setFiltered().salaryPrice[0])) || ((setFiltered().salaryPrice[0] ? user.expectedSalary >= setFiltered().salaryPrice[0] : user.expectedSalary <= setFiltered().salaryPrice[1]) && user.expectedSalary <= setFiltered().salaryPrice[1]))
                         .filter(user => setFiltered().contractType.length !== 0 ? setFiltered().contractType.includes(user.expectedContractType) : !setFiltered().contractType.includes(user.expectedContractType))
