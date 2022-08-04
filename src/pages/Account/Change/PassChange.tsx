@@ -12,6 +12,7 @@ export const PassChange = () => {
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+
     const changePassword = async ()=>{
 
         if(newPassword !== newSecondPassword){

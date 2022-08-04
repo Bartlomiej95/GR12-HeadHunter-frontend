@@ -55,7 +55,7 @@ export const RegisterPassword = () => {
         }
         else {
             activeUser();
-            console.log(activeUser)
+            //console.log(activeUser)
             return;
         }
     }
