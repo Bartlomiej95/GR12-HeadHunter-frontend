@@ -89,6 +89,8 @@ export const Filter = (props: FilterProps) => {
         commercialExp: 0,
     })
 
+    const [clear, setClear] = useState(false)
+
     const setRating = (obj: SelectedRating, name: string) => {
         if (name === 'ratingCourse') {
             setChooseFilter({...chooseFilter, ratingCourse: obj})
@@ -148,6 +150,10 @@ export const Filter = (props: FilterProps) => {
             freeWork: '',
             commercialExp: 0,
         })
+        setClear(true)
+        setTimeout(()=>{
+            setClear(false)
+        }, 1)
     }
 
     return (
@@ -159,11 +165,11 @@ export const Filter = (props: FilterProps) => {
                     <button className="Filter-clearAll" onClick={clearAll}>Wyczyść wszystkie</button>
                 </div>
                 <div className="Filter-ratings">
-                    <Rating title="Ocena przejścia kursu" rating={setRating} name="ratingCourse"/>
+                    <Rating title="Ocena przejścia kursu" rating={setRating} name="ratingCourse" clear={clear} setClear={setClear}/>
                     <Rating title="Ocena aktywności i zaangażowania na kursie" rating={setRating}
-                            name="ratingActiveInCourse"/>
-                    <Rating title="Ocena kodu w projekcie własnym" rating={setRating} name="ratingCode"/>
-                    <Rating title="Ocena pracy w zespole w Scrum" rating={setRating} name="ratingScrum"/>
+                            name="ratingActiveInCourse" clear={clear} setClear={setClear}/>
+                    <Rating title="Ocena kodu w projekcie własnym" rating={setRating} name="ratingCode" clear={clear} setClear={setClear}/>
+                    <Rating title="Ocena pracy w zespole w Scrum" rating={setRating} name="ratingScrum" clear={clear} setClear={setClear}/>
                 </div>
 
                 <div className="Filter-place">
@@ -276,7 +282,7 @@ export const Filter = (props: FilterProps) => {
                     <div onClick={() => {
                         props.showFiltered(chooseFilter)
                         props.setActiveFilter(true)
-                    }}><Button text='Pokaż wyniki'/></div>
+                    }}><Button text='Pokaż wyniki' click={()=>{}} id={''}/></div>
                 </div>
 
             </div>

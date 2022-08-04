@@ -1,16 +1,43 @@
 import React, {useState} from "react";
 import logo from "../../../assets/img/logo.webp";
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {ErrorMessage} from "../ErrorMessage/Message";
+import {LOGInHost, RegisterActive} from "../../../utils/dictionaries";
 
-export const Register = () => {
+export const RegisterPassword = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
-    const [role, setRole] = useState('HR');
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const {urlCode} = useParams();
+    const navigate = useNavigate();
+    let req = {actionStatus: "", message: ''}
+
+    const activeUser = async () =>{
+        await fetch(RegisterActive, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+            body: JSON.stringify({
+                urlCode,
+                email,
+                password,
+            })
+        })
+            .then(response => response.json())
+            .then(data => req = data)
+
+        if(!req.actionStatus){
+            setError(true);
+            setErrorMessage(req.message);
+        }
+        else {
+            navigate('/');
+        }
+
+    }
 
     const register = ()=>{
 
@@ -27,15 +54,14 @@ export const Register = () => {
             return;
         }
         else {
-            console.log(email, password,passwordCheck,role)
-            console.log('register')
+            activeUser();
+            console.log(activeUser)
             return;
         }
-
-
     }
 
     return(
+        <div className="t-login">
         <div className="t-login__div">
             <div className="t-login__images">
                 <img  className="e-start-logo" src={logo} alt=""/>
@@ -58,11 +84,7 @@ export const Register = () => {
                     type="password"
                     onChange={e=>setPasswordCheck(e.target.value)}
                     />
-            <select className="c-input"
-                    onChange={e=>setRole(e.target.value)}>
-                <option>HR</option>
-                <option>Kursant</option>
-            </select>
+
             <div className="t-login__alignment">
                 <Link to="../"> <button className="c-btn">Anuluj</button></Link>
                 <button className="c-btn" onClick={register}>Zarejestruj się</button>
@@ -74,6 +96,7 @@ export const Register = () => {
                 message={errorMessage}
             />: null}
 
+        </div>
         </div>
     )
 }

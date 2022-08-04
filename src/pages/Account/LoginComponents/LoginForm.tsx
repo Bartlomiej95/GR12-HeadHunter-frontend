@@ -3,14 +3,15 @@ import logo from "../../../assets/img/logo.webp";
 import {LOGInHost} from "../../../utils/dictionaries";
 import {Link} from "react-router-dom";
 import {ErrorMessage} from "../ErrorMessage/Message";
+import {Context} from "../../../provider/Provider";
+
 
 export const LoginForm = () =>{
 
-
+    const {login, setLogin, setName, setLastName} = useContext(Context)
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState(' ');
     let fetchLogin = {logedIn: '', message: ""};
-
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -22,14 +23,18 @@ export const LoginForm = () =>{
             credentials: "include",
             body: JSON.stringify({
                 email: email,
-                pwd: password,
+                password: password,
             })
         })  .then(response => response.json())
-            .then(data => fetchLogin = data);
+            .then(data => fetchLogin = data)
 
         if(!fetchLogin.logedIn){
             setError(true);
             setErrorMessage(fetchLogin.message)
+        }
+        else if (fetchLogin.logedIn){
+            document.cookie = 'login=true'
+            setLogin(true);
         }
     }
 
@@ -51,9 +56,12 @@ export const LoginForm = () =>{
                 </div>
 
                 <div className="t-login__wrap">
-                    <div className="t-login__text-register" >
-                        <p>Nie masz konta ? <Link to="/register" className="t-login__text-register--strong">Zarejestruj się </Link></p>
-                    </div>
+
+                    {/*<div className="t-login__text-register" >*/}
+                    {/*    <p>Nie masz konta ? <Link to="/register" className="t-login__text-register--strong">Zarejestruj się </Link></p>*/}
+                    {/*</div>*/}
+
+                    <div></div>
                     <div>
                         <button className="c-btn"
                                 onClick={logIn}
