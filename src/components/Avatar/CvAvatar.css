@@ -1,9 +1,0 @@
-img.GithubAvatar, svg.DefaultAvatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-svg.DefaultAvatar {
-    color: var(--default-font-color);
-}
