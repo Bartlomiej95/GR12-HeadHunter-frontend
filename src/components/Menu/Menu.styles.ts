@@ -15,9 +15,9 @@ export const NavigateLink = styled(NavLink)`
   text-decoration: none;
   overflow: hidden;
   padding: 23px 34px 19px;
-
   &.active {
     color: ${({theme}) => theme.color.textColor};
+    font-weight: ${({theme}) => theme.weight.bold};
   }
 `;
 

@@ -11,5 +11,5 @@ export const color = {
     linkColor: '#0B8BD4',
     bgDescription: '#222324',
     ratingGray: '#9E9E9E',
-
+    filterIcon: '#4D4D4D',
 };

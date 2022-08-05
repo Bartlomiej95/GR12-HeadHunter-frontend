@@ -11,4 +11,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-background-color: #fff;`;
+  background-color: #fff;`;
+
+export const StudentWrap = styled.div`
+  background-color: ${({theme}) => theme.color.inputColor};`

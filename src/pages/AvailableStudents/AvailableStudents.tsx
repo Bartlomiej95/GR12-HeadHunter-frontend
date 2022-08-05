@@ -1,10 +1,12 @@
 import React from "react";
-import {Container, Wrapper } from "../../components/Styles/Styles.component";
+import {Container, StudentWrap} from "../../components/Styles/Styles.component";
+import {Tools} from "../../components/Tools/Tools.component";
 
 export const AvailableStudents = () => (
-    <Wrapper>
-        <Container>
+    <Container>
+        <StudentWrap>
+            <Tools/>
+        </StudentWrap>
+    </Container>
 
-        </Container>
-    </Wrapper>
 )
