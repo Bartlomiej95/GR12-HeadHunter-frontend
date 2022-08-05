@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Wrapper } from "../../components/Styles/Styles.component";
 
-const Wrapper = styled.div`
+const Wrap = styled(Wrapper)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +55,7 @@ const LogWrap = styled.div`
 const CantAccount = styled(ForgotPass)``;
 
 export {
-    Wrapper,
+    Wrap,
     LoginWrap,
     Image,
     Form,

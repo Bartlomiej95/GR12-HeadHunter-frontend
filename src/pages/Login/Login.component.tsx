@@ -2,14 +2,14 @@ import React, {useContext} from "react";
 import logo from '../../assets/img/logo.webp';
 import {pl} from "../../lang/pl";
 import {Button} from "../../components/common/Button/Button.component";
-import {Form, Wrapper, LoginWrap, Image, Input, ForgotPass, LogWrap, CantAccount,  } from "./Login.styles";
+import {Form, Wrap, LoginWrap, Image, Input, ForgotPass, LogWrap, CantAccount,  } from "./Login.styles";
 import {Context} from "../../provider/Provider";
 import {logIn} from "./Login.utils";
 
 export const Login = () => {
     const {login, setLogin} = useContext(Context)
     return (
-        <Wrapper>
+        <Wrap>
             <LoginWrap>
                 <Form>
                     <Image src={logo} alt="Logo MegaK"/>
@@ -22,6 +22,6 @@ export const Login = () => {
                     </LogWrap>
                 </Form>
             </LoginWrap>
-        </Wrapper>
+        </Wrap>
     )
 }
