@@ -1,15 +1,17 @@
-import React, {useContext} from "react";
+import React, {useState} from "react";
 import {theme} from "../../theme";
 import {ThemeProvider} from "styled-components";
 import {Routing} from "../Routing/Routing.component";
-import {Context} from "../../provider/Provider";
+
 
 
 function App() {
-    const {login} = useContext(Context)
+
+    const [login, setLogin] = useState(false)
+
     return (
         <ThemeProvider theme={theme}>
-            <Routing login={login}/>
+            <Routing login={login} setLogin={setLogin}/>
         </ThemeProvider>
     )
 }

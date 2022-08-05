@@ -4,10 +4,10 @@ import {Login} from "../../pages/Login/Login.component";
 import {IRoutingTypes} from "./Routing.types";
 import {Home} from "../Home/Home.component";
 
-export const Routing = ({login}: IRoutingTypes) => {
+export const Routing = ({login, setLogin}: IRoutingTypes) => {
     return (
         <Routes>
-            <Route path="/*" element={login ? <Home/> : <Login/>}/>
+            <Route path="/*" element={login ? <Home/> : <Login setLogin={setLogin}/>}/>
         </Routes>
     )
 }

@@ -10,7 +10,7 @@ export const OneStudent = () => {
                 <StudentNameContent>{'Jan ' + 'Kowalski'.split('')[0]}.</StudentNameContent>
             </StudentName>
             <Buttons>
-                <Button text={pl.studentReservation} click={()=>{}}/>
+                {/*<Button text={pl.studentReservation} click={()=>{}}/>*/}
                 <DownChevron size={30}/>
             </Buttons>
         </StudentWrap>
