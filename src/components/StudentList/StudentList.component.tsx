@@ -1,12 +1,13 @@
 import React from "react";
 import { StudentsList } from "./StudentList.styles";
 import {OneStudent} from "./OneStudent/OneStudent.component";
+import {IStudents} from "./StudentList.types";
 
-export const StudentList = () => {
+export const StudentList = ({students}: IStudents) => {
 
     return (
         <StudentsList>
-            <OneStudent/>
+            {students.map(student => <OneStudent firstName={student.firstName} lastName={student.lastName}/>)}
         </StudentsList>
     )
 }
