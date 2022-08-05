@@ -5,6 +5,6 @@ import img from '../../../assets/img/megak.png'
 
 export const Avatar = () => (
     <AvatarBlock>
-        {/*<Image src={img} alt=""/>*/}
+        <Image src={img} alt="Avatar"/>
     </AvatarBlock>
 );
