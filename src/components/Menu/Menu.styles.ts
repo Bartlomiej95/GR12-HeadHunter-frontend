@@ -17,7 +17,6 @@ export const NavigateLink = styled(NavLink)`
   padding: 23px 34px 19px;
   &.active {
     color: ${({theme}) => theme.color.textColor};
-    font-weight: ${({theme}) => theme.weight.bold};
   }
 `;
 
