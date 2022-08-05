@@ -7,4 +7,6 @@ export const pl = {
 
     toolsPlaceholderSearch: 'Szukaj',
     toolsButtonFilter: 'Filtrowanie',
+
+    studentReservation: 'Zarezerwuj rozmowę',
 }
