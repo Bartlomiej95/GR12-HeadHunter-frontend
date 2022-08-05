@@ -7,5 +7,8 @@ export const AvatarBlock = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-color: #fff;`;
+  background-color: #fff;
+  overflow: hidden;`;
 
+export const AvatarImage = styled.img`
+  width: 100%;`

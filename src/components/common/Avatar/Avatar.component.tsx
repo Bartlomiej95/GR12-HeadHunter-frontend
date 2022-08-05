@@ -1,10 +1,9 @@
 import React from "react";
-import { AvatarBlock } from "./Avatar.styles";
-import {Image} from '../../Styles/Styles.component'
+import { AvatarBlock, AvatarImage } from "./Avatar.styles";
 import img from '../../../assets/img/megak.png'
 
 export const Avatar = () => (
     <AvatarBlock>
-        <Image src={img} alt="Avatar"/>
+        <AvatarImage src={img} alt="Avatar"/>
     </AvatarBlock>
 );
