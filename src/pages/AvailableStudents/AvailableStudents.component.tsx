@@ -14,6 +14,8 @@ export const AvailableStudents = () => {
         getStudents(setFreeStudents)
     }, [])
 
+    console.log(freeStudents)
+
     return (
         <Container>
             <StudentWrap>

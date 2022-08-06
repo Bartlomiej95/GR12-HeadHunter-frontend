@@ -14,4 +14,5 @@ export const Image = styled.img`
   background-color: #fff;`;
 
 export const StudentWrap = styled.div`
-  background-color: ${({theme}) => theme.color.inputColor};`
+  background-color: ${({theme}) => theme.color.inputColor};
+  padding: 2rem;`
