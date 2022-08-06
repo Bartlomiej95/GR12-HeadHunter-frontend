@@ -12,6 +12,7 @@ import {NoPermission} from "../../pages/Account/NoPermission/NoPermission";
 import {EmailChange} from "../../pages/Account/Change/EmailChange";
 
 
+
 interface LoginProps {
     login: boolean
 }
@@ -37,7 +38,9 @@ export const Routing = ({login}: LoginProps) => {
             {/*<Route path='/admin' element={accessAdmin ? <Admin/> : <NoPermission/>}/>*/}
             <Route path='/passchange' element={login ? <PassChange/>: <NoPermission/>}/>
             <Route path='/emailchange' element={login ? <EmailChange/>: <NoPermission/>}/>
-            <Route path='/register/recruiter/:urlCode' element={<RegisterPassword/>}/>
+            {/*<Route path='/register/add-student/' element={<RegisterStudents/>}/>*/}
+            <Route path='/register/:user/:urlCode' element={<RegisterPassword/>}/>
+            {/*<Route path='/register/recruiter/:urlCode' element={<RegisterPassword/>}/>*/}
         </Routes>
     )
 }
