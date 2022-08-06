@@ -1,4 +1,10 @@
 import React from "react";
+import {
+    DescriptionContent,
+    DescriptionTitle,
+    StudentDescriptionItem,
+    StudentDescriptionWrap
+} from "./OneStudentDescription.styles";
 import {IOneStudentDescription} from "./OneStudentDescription.types";
 
 export const OneStudentDescription: React.FC<IOneStudentDescription> = ({

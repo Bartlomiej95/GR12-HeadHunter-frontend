@@ -15,7 +15,7 @@ export const StudentList = ({students}: IStudents) => {
                 courseEngagment={student.courseEngagment} contract={student.expectedContractType}
                 salary={student.expectedSalary} typeWork={student.expectedTypeWork}
                 commercialExp={student.monthsOfCommercialExp} projectDegree={student.projectDegree}
-                city={student.targetWorkCity} teamProjectdegree={student.teamProjectDegree}/></>)}
+                city={student.targetWorkCity} teamProjectDegree={student.teamProjectDegree}/></>)}
         </StudentsList>
     )
 }
