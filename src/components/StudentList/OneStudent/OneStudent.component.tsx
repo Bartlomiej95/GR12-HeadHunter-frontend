@@ -5,9 +5,7 @@ import {Buttons, DownChevron, StudentName, StudentNameContent, StudentWrap} from
 import {IOneStudent} from "./OneStudent.types";
 import {toggle} from "./OneStudent.utils";
 
-export const OneStudent = ({firstName, lastName, index}: IOneStudent) => {
-
-    const [show, setShow] = useState<boolean | null | number>(false)
+export const OneStudent = ({firstName, lastName, index, show, setShow}: IOneStudent) => {
 
     return (
         <StudentWrap>
@@ -16,7 +14,13 @@ export const OneStudent = ({firstName, lastName, index}: IOneStudent) => {
             </StudentName>
             <Buttons>
                 <Button text={pl.studentReservation}/>
-                <DownChevron size={30} onClick={() => toggle(index, show, setShow)}/>
+                <DownChevron size={30} onClick={() => toggle(index, show, setShow)} style={show === index ? {
+                    transform: 'rotateX(180deg)',
+                    transition: '0.4s'
+                } : {
+                    transition: '0.4s',
+                    transform: 'rotateX(0deg'
+                }}/>
             </Buttons>
         </StudentWrap>
     )

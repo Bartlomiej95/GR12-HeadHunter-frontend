@@ -9,4 +9,6 @@ export interface IOneStudentDescription {
     projectDegree: number
     city: string
     teamProjectDegree: number
+    index: number
+    show: null | number | boolean
 }
