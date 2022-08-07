@@ -17,7 +17,7 @@ export const AvailableStudents: React.FC<any> = ({activePage}) => {
         <Container>
             <StudentWrap>
                 <Tools/>
-                <StudentList students={freeStudents} active={activePage}/>
+                <StudentList students={freeStudents} setFreeStudents={setFreeStudents} active={activePage}/>
             </StudentWrap>
         </Container>
     )

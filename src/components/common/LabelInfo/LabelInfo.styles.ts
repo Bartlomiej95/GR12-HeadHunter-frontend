@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const timeOut = keyframes`
+from {
+  width: 100%
+}
+to {
+  width: 0
+}`;
 
 export const LabelWrap = styled.div`
   display: flex;
@@ -16,16 +24,21 @@ export const LabelWrap = styled.div`
 
   &.active {
     transform: translateX(0);
-  }
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: .2rem;
-    background-color: white;
-  }`;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: .2rem;
+      background-color: white;
+      animation: ${timeOut} 1.5s linear forwards;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+`
+
 
 export const TextInfo = styled.p`
   color: white;`

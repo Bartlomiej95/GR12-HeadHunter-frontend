@@ -1,4 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
+import {Students} from "../../../pages/AvailableStudents/AvailableStudents.types";
 
 export interface IOneStudent {
     firstName: string
@@ -8,4 +9,5 @@ export interface IOneStudent {
     setShow: Dispatch<SetStateAction<boolean | null | number>>
     active: any
     id: string
+    setFreeStudents: Dispatch<SetStateAction<Students[]>>
 }
