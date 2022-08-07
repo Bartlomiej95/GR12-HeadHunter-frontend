@@ -3,32 +3,27 @@ import {Button} from "../../common/Button/Button.component";
 import {pl} from "../../../lang/pl";
 import {Buttons, DownChevron, StudentName, StudentNameContent, StudentWrap} from "./OneStudent.styles";
 import {IOneStudent} from "./OneStudent.types";
-import {handleAddToTalkStudent, handleHireStudent, handleRemoveStudentFromTalk, toggle} from "./OneStudent.utils";
+import {
+    handleAddToTalkStudent,
+    handleEvents,
+    handleHireStudent,
+    handleRemoveStudentFromTalk,
+    toggle
+} from "./OneStudent.utils";
 import {NavLink} from "react-router-dom";
 import {LabelInfo} from "../../common/LabelInfo/LabelInfo.component";
-import {getStudents} from "../../../pages/AvailableStudents/AvailableStudents.utils";
-import {getStudentsToTalk} from "../../../pages/ToTalk/ToTalk.utils";
 
 export const OneStudent = ({firstName, lastName, index, show, setShow, active, id, setFreeStudents}: IOneStudent) => {
 
     const [labelActive, setLabelActive] = useState(false);
+    const [message, setMessage] = useState('')
 
-
-    if(labelActive) {
-        setTimeout(() => {
-            setLabelActive(false)
-            if(active.availableStudent) {
-                getStudents(setFreeStudents)
-            }
-            if(active.toTalk) {
-                getStudentsToTalk(setFreeStudents)
-            }
-        }, 1500)
-    }
+    handleEvents(labelActive, setLabelActive, active, setFreeStudents)
 
     return (
         <StudentWrap>
-            <LabelInfo labelActive={labelActive}/>
+            <LabelInfo labelActive={labelActive}
+                       message={active.availableStudent ? `Student ${message} został dodany do rozmowy !` : `Zrezygnowałeś ze studenta ${message} !`}/>
             <StudentName onClick={() => toggle(index, show, setShow)}>
                 <StudentNameContent>{firstName} {lastName}.</StudentNameContent>
             </StudentName>
@@ -37,6 +32,7 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
                     <Button text={pl.studentReservation} handleClick={() => {
                         handleAddToTalkStudent(id)
                         setLabelActive(true);
+                        setMessage(`${firstName} ${lastName}`)
                     }} id={id}/>
                     <DownChevron size={30} onClick={() => toggle(index, show, setShow)} style={show === index ? {
                         transform: 'rotateX(180deg)',
@@ -45,10 +41,12 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
                         transition: '0.4s',
                         transform: 'rotateX(0deg'
                     }}/></> : <>
-                    <NavLink to={`/cv/${id}`}><Button text={pl.studentToTalkShowCv} handleClick={()=>{}}  id={''}/></NavLink>
+                    <NavLink to={`/cv/${id}`}><Button text={pl.studentToTalkShowCv} handleClick={() => {
+                    }} id={''}/></NavLink>
                     <Button text={pl.studentToTalkCancel} handleClick={() => {
                         handleRemoveStudentFromTalk(id)
                         setLabelActive(true)
+                        setMessage(`${firstName} ${lastName}`)
                     }} id={id}/>
                     <Button text={pl.studentToTalkAccept} handleClick={handleHireStudent} id={id}/>
                     <DownChevron size={30} onClick={() => toggle(index, show, setShow)} style={show === index ? {
@@ -58,7 +56,7 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
                         transition: '0.4s',
                         transform: 'rotateX(0deg'
                     }}/></>}
-                    </Buttons>
+            </Buttons>
         </StudentWrap>
     )
 }
