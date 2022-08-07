@@ -25,7 +25,7 @@ export const Routing = ({login}: LoginProps) => {
         accessAdmin = true
     }
     else {
-        console.log('dd')
+        console.log('ddd')
     }
     const RoleHome = ()=>{
         if (role === "admin"){return(<Admin/>)}
