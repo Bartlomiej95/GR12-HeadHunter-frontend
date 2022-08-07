@@ -10,7 +10,7 @@ export const StudentList = ({students}: IStudents) => {
 
     return (
         <StudentsList>
-            {students.map((student, index: number) => <><OneStudent show={show} setShow={setShow} firstName={student.firstName}
+            {students.map((student, index: number) => <><OneStudent key={student.id} show={show} setShow={setShow} firstName={student.firstName}
                                                                     lastName={student.lastName}
                                                                     index={index}/><OneStudentDescription show={show} index={index}
                 freeWork={student.canTakeApprenticeship} courseCompletion={student.courseCompletion}

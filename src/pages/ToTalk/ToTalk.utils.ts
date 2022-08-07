@@ -8,5 +8,5 @@ export const getStudentsToTalk = async(setStudentToTalk: Dispatch<SetStateAction
         credentials: "include",
     });
     const data = await res.json();
-    setStudentToTalk(data);
+    setStudentToTalk(data.message);
 }
