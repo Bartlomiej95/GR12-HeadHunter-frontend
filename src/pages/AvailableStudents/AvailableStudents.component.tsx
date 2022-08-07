@@ -5,10 +5,9 @@ import {getStudents} from "./AvailableStudents.utils";
 import {StudentList} from "../../components/StudentList/StudentList.component";
 import {Students} from "./AvailableStudents.types";
 
-export const AvailableStudents = () => {
+export const AvailableStudents: React.FC<any> = ({activePage}) => {
 
     const [freeStudents, setFreeStudents] = useState<Students[]>([])
-
 
     useEffect(() => {
         getStudents(setFreeStudents)
@@ -18,7 +17,7 @@ export const AvailableStudents = () => {
         <Container>
             <StudentWrap>
                 <Tools/>
-                <StudentList students={freeStudents}/>
+                <StudentList students={freeStudents} active={activePage}/>
             </StudentWrap>
         </Container>
     )

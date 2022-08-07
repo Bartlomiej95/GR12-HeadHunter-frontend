@@ -25,7 +25,7 @@ export const Buttons = styled.div`
   column-gap: 2.4rem;
   align-items: center;
   justify-content: flex-end;
-  width: 25%;
+  width: 100%;
   padding-right: 1.75rem`;
 
 export const DownChevron = styled(ChevronDown)`

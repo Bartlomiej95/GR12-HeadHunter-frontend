@@ -4,7 +4,7 @@ import {Tools} from "../../components/Tools/Tools.component";
 import {getStudentsToTalk} from "./ToTalk.utils";
 import {StudentList} from "../../components/StudentList/StudentList.component";
 
-export const ToTalk = () => {
+export const ToTalk: React.FC<any> = ({activePage}) => {
 
     const [studentToTalk, setStudentToTalk] = useState([])
 
@@ -16,7 +16,7 @@ export const ToTalk = () => {
         <Container>
             <StudentWrap>
                 <Tools/>
-                <StudentList students={studentToTalk}/>
+                <StudentList students={studentToTalk} active={activePage}/>
             </StudentWrap>
         </Container>
         )

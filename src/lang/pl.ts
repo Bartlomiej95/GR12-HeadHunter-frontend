@@ -10,6 +10,10 @@ export const pl = {
 
     studentReservation: 'Zarezerwuj rozmowę',
 
+    studentToTalkShowCv: 'Pokaż CV',
+    studentToTalkCancel: 'Brak zainteresowania',
+    studentToTalkAccept: 'Zatrudniony',
+
     studentDescriptionCourseCompletion: 'Ocena przejścia kursu',
     studentDescriptionCourseEngagement: 'Ocena aktywności i zaangażowania na kursie',
     studentDescriptionProjectDegree: 'Ocena kodu w projekcie własnym',
@@ -20,4 +24,6 @@ export const pl = {
     studentDescriptionSalary: 'Oczekiwane wynagrodzenie miesięczne netto',
     studentDescriptionFreeWork: 'Zgoda na odbycie bezpłatnych praktyk/stażu na początek',
     studentDescriptionCommercialExp: 'Komercyjne doświadczenie w programowaniu',
+
+
 }

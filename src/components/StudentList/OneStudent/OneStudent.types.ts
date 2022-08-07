@@ -6,4 +6,6 @@ export interface IOneStudent {
     index: number
     show: boolean | null | number
     setShow: Dispatch<SetStateAction<boolean | null | number>>
+    active: any
+    id: string
 }

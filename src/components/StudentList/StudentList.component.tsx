@@ -4,7 +4,7 @@ import {OneStudent} from "./OneStudent/OneStudent.component";
 import {IStudents} from "./StudentList.types";
 import {OneStudentDescription} from "./OneStudentDescription/OneStudentDescription.component";
 
-export const StudentList = ({students}: IStudents) => {
+export const StudentList = ({students, active}: IStudents) => {
 
     const [show, setShow] = useState<boolean | null | number>(false)
 
@@ -12,7 +12,7 @@ export const StudentList = ({students}: IStudents) => {
         <StudentsList>
             {students.map((student, index: number) => <><OneStudent key={student.id} show={show} setShow={setShow} firstName={student.firstName}
                                                                     lastName={student.lastName}
-                                                                    index={index}/><OneStudentDescription show={show} index={index}
+                                                                    index={index} active={active} id={student.id}/><OneStudentDescription show={show} index={index}
                 freeWork={student.canTakeApprenticeship} courseCompletion={student.courseCompletion}
                 courseEngagment={student.courseEngagment} contract={student.expectedContractType}
                 salary={student.expectedSalary} typeWork={student.expectedTypeWork}
