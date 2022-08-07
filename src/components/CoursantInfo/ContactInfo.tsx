@@ -4,59 +4,57 @@ import {Envelope, Phone} from "@styled-icons/boxicons-solid";
 import {Github} from "@styled-icons/boxicons-logos";
 import {Button} from "../Button/Button";
 import {CvAvatar} from "../Avatar/CvAvatar";
-import {getStudentData} from "../../utils/get-student-data";
-import {useParams} from "react-router-dom";
+import {StudentCVResponse} from "../../utils/get-one-student-data";
 
-export const ContactInfo = () => {
-    const [studentData, setStudentData] = useState({
-        tel: '',
-        githubUsername: '',
-        bio: '',
-    });
+interface Props {
+    student: StudentCVResponse;
+}
 
-    // target id from url
-    // const {id} = useParams();
+export const ContactInfo = (props: Props) => {
+    const {
+        id,
+        firstName,
+        lastName,
+        email,
+        tel,
+        githubUsername,
+        bio,
+    } = props.student;
 
-    // tmp student id from database to test
-    const id = 'c05cf975-3da4-47c9-a11d-be009f000071'
+    // TODO: fn handleStudentNotInterested
+    const handleStudentNotInterested = (id: string): void => {
+        console.log(`Not interested student with ID ${id}.`)
+    }
 
-    useEffect(() => {
-        (async () => {
-            const student = await getStudentData(id);
+    // TODO: fn handleStudentHired
+    const handleStudentHired = (id: string): void => {
+        console.log(`Student with ID ${id} will be hire.`)
+    }
 
-            setStudentData({
-                tel: student.tel,
-                githubUsername: student.githubUsername,
-                bio: student.bio,
-            });
-        })()
-    }, []);
-
-    // TODO: ask BE for more data from res: firstName, lastName, email
     return <>
         <div className="contactInfo">
-            <CvAvatar githubUsername={studentData.githubUsername}/>
+            <CvAvatar githubUsername={githubUsername}/>
             <div className="Cv-user">
-                <p>Jan Kowalski</p>
+                <p>{firstName} {lastName}</p>
                 <p>
-                    <Github size={28}/>{studentData.githubUsername}
+                    <Github size={28}/>{githubUsername}
                 </p>
             </div>
             <div className="Cv-contact">
                 <p>
-                    <Phone size={20} color="#4D4D4D"/><span>{studentData.tel}</span>
+                    <Phone size={20} color="#4D4D4D"/><span>{tel}</span>
                 </p>
                 <p>
-                    <Envelope size={20} color="#4D4D4D"/><span>jankowalski@gmail.com</span>
+                    <Envelope size={20} color="#4D4D4D"/><span>{email}</span>
                 </p>
             </div>
             <div className="Cv-about">
                 <p>O mnie</p>
-                <p>{studentData.bio}</p>
+                <p>{bio}</p>
             </div>
             <div className="Cv-buttons">
-                <Button text="Brak zainteresowania"/>
-                <Button text="Zatrudniony"/>
+                <Button text="Brak zainteresowania" id={id} click={handleStudentNotInterested}/>
+                <Button text="Zatrudniony" id={id} click={handleStudentHired}/>
             </div>
         </div>
     </>
