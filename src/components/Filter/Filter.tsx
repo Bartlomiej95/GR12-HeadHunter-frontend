@@ -150,6 +150,10 @@ export const Filter = (props: FilterProps) => {
         })
     }
 
+    function todo() {
+
+    }
+
     return (
         <>
             <div className="filter-bg" onClick={() => props.filter(false)}></div>
@@ -276,7 +280,7 @@ export const Filter = (props: FilterProps) => {
                     <div onClick={() => {
                         props.showFiltered(chooseFilter)
                         props.setActiveFilter(true)
-                    }}><Button text='Pokaż wyniki'/></div>
+                    }}><Button text='Pokaż wyniki' id="todo" click={todo}/></div>
                 </div>
 
             </div>
