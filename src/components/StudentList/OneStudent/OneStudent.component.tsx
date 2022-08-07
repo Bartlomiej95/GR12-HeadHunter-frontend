@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "../../common/Button/Button.component";
 import {pl} from "../../../lang/pl";
 import {Buttons, DownChevron, StudentName, StudentNameContent, StudentWrap} from "./OneStudent.styles";
 import {IOneStudent} from "./OneStudent.types";
 import {handleAddToTalkStudent, handleHireStudent, handleRemoveStudentFromTalk, toggle} from "./OneStudent.utils";
 import {NavLink} from "react-router-dom";
+import {LabelInfo} from "../../common/LabelInfo/LabelInfo.component";
 
 export const OneStudent = ({firstName, lastName, index, show, setShow, active, id}: IOneStudent) => {
+
     return (
         <StudentWrap>
+            <LabelInfo/>
             <StudentName onClick={() => toggle(index, show, setShow)}>
                 <StudentNameContent>{firstName} {lastName}.</StudentNameContent>
             </StudentName>
