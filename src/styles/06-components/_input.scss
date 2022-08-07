@@ -13,4 +13,16 @@
     border: $redX5 solid 2px;
     border-radius: 10px;
   }
+  &__array{
+    width: 280px;
+  }
+  &__bio{
+    max-width: 350px;
+    min-height: 150px;
+    font-size: 18px;
+  }
+  &__maxWidth{
+    max-width: 350px;
+  }
+
 }

@@ -7,6 +7,7 @@ export const PasswordChange = HOST + "login/passchange";
 export const LogoutHost = HOST + "login/out";
 export const EmailChangeHost = HOST + "login/emailchange";
 export const StudentAddHost = HOST + "student/add";
+export const StudentRegisterHost = HOST + "student/register";
 
 
 

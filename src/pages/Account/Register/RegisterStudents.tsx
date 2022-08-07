@@ -1,4 +1,9 @@
 import React, {useContext, useState} from "react";
+import * as buffer from "buffer";
+import {Link} from "react-router-dom";
+import {LOGInHost, StudentRegisterHost} from "../../../utils/dictionaries";
+import { useNavigate } from "react-router-dom";
+import {ErrorMessage} from "../ErrorMessage/Message";
 
 interface useData
     {
@@ -23,11 +28,21 @@ type Props = {
     password:string;
     email:string;
 }
-
+let addArrayPortfolioUrl:string[] = [];
+let addArrayProjectUrl:string[] = [];
 
 export const RegisterStudents = ({password, email}:Props)=>{
     const [step, setStep] = useState(1);
+    const navigation = useNavigate();
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
+    const [arrayPortfolioUrl, setArrayPortfolioUrl] = useState<string[]>([]);
+    const [arrayProjectUrl, setArrayProjectUrl] = useState<string[]>([]);
+
+
+    const [textPortfolioUrl, setTextPortfolioUrl] = useState(' ');
+    const [textProjectUrl,setTextProjectUrl ] = useState('');
     const [data, setData] = useState(
         {
             email: email,
@@ -36,12 +51,12 @@ export const RegisterStudents = ({password, email}:Props)=>{
             firstName: " ",
             lastName: " ",
             githubUsername: " ",
-            portfolioUrls: ' ',
-            projectUrls: ' ',
+            portfolioUrls: [' '],
+            projectUrls: [' '],
             bio: " ",
-            expectedTypeWork: " ",
+            expectedTypeWork: "irrelevant",
             targetWorkCity: "",
-            expectedContractType: " ",
+            expectedContractType: "irrelevants",
             expectedSalary:  '',
             monthsOfCommercialExp: 0,
             canTakeApprenticeship: "",
@@ -50,9 +65,26 @@ export const RegisterStudents = ({password, email}:Props)=>{
             courses: " "
         })
 
+
     const switchWrapper = ()=>{
+        const addPortfolioUr = (e:React.FormEvent)=> {
+            e.preventDefault()
+            setArrayPortfolioUrl(arrayPortfolioUrl=>[...arrayPortfolioUrl, textPortfolioUrl])
+            addArrayPortfolioUrl.push(textPortfolioUrl);
+            setData({...data, portfolioUrls: addArrayPortfolioUrl})
+            setTextPortfolioUrl('')
+        }
+        function addProjectUrl(e:React.FormEvent) {
+            e.preventDefault();
+            addArrayProjectUrl.push(textProjectUrl);
+            setArrayProjectUrl(arrayProjectUrl =>[...arrayProjectUrl, textProjectUrl]);
+            setData({...data, projectUrls: addArrayProjectUrl})
+            setTextProjectUrl('')
+
+        }
+
         switch (step){
-            case 1: return (<form className="register__form">
+            case 1: return (<>
                 <input className="c-input"
                        placeholder="Telefon"
                        type="tel"
@@ -67,45 +99,88 @@ export const RegisterStudents = ({password, email}:Props)=>{
                      onChange={e => setData({...data, lastName: e.target.value  })}
             />
 
-            </form>)
-            case 2: return (<form className="register__form">
-                <input className="c-input"
-                       placeholder="Nazwa GitHub"
-                       type="text"
-                       onChange={e => setData({...data,githubUsername: e.target.value  })}
-                />
-                <input className="c-input"
+            </>)
+            case 2: return (<>
+                <div>
+                    <input className="c-input"
+                           placeholder="Nazwa GitHub"
+                           type="text"
+                           onChange={e => setData({...data,githubUsername: e.target.value  })}
+                    />
+                </div>
+                <div>
+                    <input className="c-input c-input__array"
                        placeholder="Link do portfolio"
                        type="tel"
-                       onChange={e => setData({...data,portfolioUrls: e.target.value  })}
-                /><input className="c-input"
+                       onChange={e => setTextPortfolioUrl(e.target.value)}
+                    />
+                    <button className="Button" onClick={addPortfolioUr}>Dodaj</button>
+                </div>
+                <p>Doddane do listy portfolio:</p>
+                    <ul className="e-addList">{
+                        arrayPortfolioUrl.map(
+                            array => <li  key={array + Math.random()}>
+                                <p className="e-addList__wrap">{array}</p>
+                                <p className="e-addList__remove">Usuń</p>
+                            </li>
+                        )}
+                    </ul>
+                <div>
+                    <input className="c-input  c-input__array"
                          placeholder="Link do projetów"
                          type="text"
-                         onChange={e => setData({...data,projectUrls: e.target.value})}
+                         onChange={e => setTextProjectUrl(e.target.value)}
             />
-                <textarea className="c-input"
+                    <button className="Button" onClick={addProjectUrl}>Dodaj</button>
+                </div>
+                <p>Doddano do listy projektów:</p>
+                <ul className="e-addList">{
+                    arrayProjectUrl.map(
+                        array => <li  key={array + Math.random()}>
+                            <p className="e-addList__wrap">{array}</p>
+                            <p className="e-addList__remove">Usuń</p>
+                        </li>
+                    )}
+                </ul>
+                <textarea className="c-input c-input__bio"
                        placeholder="Bio"
                        onChange={e => setData({...data,bio: e.target.value  })}
                 />
-            </form>)
-            case 3: return (<form className="register__form">
-                <input className="c-input"
-                       placeholder="Oczekiwany typ pracy"
-                       type="text"
-                       onChange={e => setData({...data,expectedTypeWork: e.target.value  })}
-                />
+            </>)
+            case 3: return (<>
+
+                <p>Oczekiwany typ pracy:</p>
+                <select className="c-input" onChange={e=> setData({
+                        ...data,
+                         expectedTypeWork: e.target.value
+                    })}>
+                    <option value="atLocation" >Na miejscu</option>
+                    {/*<option value="changeoflocation">Zamina lokalizacji</option>*/}
+                    {/*<option>manual</option>*/}
+                    <option value="irrelevant">Bez znaczenia</option>
+                    {/*<option>no matter</option>*/}
+                </select>
                 <input className="c-input"
                        placeholder="Miasto pracy"
                        type="tel"
                        onChange={e => setData({...data, targetWorkCity: e.target.value  })}
-                /><input className="c-input"
-                         placeholder="Rodzaj umowy"
-                         type="text"
-                         onChange={e => setData({...data,expectedContractType: e.target.value})}
-            />
+                />
+                <p>Rodzaj umowy:</p>
+                <select className="c-input"
+                        onChange={e=> setData({
+                            ...data,
+                            expectedContractType: e.target.value
+                        })}
+                >
+                    {/*<option >UoP</option>*/}
+                    <option value="B2B">B2B</option>
+                    {/*<option>UZ/UoD</option>*/}
+                    <option value="irrelevant">Bez znaczenia</option>
+                </select>
+
                 <input className="c-input"
                           placeholder="Oczekiwana pensja"
-                          onChange={e => setData({...data, expectedSalary: e.target.value })}
+                          onChange={e => setData({...data, expectedSalary: (e.target.value) })}
                 />
                 <input className="c-input"
                           placeholder="Możliwość odbycia praktyki"
@@ -116,19 +191,19 @@ export const RegisterStudents = ({password, email}:Props)=>{
                             type="number"
                           onChange={e => setData({...data, monthsOfCommercialExp: Number(e.target.value)  })}
                 />
-                <input className="c-input"
+                <textarea className="c-input c-input__bio"
                           placeholder="Edukacja"
                           onChange={e => setData({...data,education: e.target.value  })}
                 />
-                <input className="c-input"
+                <textarea className="c-input c-input__bio"
                           placeholder="Doświadczenie zawodowe"
                           onChange={e => setData({...data,workExperience: e.target.value  })}
                 />
-                <input className="c-input"
+                <textarea className="c-input c-input__maxWidth"
                           placeholder="Kursy"
                           onChange={e => setData({...data,courses: e.target.value  })}
                 />
-            </form>)
+            </>)
         }
     }
     const next = () =>{
@@ -144,8 +219,49 @@ export const RegisterStudents = ({password, email}:Props)=>{
             setStep(1)
         }
     }
-    const send = ()=>{
+    const send = async ()=>{
         console.log(data)
+        const {email,password,tel,
+            firstName, lastName,
+            githubUsername,portfolioUrls,
+            projectUrls, bio,
+            expectedTypeWork , expectedContractType,
+            monthsOfCommercialExp, education,
+            workExperience, courses } = data;
+        await fetch(StudentRegisterHost, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+            body: JSON.stringify({
+                email,
+                password,
+                tel,
+                firstName,
+                lastName,
+                githubUsername,
+                portfolioUrls,
+                projectUrls,
+                bio,
+                expectedTypeWork,
+                expectedContractType,
+                monthsOfCommercialExp,
+                education,
+                workExperience,
+                courses
+            })
+        })  .then(response => response.json())
+            .then(data =>{
+                if(data.actionStatus === true){
+                    navigation('/')
+                }
+                else {
+                    setStep(1);
+                    setError(true);
+                    setErrorMessage(data.message)
+                }
+                console.log(data)
+            })
+        //.then(data => console.log(data))
     }
 
 
@@ -156,15 +272,21 @@ export const RegisterStudents = ({password, email}:Props)=>{
          <h1>[{step}/3]</h1>
 
          <div>
+             <form className="register__form">
              {switchWrapper()}
+             </form>
 
              <div className="register__wrapper-button">
                  <button className="Button" onClick={prev}>Wstecz</button>
                  <button className="Button" onClick={next}>Dalej</button>
              </div>
-             <p>Uzupełnie później</p>
+             <Link to="/">Uzupełnie później</Link>
          </div>
-
+         {error ? <ErrorMessage
+             error={error}
+             setError={setError}
+             message={errorMessage}
+         />: null}
 
      </div>
     )
