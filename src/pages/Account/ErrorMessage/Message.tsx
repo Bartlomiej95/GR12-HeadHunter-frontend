@@ -6,6 +6,7 @@ interface MessageProps {
     error: boolean
     setError: Dispatch<SetStateAction<boolean>>
     message : string
+    color?: string;
 }
 
 export const ErrorMessage = (Props:MessageProps) => {
@@ -15,8 +16,10 @@ export const ErrorMessage = (Props:MessageProps) => {
         console.log(Props.error)
     }
 
+
+
     return(
-        <div id="message" className="t-login__message">
+        <div id="message" className="t-login__message" style={{backgroundColor: Props.color}}>
             {Props.message}
             <span className="t-login__closebtn" onClick={close} >&times;</span>
         </div>

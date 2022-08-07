@@ -1,22 +1,38 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {ErrorMessage} from "../ErrorMessage/Message";
-import {PasswordChange, RegisterActive} from "../../../utils/dictionaries";
+import {LogoutHost, PasswordChange, RegisterActive} from "../../../utils/dictionaries";
+import {Context} from "../../../provider/Provider";
+import {useNavigate} from "react-router-dom";
 
 export const PassChange = () => {
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [newSecondPassword, setNewSecondPassword] = useState('')
-
+    const {setLogin ,setRole} = useContext(Context);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const changePassword = async ()=>{
+
         if(newPassword !== newSecondPassword){
                 setError(true);
                 setErrorMessage('Nowe hasło musi być takie samo w obydwu polach')
                 return;
         }
-        console.log('ss')
+        const LogOut = async () =>{
+            await fetch(LogoutHost, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'},
+                credentials: "include",
+
+            })
+            setLogin(false);
+            setRole(false)
+            navigate('/');
+        }
         await fetch(PasswordChange, {
             method: 'PATCH',
             headers: {
@@ -30,9 +46,14 @@ export const PassChange = () => {
 
         })
             .then(response => response.json())
-            .then(data => console.log(data))
-            .then(data => console.log('ddd'))
+            .then(data => {
+                setError(true)
+                setErrorMessage(data.message)
 
+                if(data.actionStatus === true){
+                    LogOut()
+                }
+            })
     }
 
     return(
