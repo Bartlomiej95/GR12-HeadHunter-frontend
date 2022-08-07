@@ -154,6 +154,19 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
 
     }
 
+    const handleRemoveStudentFromTalk = async (id: string) => {
+        await fetch(`http://localhost:3001/recruiter/pushback/${id}`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.actionStatus)
+            })
+
+    }
+
     const checkUrl = () => {
         if (window.location.href === "http://localhost:3000/") {
             return (
@@ -333,7 +346,7 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
                                 <div className="studentButtons">
                                     <NavLink to={`/cv/${user.id}`}><Button text='Pokaż CV' id={user.id}
                                                                            click={todo}/></NavLink>
-                                    <Button text='Brak zainteresowania' id={user.id} click={todo}/>
+                                    <Button text='Brak zainteresowania' id={user.id} click={handleRemoveStudentFromTalk}/>
                                     <Button text='Zatrudniony' id={user.id} click={todo}/>
                                     <ChevronDown onClick={() => toggle(index)} size={30} color="#666666"
                                                  style={show === index ? {
