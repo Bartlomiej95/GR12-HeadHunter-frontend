@@ -9,11 +9,12 @@ import {RegisterPassword} from "../../pages/Account/Register/RegisterPassword";
 import {PassChange} from "../../pages/Account/Change/PassChange";
 import {Context} from "../../provider/Provider";
 import {NoPermission} from "../../pages/Account/NoPermission/NoPermission";
+
 import {EmailChange} from "../../pages/Account/Change/EmailChange";
 
 
 
-interface LoginProps {
+export interface LoginProps {
     login: boolean
 }
 
@@ -26,14 +27,16 @@ export const Routing = ({login}: LoginProps) => {
     }
     const RoleHome = ()=>{
         if (role === "admin"){return(<Admin/>)}
-        else if (role === 'recruiter'){return (<AvailableStudents/>)}
+        else if (role === 'recruiter'){return (<><Menu/><AvailableStudents/></>)}
         else {return (Login())}
     }
 
     return (
         <Routes>
+
             <Route path='/*' element={RoleHome()}/>
-            <Route path='/to-talk' element={login ? <ToTalk/> : <Login/>}/>
+            <Route path='/to-talk' element={login ? <><Menu/><ToTalk/></> : <Login/>}/>
+
             <Route path='/cv/:id' element={login ? <Cv/> : <Login/>}/>
             {/*<Route path='/admin' element={accessAdmin ? <Admin/> : <NoPermission/>}/>*/}
             <Route path='/passchange' element={login ? <PassChange/>: <NoPermission/>}/>
