@@ -32,6 +32,7 @@ export const Routing = ({login}: LoginProps) => {
 
     return (
         <Routes>
+
             <Route path='/*' element={RoleHome()}/>
             <Route path='/to-talk' element={login ? <ToTalk/> : <Login/>}/>
             <Route path='/cv/:id' element={login ? <Cv/> : <Login/>}/>
@@ -40,7 +41,7 @@ export const Routing = ({login}: LoginProps) => {
             <Route path='/emailchange' element={login ? <EmailChange/>: <NoPermission/>}/>
             {/*<Route path='/register/add-student/' element={<RegisterStudents/>}/>*/}
             <Route path='/register/:user/:urlCode' element={<RegisterPassword/>}/>
-            {/*<Route path='/register/recruiter/:urlCode' element={<RegisterPassword/>}/>*/}
+            <Route path='/register/recruiter/:urlCode' element={<RegisterPassword/>}/>
         </Routes>
     )
 }
