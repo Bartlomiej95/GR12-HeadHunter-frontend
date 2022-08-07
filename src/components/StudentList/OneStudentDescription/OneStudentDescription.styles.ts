@@ -7,7 +7,8 @@ export const StudentDescriptionWrap = styled.div`
   width: 100%;
   overflow: hidden;
   height: 11.5rem;
-  transform: translateY(0)`;
+  transform: translateY(0);
+  margin-bottom: 1.6rem`;
 export const StudentDescriptionItem = styled.div`
   display: flex;
   flex-direction: column;
