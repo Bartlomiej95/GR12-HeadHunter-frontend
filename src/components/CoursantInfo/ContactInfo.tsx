@@ -6,6 +6,7 @@ import {Button} from "../Button/Button";
 import {CvAvatar} from "../Avatar/CvAvatar";
 import {StudentCVResponse} from "../../utils/get-one-student-data";
 import {handleStudentReservationRelease} from "../../utils/handle-student-reservation-release";
+import {handleStudentHiring} from "../../utils/handle-student-hiring";
 
 interface Props {
     student: StudentCVResponse;
@@ -21,11 +22,6 @@ export const ContactInfo = (props: Props) => {
         githubUsername,
         bio,
     } = props.student;
-
-    // TODO: fn handleStudentHired
-    const handleStudentHired = (id: string): void => {
-        console.log(`Student with ID ${id} will be hire.`)
-    }
 
     return <>
         <div className="contactInfo">
@@ -50,7 +46,7 @@ export const ContactInfo = (props: Props) => {
             </div>
             <div className="Cv-buttons">
                 <Button text="Brak zainteresowania" id={id} click={handleStudentReservationRelease}/>
-                <Button text="Zatrudniony" id={id} click={handleStudentHired}/>
+                <Button text="Zatrudniony" id={id} click={handleStudentHiring}/>
             </div>
         </div>
     </>
