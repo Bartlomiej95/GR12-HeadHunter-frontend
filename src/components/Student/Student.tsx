@@ -28,6 +28,10 @@ interface Student {
     teamProjectDegree: number
 }
 
+function todo() {
+
+}
+
 export const Student = ({filtered, activeFilter}: StudentProps) => {
 
     const [show, setShow] = useState<boolean | null | number>(false)
@@ -58,8 +62,6 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
         getFreeStudents()
         getTalkStudent()
     }, [])
-
-    console.log(talkStudents)
 
     const toggle = (index: number) => {
         if (show === index) {
@@ -329,9 +331,10 @@ export const Student = ({filtered, activeFilter}: StudentProps) => {
                                     </div>
                                 </div>
                                 <div className="studentButtons">
-                                    <NavLink to={`/cv/${user.id}`}><Button text='Pokaż CV'/></NavLink>
-                                    <Button text='Brak zainteresowania'/>
-                                    <Button text='Zatrudniony'/>
+                                    <NavLink to={`/cv/${user.id}`}><Button text='Pokaż CV' id={user.id}
+                                                                           click={todo}/></NavLink>
+                                    <Button text='Brak zainteresowania' id={user.id} click={todo}/>
+                                    <Button text='Zatrudniony' id={user.id} click={todo}/>
                                     <ChevronDown onClick={() => toggle(index)} size={30} color="#666666"
                                                  style={show === index ? {
                                                      transform: 'rotateX(180deg)',
