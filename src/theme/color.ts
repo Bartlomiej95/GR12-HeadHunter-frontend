@@ -12,4 +12,6 @@ export const color = {
     bgDescription: '#222324',
     ratingGray: '#9E9E9E',
     filterIcon: '#4D4D4D',
+    bgFilter: 'rgba(10, 10, 10, .5)',
+    clearFilter: '#172A35',
 };

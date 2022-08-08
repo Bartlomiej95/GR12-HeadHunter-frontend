@@ -4,5 +4,6 @@ export const size = {
     s: '1.5rem',
     l: '1.6rem',
     xl: '1.8rem',
+    xxl: `2.2rem`,
 
 }

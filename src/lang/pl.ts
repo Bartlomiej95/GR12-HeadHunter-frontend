@@ -25,5 +25,9 @@ export const pl = {
     studentDescriptionFreeWork: 'Zgoda na odbycie bezpłatnych praktyk/stażu na początek',
     studentDescriptionCommercialExp: 'Komercyjne doświadczenie w programowaniu',
 
-
+    filterClearAll: 'Wyczyść wszystko',
+    filterRatingCourse: 'Ocena przejścia kursu',
+    filterRatingActive: 'Ocena aktywności i zaangażowania na kursie',
+    filterRatingCode: 'Ocena kodu w projekcie własnym',
+    filterRatingScrum: 'Ocena pracy w zespole Scrum',
 }
