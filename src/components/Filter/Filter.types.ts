@@ -4,6 +4,7 @@ export interface IFilterProps {
     filter: Dispatch<SetStateAction<boolean>>
     showFiltered: (obj: Filtered) => void
     setActiveFilter: Dispatch<SetStateAction<boolean>>
+    show: () => void
 }
 
 export interface Filtered {

@@ -1,5 +1,5 @@
 export interface IOneStudentDescription {
-    freeWork: boolean
+    freeWork: string
     courseCompletion: number
     courseEngagment: number
     contract: string

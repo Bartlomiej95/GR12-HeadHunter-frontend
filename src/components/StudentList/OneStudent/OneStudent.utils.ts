@@ -51,13 +51,16 @@ export const handleHireStudent = async (id: string) => {
 export const handleEvents = (labelActive: boolean, setLabelActive: Dispatch<SetStateAction<boolean>>, active: any, setFreeStudents: Dispatch<SetStateAction<Students[]>>) => {
     if (labelActive) {
         setTimeout(() => {
-            setLabelActive(false)
             if (active.availableStudent) {
                 getStudents(setFreeStudents)
             }
             if (active.toTalk) {
                 getStudentsToTalk(setFreeStudents)
             }
-        }, 1500)
+        }, 2000)
+
+        setTimeout(() => {
+            setLabelActive(false)
+        },1500)
     }
 }
