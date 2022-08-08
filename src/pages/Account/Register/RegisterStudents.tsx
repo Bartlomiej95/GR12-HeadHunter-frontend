@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {LOGInHost, StudentRegisterHost} from "../../../utils/dictionaries";
 import { useNavigate } from "react-router-dom";
 import {ErrorMessage} from "../ErrorMessage/Message";
+import {flash} from "react-animations";
 
 interface useData
     {
@@ -30,6 +31,7 @@ type Props = {
 }
 let addArrayPortfolioUrl:string[] = [];
 let addArrayProjectUrl:string[] = [];
+let stepNumber:number = 1;
 
 export const RegisterStudents = ({password, email}:Props)=>{
     const [step, setStep] = useState(1);
@@ -56,10 +58,10 @@ export const RegisterStudents = ({password, email}:Props)=>{
             bio: " ",
             expectedTypeWork: "irrelevant",
             targetWorkCity: "",
-            expectedContractType: "irrelevants",
+            expectedContractType: "irrelevant",
             expectedSalary:  '',
             monthsOfCommercialExp: 0,
-            canTakeApprenticeship: "",
+            canTakeApprenticeship: false,
             education: "",
             workExperience: ' ',
             courses: " "
@@ -150,15 +152,14 @@ export const RegisterStudents = ({password, email}:Props)=>{
             case 3: return (<>
 
                 <p>Oczekiwany typ pracy:</p>
-                <select className="c-input" onChange={e=> setData({
+                <select className="c-input" defaultValue="irrelevant" onChange={e=> setData({
                         ...data,
                          expectedTypeWork: e.target.value
                     })}>
                     <option value="atLocation" >Na miejscu</option>
-                    {/*<option value="changeoflocation">Zamina lokalizacji</option>*/}
-                    {/*<option>manual</option>*/}
+                    <option value="changeoflocation">Możliwość zmiany miejsca zamieszkania</option>
+                    <option value="manual">Zdalnie</option>
                     <option value="irrelevant">Bez znaczenia</option>
-                    {/*<option>no matter</option>*/}
                 </select>
                 <input className="c-input"
                        placeholder="Miasto pracy"
@@ -166,26 +167,33 @@ export const RegisterStudents = ({password, email}:Props)=>{
                        onChange={e => setData({...data, targetWorkCity: e.target.value  })}
                 />
                 <p>Rodzaj umowy:</p>
-                <select className="c-input"
+                <select className="c-input" defaultValue="irrelevant"
                         onChange={e=> setData({
                             ...data,
                             expectedContractType: e.target.value
                         })}
                 >
-                    {/*<option >UoP</option>*/}
+                    <option value="UoP">Umowa o prace</option>
                     <option value="B2B">B2B</option>
-                    {/*<option>UZ/UoD</option>*/}
-                    <option value="irrelevant">Bez znaczenia</option>
+                    <option value="UZ/UoD">Umowa o prace/ Umowa o dzieło</option>
+                    <option  value="irrelevant">Bez znaczenia</option>
                 </select>
 
                 <input className="c-input"
                           placeholder="Oczekiwana pensja"
                           onChange={e => setData({...data, expectedSalary: (e.target.value) })}
                 />
-                <input className="c-input"
-                          placeholder="Możliwość odbycia praktyki"
-                          onChange={e => setData({...data, canTakeApprenticeship: e.target.value  })}
-                />
+                <p>Możliwośc odbycia stażu</p>
+                <select className="c-input" defaultValue="false"
+                        onChange={e=> setData({
+                            ...data,
+                            canTakeApprenticeship: Boolean(e.target.value)
+                        })}
+                >
+                    <option value="true">Tak</option>
+                    <option  value="false">Nie</option>
+                </select>
+
                 <input className="c-input"
                           placeholder="Czas pracy komercyjnej"
                             type="number"
@@ -207,6 +215,33 @@ export const RegisterStudents = ({password, email}:Props)=>{
         }
     }
     const next = () =>{
+        if(stepNumber === 1 ){
+            const re = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+            if(!(data.tel.match(re))){
+                setError(true);
+                setErrorMessage('Podany numer telefonu jest nieprawidłowy.');
+                setStep(1);
+                return
+            }
+            else {
+                stepNumber = 2
+            }
+        }
+        if(step === 2){
+            setError(false)
+            const reHub = (/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){1,38}$/i)
+            if(!(data.githubUsername.match(reHub))){
+                setError(true);
+                setErrorMessage('Podana nazwa GitHub jest nieprawidłowa.');
+                stepNumber = 2;
+                return
+            }
+
+        }
+
+        stepNumber++;
+        console.log(stepNumber);
+
         setStep(step+1)
         if(step === 3){
             send()
@@ -215,9 +250,15 @@ export const RegisterStudents = ({password, email}:Props)=>{
     }
     const prev = () =>{
         setStep(step-1)
+        stepNumber = stepNumber -1
+        if(stepNumber <= 0){
+            stepNumber = 1
+        }
+        console.log('step: '+ stepNumber)
         if (step === 1){
             setStep(1)
         }
+
     }
     const send = async ()=>{
         console.log(data)
@@ -255,13 +296,13 @@ export const RegisterStudents = ({password, email}:Props)=>{
                     navigation('/')
                 }
                 else {
+                    stepNumber = 1;
                     setStep(1);
                     setError(true);
                     setErrorMessage(data.message)
                 }
                 console.log(data)
             })
-        //.then(data => console.log(data))
     }
 
 

@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  padding: 20px;
   &__div{
    display: flex;
     justify-content: center;
