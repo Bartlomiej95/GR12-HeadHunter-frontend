@@ -5,5 +5,7 @@ export const handleStudentHiring = async (id: string) => {
         credentials: "include",
     });
     const data = await res.json();
-    console.log(`${data.message}. ID zatrudnionego kursanta: ${id}. `)
+    console.log(`${data.message}. ID zatrudnionego kursanta: ${id}. `);
+
+    window.location.href = "/to-talk";
 }
