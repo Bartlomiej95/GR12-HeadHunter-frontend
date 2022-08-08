@@ -2,12 +2,8 @@ import React, {useContext, useEffect} from 'react';
 import './App.css';
 import {Routing} from "./components/Routing/Routing";
 import {Context} from "./provider/Provider";
-
-import {Menu} from "./components/Menu/Menu";
 import {CheckLogin} from "./utils/dictionaries";
 import {Header} from "./components/Header/Header";
-
-
 
 function App() {
 
@@ -25,7 +21,7 @@ function App() {
                     if (data.logedIn) {
                         setLogin(true)
                         setName(data.message.firstName)
-                        setLastName(data.message.lasyName)
+                        setLastName(data.message.lastName)
                         setRole(data.message.role)
                     }
                 })
@@ -35,14 +31,10 @@ function App() {
 
     return (
         <div className="App">
-
             {login ? <Header/> : null}
-         
 
             <Routing login={login}/>
         </div>
-
-
     );
 }
 
