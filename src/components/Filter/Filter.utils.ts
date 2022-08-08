@@ -45,7 +45,7 @@ export const clearAll = (setChooseFilter:Dispatch<SetStateAction<Filtered>>, set
             from: '',
             to: '',
         },
-        freeWork: '',
+        freeWork: undefined,
         commercialExp: 0,
     })
     setClear(true)

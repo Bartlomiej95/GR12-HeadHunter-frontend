@@ -1,5 +1,4 @@
 import {Dispatch, SetStateAction} from "react";
-import {Filtered} from "../Filter.types";
 
 export interface IFilterRatingProps {
     title: string

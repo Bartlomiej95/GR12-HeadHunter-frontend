@@ -4,7 +4,6 @@ export interface IFilterProps {
     filter: Dispatch<SetStateAction<boolean>>
     showFiltered: (obj: Filtered) => void
     setActiveFilter: Dispatch<SetStateAction<boolean>>
-    show: () => void
 }
 
 export interface Filtered {
@@ -15,7 +14,7 @@ export interface Filtered {
     placeWork: SelectedPlace
     contractType: SelectedContract
     salaryPrice: SalaryPrice
-    freeWork: string
+    freeWork: boolean | undefined
     commercialExp: number
 }
 

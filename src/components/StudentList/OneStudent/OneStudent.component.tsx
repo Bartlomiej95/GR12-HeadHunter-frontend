@@ -23,7 +23,7 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
     return (
         <StudentWrap>
             <LabelInfo labelActive={labelActive}
-                       message={active.availableStudent ? `Student ${message} został dodany do rozmowy !` : `Zrezygnowałeś ze studenta ${message} !`}/>
+                       message={message}/>
             <StudentName onClick={() => toggle(index, show, setShow)}>
                 <StudentNameContent>{firstName} {lastName}.</StudentNameContent>
             </StudentName>
@@ -32,7 +32,7 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
                     <Button text={pl.studentReservation} handleClick={() => {
                         handleAddToTalkStudent(id)
                         setLabelActive(true);
-                        setMessage(`${firstName} ${lastName}`)
+                        setMessage(`Dodałeś/aś studenta ${firstName} ${lastName} do rozmowy!`)
                     }} id={id}/>
                     <DownChevron size={30} onClick={() => toggle(index, show, setShow)} style={show === index ? {
                         transform: 'rotateX(180deg)',
@@ -46,9 +46,13 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
                     <Button text={pl.studentToTalkCancel} handleClick={() => {
                         handleRemoveStudentFromTalk(id)
                         setLabelActive(true)
-                        setMessage(`${firstName} ${lastName}`)
+                        setMessage(`Zrezygnowałeś/aś ze studenta ${firstName} ${lastName} !`)
                     }} id={id}/>
-                    <Button text={pl.studentToTalkAccept} handleClick={handleHireStudent} id={id}/>
+                    <Button text={pl.studentToTalkAccept} handleClick={() => {
+                        handleHireStudent(id)
+                        setLabelActive(true)
+                        setMessage(`Gratulacje! Zatrudniłeś/aś ${firstName} ${lastName}`)
+                    }} id={id}/>
                     <DownChevron size={30} onClick={() => toggle(index, show, setShow)} style={show === index ? {
                         transform: 'rotateX(180deg)',
                         transition: '0.4s'

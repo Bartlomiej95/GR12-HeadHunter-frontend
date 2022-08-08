@@ -31,7 +31,7 @@ import {Filtered, IFilterProps, SelectedRating} from "./Filter.types";
 import {Button} from "../common/Button/Button.component";
 import {clearAll} from "./Filter.utils";
 
-export const Filter = ({filter, setActiveFilter, showFiltered, show}: IFilterProps) => {
+export const Filter = ({filter, setActiveFilter, showFiltered}: IFilterProps) => {
 
     const [clear, setClear] = useState(false)
     const [chooseFilter, setChooseFilter] = useState<Filtered>({
@@ -77,7 +77,7 @@ export const Filter = ({filter, setActiveFilter, showFiltered, show}: IFilterPro
             from: '',
             to: '',
         },
-        freeWork: '',
+        freeWork: undefined,
         commercialExp: 0,
     })
 
@@ -92,7 +92,6 @@ export const Filter = ({filter, setActiveFilter, showFiltered, show}: IFilterPro
             setChooseFilter({...chooseFilter, ratingScrum: obj})
         }
     }
-
 
     return (
         <>
@@ -208,13 +207,13 @@ export const Filter = ({filter, setActiveFilter, showFiltered, show}: IFilterPro
                     <FilterRadio>
                         <InputRadio type="radio" name="free" id="yes" onClick={() => setChooseFilter({
                             ...chooseFilter,
-                            freeWork: 'Tak'
+                            freeWork: true
                         })}/><LabelInputRadio htmlFor="yes">{pl.yes}</LabelInputRadio>
                     </FilterRadio>
                     <FilterRadio>
                         <InputRadio type="radio" name="free" id="no" onClick={() => setChooseFilter({
                             ...chooseFilter,
-                            freeWork: 'Nie'
+                            freeWork: false
                         })}/><LabelInputRadio htmlFor="no">{pl.no}</LabelInputRadio>
                     </FilterRadio>
                 </FilterSelectWrap>
@@ -244,7 +243,6 @@ export const Filter = ({filter, setActiveFilter, showFiltered, show}: IFilterPro
                            showFiltered(chooseFilter)
                            setActiveFilter(true)
                            filter(false)
-                           show()
                        }}><Button text={pl.filterShow} handleClick={()=>{}} id={''}/></Show>
                    </FilterButtonsWrap>
                 </FilterSelectWrap>

@@ -6,6 +6,7 @@ import {Menu} from "../Menu/Menu.component";
 import {HomeWrap} from "./Home.styles";
 import {ToTalk} from "../../pages/ToTalk/ToTalk.component";
 import {IActivePage} from "./Home.types";
+import {Cv} from "../../pages/Cv/Cv.component";
 
 export const Home = () => {
 
@@ -19,6 +20,7 @@ export const Home = () => {
             <Routes>
                 <Route path="/" element={<><Menu setActivePage={setActivePage} activePage={activePage}/><AvailableStudents activePage={activePage}/></>}/>
                 <Route path="/to-talk" element={<><Menu setActivePage={setActivePage} activePage={activePage}/><ToTalk activePage={activePage}/></>}/>
+                <Route path="/cv/:id" element={<Cv/>}/>
             </Routes>
         </HomeWrap>
     )

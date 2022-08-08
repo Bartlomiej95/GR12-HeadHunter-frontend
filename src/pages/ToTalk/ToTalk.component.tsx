@@ -55,7 +55,7 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
             from: '',
             to: '',
         },
-        freeWork: '',
+        freeWork: undefined,
         commercialExp: 0,
     })
 
@@ -73,7 +73,7 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
         <Container>
             <StudentWrap>
                 <Tools activeFilter={setActiveFilter}/>
-                <StudentList students={studentToTalk} active={activePage} setFreeStudents={setStudentToTalk}/>
+                <StudentList students={studentToTalk} active={activePage} setFreeStudents={setStudentToTalk} activeFilter={activeFilter} filtered={filtered}/>
             </StudentWrap>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>

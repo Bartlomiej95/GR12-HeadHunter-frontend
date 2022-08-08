@@ -37,7 +37,7 @@ export const handleRemoveStudentFromTalk = async (id: string) => {
 }
 
 export const handleHireStudent = async (id: string) => {
-    await fetch(`http://localhost:3001/hirestudent/${id}`, {
+    await fetch(`http://localhost:3001/recruiter/hirestudent/${id}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         credentials: "include",

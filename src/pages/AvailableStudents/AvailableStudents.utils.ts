@@ -24,7 +24,7 @@ export const filterStudent = (filtered: Filtered) => {
         if (contract.contractOfMandate) contractType.push('Umowa zlecenie')
         if (contract.contractWork) contractType.push('Umowa o dzieło')
     })
-    const freeWork = filtered.freeWork === 'Tak'
+    const freeWork = filtered.freeWork
 
     const placeWorking: string[] = [];
     if (filtered.placeWork.officeWork) placeWorking.push('Biuro')
