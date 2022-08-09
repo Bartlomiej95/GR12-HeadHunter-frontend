@@ -32,26 +32,30 @@ export const CvBio: React.FC<ICvBioProps> = ({firstName, lastName, gh, phone, ma
         <>
             <LabelInfo labelActive={labelActive} message={message}/>
             <CvBioWrapper>
-                <NavLink to='/to-talk'>
-                    <BackToTalk>
-                        <ChevronLeftIcon size={30}/>Wróć
-                    </BackToTalk>
-                </NavLink>
-                <AvatarCv>
-                    {ghb.map(img => <AvatarImage src={img.avatar_url} alt="Logo"/>)}
-                </AvatarCv>
-                <CvName>
-                    <UserName>{firstName} {lastName}</UserName>
-                    <GitHubWrapper><GitHubIcon size={22}/><NavLink to="http://github.com">{gh}</NavLink></GitHubWrapper>
-                </CvName>
-                <CvContact>
-                    <CvPhone><PhoneIcon size={20}/>+48 {phone}</CvPhone>
-                    <CvMail><EnvelopeIcon size={20}/>{mail}</CvMail>
-                </CvContact>
-                <CvBioContent>
-                    <CvLabel>{pl.cvBioLabel}</CvLabel>
-                    <BioDescription>{bio}</BioDescription>
-                </CvBioContent>
+                <div>
+                    <NavLink to='/to-talk'>
+                        <BackToTalk>
+                            <ChevronLeftIcon size={30}/>Wróć
+                        </BackToTalk>
+                    </NavLink>
+
+                    <AvatarCv>
+                        {ghb.map(img => <AvatarImage src={img.avatar_url} alt="Logo"/>)}
+                    </AvatarCv>
+                    <CvName>
+                        <UserName>{firstName} {lastName}</UserName>
+                        <GitHubWrapper><GitHubIcon size={22}/><NavLink
+                            to="http://github.com">{gh}</NavLink></GitHubWrapper>
+                    </CvName>
+                    <CvContact>
+                        <CvPhone><PhoneIcon size={20}/>+48 {phone}</CvPhone>
+                        <CvMail><EnvelopeIcon size={20}/>{mail}</CvMail>
+                    </CvContact>
+                    <CvBioContent>
+                        <CvLabel>{pl.cvBioLabel}</CvLabel>
+                        <BioDescription>{bio}</BioDescription>
+                    </CvBioContent>
+                </div>
                 <CvButtons>
                     <NavLink to='/to-talk' style={{display: 'flex'}} onClick={(e) => {
                         setLabelActive(true)

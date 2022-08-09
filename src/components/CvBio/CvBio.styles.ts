@@ -6,6 +6,9 @@ import {ChevronLeft, Envelope, Phone} from "@styled-icons/boxicons-solid";
 
 export const CvBioWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-height: 71.8rem;
   padding: 3rem 2.4rem 2.3rem;
   background-color: ${({theme}) => theme.color.inputColor};`
