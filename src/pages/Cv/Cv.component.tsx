@@ -2,6 +2,10 @@ import React, {useEffect, useState} from "react";
 import {getStudent} from "./Cv.utils";
 import {useParams} from "react-router-dom";
 import {StudentCv} from "./Cv.types";
+import {Container} from "../../components/Styles/Styles.component";
+import {CvBio} from "../../components/CvBio/CvBio.component";
+import {CvDescription} from "../../components/CvDesctiption/CvDescription.component";
+import {CvWrapper} from "./Cv.styles";
 
 export const Cv = () => {
     const [student, setStudent] = useState<StudentCv[]>([])
@@ -11,11 +15,20 @@ export const Cv = () => {
         getStudent(id, setStudent)
     }, [])
 
-
     return (
         <>
-            <h1>CV</h1>
-            {student.map(user => <><div>{user.bio}</div></>)}
+            {student.map(user =>
+                <Container>
+                    <CvWrapper>
+                        <CvBio firstName={user.firstName} lastName={user.lastName} gh={user.githubUsername}
+                               phone={user.tel}
+                               mail={user.email} bio={user.bio} id={user.id}/>
+                        <CvDescription/>
+                    </CvWrapper>
+                </Container>
+            )}
         </>
     )
+
+
 }

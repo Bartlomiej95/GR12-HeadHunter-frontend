@@ -53,4 +53,6 @@ export const pl = {
     filterTitleCommercialExp: 'Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu',
     filterCancel: 'Anuluj',
     filterShow: 'Pokaż wyniki',
+
+    cvBioLabel: 'O mnie',
 }
