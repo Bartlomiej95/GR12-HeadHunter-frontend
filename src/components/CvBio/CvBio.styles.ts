@@ -3,6 +3,7 @@ import {AvatarBlock} from "../common/Avatar/Avatar.styles";
 import {Github} from "@styled-icons/boxicons-logos";
 import {Envelope, Phone} from "@styled-icons/boxicons-solid";
 
+
 export const CvBioWrapper = styled.div`
   max-height: 71.8rem;
   padding: 3rem 2.4rem 2.3rem;
@@ -81,4 +82,4 @@ export const CvButtons = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 1.4rem;
-  padding-top: 3rem;`
+  padding-top: 3rem;`;
