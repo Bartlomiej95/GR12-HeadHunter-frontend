@@ -1,6 +1,6 @@
 export interface StudentCv {
     bio: string
-    bonusProject: string[]
+    bonusProjectUrls: string[]
     canTakeApprenticeship: boolean
     courseCompletion: number
     courseEngagment: number

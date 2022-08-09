@@ -15,6 +15,8 @@ export const Cv = () => {
         getStudent(id, setStudent)
     }, [])
 
+    console.log(student)
+
     return (
         <>
             {student.map(user =>
@@ -23,7 +25,15 @@ export const Cv = () => {
                         <CvBio firstName={user.firstName} lastName={user.lastName} gh={user.githubUsername}
                                phone={user.tel}
                                mail={user.email} bio={user.bio} id={user.id}/>
-                        <CvDescription/>
+                        <CvDescription ratingCourse={user.courseCompletion} ratingActive={user.courseEngagment}
+                                       endProject={user.projectDegree} scrum={user.teamProjectDegree}
+                                       placeWork={user.expectedTypeWork} city={user.targetWorkCity}
+                                       contract={user.expectedContractType} salary={user.expectedSalary}
+                                       freeWork={user.canTakeApprenticeship}
+                                       commercialExp={user.monthsOfCommercialExp} education={user.education}
+                                       courses={user.courses} experience={user.workExperience}
+                                       portfolio={user.portfolioUrls} projectScrum={user.bonusProjectUrls}
+                                       projectCourse={user.projectUrls}/>
                     </CvWrapper>
                 </Container>
             )}

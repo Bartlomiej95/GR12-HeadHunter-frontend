@@ -55,4 +55,13 @@ export const pl = {
     filterShow: 'Pokaż wyniki',
 
     cvBioLabel: 'O mnie',
+    cvSectionRatings: 'Oceny',
+    cvSectionContract: 'Oczekiwanie w stosunku do zatrudnienia',
+    cvSectionSchool: 'Edukacja',
+    cvSectionCourses: 'Kursy',
+    cvSectionExp: 'Doświadczenie zawodowe',
+    cvSectionPortfolio: 'Portfolio',
+    cvSectionProjectScrum: 'Projekt w zespole Scrumowym',
+    cvSectionProjectEnd: 'Projekt na zaliczenie',
+    cvSectionCommercial: 'Komercyjne doświadczenie w programowaniu',
 }

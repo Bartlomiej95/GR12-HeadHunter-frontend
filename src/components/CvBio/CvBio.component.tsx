@@ -1,7 +1,9 @@
 import React, {EventHandler, useEffect, useState} from "react";
 import {
     AvatarCv, AvatarImage,
+    BackToTalk,
     BioDescription,
+    ChevronLeftIcon,
     CvBioContent, CvBioWrapper,
     CvButtons, CvContact, CvLabel, CvMail, CvName, CvPhone, EnvelopeIcon, GitHubIcon, GitHubWrapper, PhoneIcon, UserName
 } from "./CvBio.styles";
@@ -27,39 +29,46 @@ export const CvBio: React.FC<ICvBioProps> = ({firstName, lastName, gh, phone, ma
     }, [])
 
     return (
-        <CvBioWrapper>
+        <>
             <LabelInfo labelActive={labelActive} message={message}/>
-            <AvatarCv>
-                {ghb.map(img => <AvatarImage src={img.avatar_url} alt="Logo"/>)}
-            </AvatarCv>
-            <CvName>
-                <UserName>{firstName} {lastName}</UserName>
-                <GitHubWrapper><GitHubIcon size={22}/><NavLink to="http://github.com">{gh}</NavLink></GitHubWrapper>
-            </CvName>
-            <CvContact>
-                <CvPhone><PhoneIcon size={20}/>+48 {phone}</CvPhone>
-                <CvMail><EnvelopeIcon size={20}/>{mail}</CvMail>
-            </CvContact>
-            <CvBioContent>
-                <CvLabel>{pl.cvBioLabel}</CvLabel>
-                <BioDescription>{bio}</BioDescription>
-            </CvBioContent>
-            <CvButtons>
-                <NavLink to='/to-talk' style={{display: 'flex'}} onClick={(e) => {
-                    setLabelActive(true)
-                    setMessage(`Zrezygnowałeś/aś ze studenta ${firstName} ${lastName} !`)
-                    delayAndGo(e, '/to-talk', history)
-                }}><Button big={true} text={pl.studentToTalkCancel} handleClick={() => {
-                    handleRemoveStudentFromTalk(id)
-                }} id={id}/></NavLink>
-                <NavLink to='/to-talk' onClick={(e) => {
-                    setLabelActive(true)
-                    setMessage(`Gratulacje! Zatrudniłeś/aś ${firstName} ${lastName} !`)
-                    delayAndGo(e, '/to-talk', history)
-                }}><Button big={true} text={pl.studentToTalkAccept} handleClick={() => {
-                    handleHireStudent(id)
-                }} id={id}/></NavLink>
-            </CvButtons>
-        </CvBioWrapper>
+            <CvBioWrapper>
+                <NavLink to='/to-talk'>
+                    <BackToTalk>
+                        <ChevronLeftIcon size={30}/>Wróć
+                    </BackToTalk>
+                </NavLink>
+                <AvatarCv>
+                    {ghb.map(img => <AvatarImage src={img.avatar_url} alt="Logo"/>)}
+                </AvatarCv>
+                <CvName>
+                    <UserName>{firstName} {lastName}</UserName>
+                    <GitHubWrapper><GitHubIcon size={22}/><NavLink to="http://github.com">{gh}</NavLink></GitHubWrapper>
+                </CvName>
+                <CvContact>
+                    <CvPhone><PhoneIcon size={20}/>+48 {phone}</CvPhone>
+                    <CvMail><EnvelopeIcon size={20}/>{mail}</CvMail>
+                </CvContact>
+                <CvBioContent>
+                    <CvLabel>{pl.cvBioLabel}</CvLabel>
+                    <BioDescription>{bio}</BioDescription>
+                </CvBioContent>
+                <CvButtons>
+                    <NavLink to='/to-talk' style={{display: 'flex'}} onClick={(e) => {
+                        setLabelActive(true)
+                        setMessage(`Zrezygnowałeś/aś ze studenta ${firstName} ${lastName} !`)
+                        delayAndGo(e, '/to-talk', history)
+                    }}><Button big={true} text={pl.studentToTalkCancel} handleClick={() => {
+                        handleRemoveStudentFromTalk(id)
+                    }} id={id}/></NavLink>
+                    <NavLink to='/to-talk' onClick={(e) => {
+                        setLabelActive(true)
+                        setMessage(`Gratulacje! Zatrudniłeś/aś ${firstName} ${lastName} !`)
+                        delayAndGo(e, '/to-talk', history)
+                    }}><Button big={true} text={pl.studentToTalkAccept} handleClick={() => {
+                        handleHireStudent(id)
+                    }} id={id}/></NavLink>
+                </CvButtons>
+            </CvBioWrapper>
+        </>
     )
 }

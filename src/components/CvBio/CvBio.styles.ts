@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import {AvatarBlock} from "../common/Avatar/Avatar.styles";
 import {Github} from "@styled-icons/boxicons-logos";
-import {Envelope, Phone} from "@styled-icons/boxicons-solid";
+import {ChevronLeft, Envelope, Phone} from "@styled-icons/boxicons-solid";
 
 
 export const CvBioWrapper = styled.div`
+  position: relative;
   max-height: 71.8rem;
   padding: 3rem 2.4rem 2.3rem;
   background-color: ${({theme}) => theme.color.inputColor};`
@@ -83,3 +84,19 @@ export const CvButtons = styled.div`
   flex-direction: column;
   row-gap: 1.4rem;
   padding-top: 3rem;`;
+
+export const BackToTalk = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: -10.5rem;
+  line-height: 2.7rem;
+  color: ${({theme}) => theme.color.textColor};
+  font-size: ${({theme}) => theme.size.l};
+  width: 8rem;
+  cursor: pointer;
+`
+
+export const ChevronLeftIcon = styled(ChevronLeft)`
+  color: ${({theme}) => theme.color.filterIcon};`
