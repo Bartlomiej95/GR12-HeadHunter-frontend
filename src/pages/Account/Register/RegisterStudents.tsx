@@ -155,7 +155,7 @@ export const RegisterStudents = ({password, email}:Props)=>{
                          expectedTypeWork: e.target.value
                     })}>
                     <option value="atLocation" >Na miejscu</option>
-                    {/*<option value="changeoflocation">Zamina lokalizacji</option>*/}
+                    {/*<option value="changeOfLocation">Zamina lokalizacji</option>*/}
                     {/*<option>manual</option>*/}
                     <option value="irrelevant">Bez znaczenia</option>
                 </select>
