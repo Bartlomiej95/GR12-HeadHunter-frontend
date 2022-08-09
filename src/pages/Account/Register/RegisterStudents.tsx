@@ -56,7 +56,7 @@ export const RegisterStudents = ({password, email}:Props)=>{
             bio: " ",
             expectedTypeWork: "irrelevant",
             targetWorkCity: "",
-            expectedContractType: "irrelevants",
+            expectedContractType: "irrelevant",
             expectedSalary:  '',
             monthsOfCommercialExp: 0,
             canTakeApprenticeship: "",
@@ -158,7 +158,6 @@ export const RegisterStudents = ({password, email}:Props)=>{
                     {/*<option value="changeoflocation">Zamina lokalizacji</option>*/}
                     {/*<option>manual</option>*/}
                     <option value="irrelevant">Bez znaczenia</option>
-                    {/*<option>no matter</option>*/}
                 </select>
                 <input className="c-input"
                        placeholder="Miasto pracy"

@@ -30,7 +30,7 @@ export const CoursantInfo = () => {
         projectUrls: [],
         expectedContractType: ExpectedContractType.IRRELEVANT,
         targetWorkCity: '',
-        expectedTypeWork: ExpectedTypeWork.NO_MATTER,
+        expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
         expectedSalary: '',
         canTakeApprenticeship: false,
         monthsOfCommercialExp: 0,
@@ -42,15 +42,16 @@ export const CoursantInfo = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        (async () => {
-            if (id === undefined) {
-                return null;
-            } else {
-                const student = await getOneStudentData(id);
-                setStudentData(student);
-            }
-        })();
-    }, []);
+            (async () => {
+                if (id === undefined) {
+                    return null;
+                } else {
+                    const student = await getOneStudentData(id);
+                    setStudentData(student);
+                }
+            })();
+        },
+        [id]);
 
     return <div className="CoursantInfo">
         <ContactInfo student={studentData}/>

@@ -4,7 +4,6 @@ export enum ExpectedTypeWork {
     CHANGE_OF_LOCATION = 'changeoflocation',
     MANUAL = 'manual',
     IRRELEVANT = 'irrelevant',
-    NO_MATTER = 'no matter'
 }
 
 export enum ExpectedContractType {
@@ -28,7 +27,7 @@ export interface StudentCVResponse {
     expectedTypeWork: ExpectedTypeWork;
     firstName: string;
     githubUsername: string;
-    hr: "string" | null;
+    hr: string | null;
     id: string;
     lastName: string;
     monthsOfCommercialExp: number;
