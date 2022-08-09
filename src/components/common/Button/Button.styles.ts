@@ -15,8 +15,11 @@ export const Btn = styled.button`
   :hover {
     box-shadow: 0 0.5em 0.5em -0.4em #E02735;
     transform: translateY(-0.25em);
-  }; 
+  }
+;
 `;
 
+export const BtnCV = styled(Btn)`
+  width: 100%;`;
 
 

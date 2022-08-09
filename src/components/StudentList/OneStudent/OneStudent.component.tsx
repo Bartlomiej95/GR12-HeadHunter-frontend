@@ -56,7 +56,7 @@ export const OneStudent = ({
             </StudentName>
             <Buttons>
                 {active.availableStudent ? <>
-                    <Button text={pl.studentReservation} handleClick={() => {
+                    <Button big={false} text={pl.studentReservation} handleClick={() => {
                         handleAddToTalkStudent(id)
                         setLabelActive(true);
                         setMessage(`Dodałeś/aś studenta ${firstName} ${lastName} do rozmowy!`)
@@ -68,14 +68,14 @@ export const OneStudent = ({
                         transition: '0.4s',
                         transform: 'rotateX(0deg'
                     }}/></> : <>
-                    <NavLink to={`/cv/${id}`}><Button text={pl.studentToTalkShowCv} handleClick={() => {
+                    <NavLink to={`/cv/${id}`}><Button big={false} text={pl.studentToTalkShowCv} handleClick={() => {
                     }} id={''}/></NavLink>
-                    <Button text={pl.studentToTalkCancel} handleClick={() => {
+                    <Button big={false} text={pl.studentToTalkCancel} handleClick={() => {
                         handleRemoveStudentFromTalk(id)
                         setLabelActive(true)
                         setMessage(`Zrezygnowałeś/aś ze studenta ${firstName} ${lastName} !`)
                     }} id={id}/>
-                    <Button text={pl.studentToTalkAccept} handleClick={() => {
+                    <Button big={false} text={pl.studentToTalkAccept} handleClick={() => {
                         handleHireStudent(id)
                         setLabelActive(true)
                         setMessage(`Gratulacje! Zatrudniłeś/aś ${firstName} ${lastName}`)

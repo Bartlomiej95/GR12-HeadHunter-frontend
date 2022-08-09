@@ -41,18 +41,18 @@ export const CvBio: React.FC<ICvBioProps> = ({firstName, lastName, gh, phone, ma
                 <BioDescription>{bio}</BioDescription>
             </CvBioContent>
             <CvButtons>
-                <NavLink to='/to-talk' onClick={(e) => {
+                <NavLink to='/to-talk' style={{display: 'flex'}} onClick={(e) => {
                     setLabelActive(true)
                     setMessage(`Zrezygnowałeś/aś ze studenta ${firstName} ${lastName} !`)
                     delayAndGo(e, '/to-talk', history)
-                }}><Button text={pl.studentToTalkCancel} handleClick={() => {
+                }}><Button big={true} text={pl.studentToTalkCancel} handleClick={() => {
                     handleRemoveStudentFromTalk(id)
                 }} id={id}/></NavLink>
                 <NavLink to='/to-talk' onClick={(e) => {
                     setLabelActive(true)
                     setMessage(`Gratulacje! Zatrudniłeś/aś ${firstName} ${lastName} !`)
                     delayAndGo(e, '/to-talk', history)
-                }}><Button text={pl.studentToTalkAccept} handleClick={() => {
+                }}><Button big={true} text={pl.studentToTalkAccept} handleClick={() => {
                     handleHireStudent(id)
                 }} id={id}/></NavLink>
             </CvButtons>

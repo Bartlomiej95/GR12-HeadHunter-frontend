@@ -1,10 +1,16 @@
 import React from 'react';
 import {IButtonProps} from "./Button.types";
-import {Btn} from './Button.styles'
+import {Btn, BtnCV} from './Button.styles'
 
-export const Button = ({text, handleClick, id}: IButtonProps) => {
+export const Button = ({text, handleClick, id, big}: IButtonProps) => {
 
     return (
-        <Btn onClick={() => handleClick(id)}>{text}</Btn>
+        <>
+            {
+                big === false ?
+                    <Btn onClick={() => handleClick(id)}>{text}</Btn> :
+                    <BtnCV onClick={() => handleClick(id)}>{text}</BtnCV>
+            }
+        </>
     )
 }
