@@ -14,4 +14,5 @@ export const color = {
     filterIcon: '#4D4D4D',
     bgFilter: 'rgba(10, 10, 10, .5)',
     clearFilter: '#172A35',
+    paginationColor: '#333333',
 };

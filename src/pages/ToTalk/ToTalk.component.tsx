@@ -6,6 +6,7 @@ import {StudentList} from "../../components/StudentList/StudentList.component";
 import {Students} from "../AvailableStudents/AvailableStudents.types";
 import {Filter} from "../../components/Filter/Filter.component";
 import {Filtered} from "../../components/Filter/Filter.types";
+import {Pagination} from "../../components/Pagination/Pagination.component";
 
 export const ToTalk: React.FC<any> = ({activePage}) => {
 
@@ -77,6 +78,7 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
                 <Tools activeFilter={setActiveFilter}/>
                 <StudentList students={studentToTalk} active={activePage} setFreeStudents={setStudentToTalk} activeFilter={activeFilter} filtered={filtered}/>
             </StudentWrap>
+            <Pagination/>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>
         )
