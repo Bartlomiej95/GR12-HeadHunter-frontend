@@ -11,4 +11,5 @@ export interface IOneStudent {
     id: string
     setFreeStudents: Dispatch<SetStateAction<Students[]>>
     reservation: string
+    ghUsername: string
 }

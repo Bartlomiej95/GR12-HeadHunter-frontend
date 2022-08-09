@@ -5,7 +5,7 @@ import {HeaderUserName} from "./HeaderUserName/HeaderUserName.component";
 
 export const HeaderUser = () => (
     <User>
-        <Avatar/>
+        <Avatar ghUsername={""}/>
         <HeaderUserName/>
         <ArrowDown size={10}/>
     </User>

@@ -64,3 +64,9 @@ export const handleEvents = (labelActive: boolean, setLabelActive: Dispatch<SetS
         },1500)
     }
 }
+
+export const getUserGH = async (setGhb: Dispatch<SetStateAction<any[]>>, githubUsername: string) => {
+    const res = await fetch(`https://api.github.com/users/${githubUsername}`);
+    const data = await res.json()
+    return setGhb([data])
+}

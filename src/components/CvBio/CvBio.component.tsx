@@ -1,4 +1,4 @@
-import React, {EventHandler, useState} from "react";
+import React, {EventHandler, useEffect, useState} from "react";
 import {
     AvatarCv, AvatarImage,
     BioDescription,
@@ -10,7 +10,7 @@ import {NavLink, useNavigate,} from "react-router-dom";
 import {ICvBioProps} from "./CvBio.types";
 import {pl} from "../../lang/pl";
 import {LabelInfo} from "../common/LabelInfo/LabelInfo.component";
-import {handleHireStudent, handleRemoveStudentFromTalk} from "../StudentList/OneStudent/OneStudent.utils";
+import {getUserGH, handleHireStudent, handleRemoveStudentFromTalk} from "../StudentList/OneStudent/OneStudent.utils";
 import {Button} from "../common/Button/Button.component";
 import {delayAndGo} from "./CvBio.utils";
 
@@ -18,15 +18,23 @@ export const CvBio: React.FC<ICvBioProps> = ({firstName, lastName, gh, phone, ma
 
     const [message, setMessage] = useState('')
     const [labelActive, setLabelActive] = useState(false);
+    const [ghb, setGhb] = useState<any[]>([])
 
     const history = useNavigate();
 
+
+
+    useEffect(() => {
+        getUserGH(setGhb, gh)
+    }, [])
+
+    const img = ghb.map(img => img.avatar_url)
 
     return (
         <CvBioWrapper>
             <LabelInfo labelActive={labelActive} message={message}/>
             <AvatarCv>
-                <AvatarImage src={img} alt="Logo"/>
+                {ghb.map(img => <AvatarImage src={img.avatar_url} alt="Logo"/>)}
             </AvatarCv>
             <CvName>
                 <UserName>{firstName} {lastName}</UserName>

@@ -31,7 +31,8 @@ export const OneStudent = ({
                                active,
                                id,
                                setFreeStudents,
-                               reservation
+                               reservation,
+                               ghUsername
                            }: IOneStudent) => {
 
     const [labelActive, setLabelActive] = useState(false);
@@ -50,7 +51,7 @@ export const OneStudent = ({
                             <p>Rezerwacja do</p>
                             <p>{reservation}</p>
                         </StudentReservation>
-                        <Avatar/>
+                        <Avatar ghUsername={ghUsername}/>
                         <StudentNameContent>{firstName} {lastName}</StudentNameContent>
                     </StudentHeader>}
             </StudentName>

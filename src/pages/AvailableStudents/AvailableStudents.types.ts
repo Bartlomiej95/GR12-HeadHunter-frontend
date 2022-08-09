@@ -13,4 +13,5 @@ export interface Students {
     targetWorkCity: string
     teamProjectDegree: number
     reservationEnd: string
+    githubUsername: string
 }

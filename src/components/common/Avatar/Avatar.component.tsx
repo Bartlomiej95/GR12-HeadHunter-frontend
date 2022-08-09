@@ -1,9 +1,9 @@
 import React from "react";
 import { AvatarBlock, AvatarImage } from "./Avatar.styles";
-import img from '../../../assets/img/megak.png'
+import {IAvatarProps} from "./Avatar.types";
 
-export const Avatar = () => (
+export const Avatar: React.FC<IAvatarProps> = ({ghUsername}) => (
     <AvatarBlock>
-        <AvatarImage src={img} alt="Avatar"/>
+        <AvatarImage src={ghUsername} alt="Avatar"/>
     </AvatarBlock>
 );
