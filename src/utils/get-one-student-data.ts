@@ -1,4 +1,6 @@
 // import {StudentCVResponse} from 'types';
+import {StudentGetOne} from "./dictionaries";
+
 export enum ExpectedTypeWork {
     AT_LOCATION = 'atLocation',
     CHANGE_OF_LOCATION = 'changeoflocation',
@@ -42,7 +44,7 @@ export interface StudentCVResponse {
 }
 
 export const getOneStudentData = async (id: string): Promise<StudentCVResponse> => {
-    const res = await fetch(`http://localhost:3001/student/getone/${id}`, {
+    const res = await fetch(`${StudentGetOne}/${id}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         credentials: "include",

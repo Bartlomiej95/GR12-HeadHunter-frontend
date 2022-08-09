@@ -1,5 +1,7 @@
+import {StudentHiring} from "./dictionaries";
+
 export const handleStudentHiring = async (id: string) => {
-    const res = await fetch(`http://localhost:3001/recruiter/hirestudent/${id}`, {
+    const res = await fetch(`${StudentHiring}/${id}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         credentials: "include",
