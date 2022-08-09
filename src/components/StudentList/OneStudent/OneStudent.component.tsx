@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button} from "../../common/Button/Button.component";
 import {pl} from "../../../lang/pl";
 import {
@@ -12,6 +12,7 @@ import {
 } from "./OneStudent.styles";
 import {IOneStudent} from "./OneStudent.types";
 import {
+    getUserGH,
     handleAddToTalkStudent,
     handleEvents,
     handleHireStudent,
@@ -39,6 +40,11 @@ export const OneStudent = ({
     const [message, setMessage] = useState('')
 
     handleEvents(labelActive, setLabelActive, active, setFreeStudents)
+    const [ghb, setGhb] = useState<any[]>([])
+
+    useEffect(() => {
+        getUserGH(setGhb, ghUsername)
+    }, [])
 
     return (
         <StudentWrap>
@@ -51,7 +57,7 @@ export const OneStudent = ({
                             <p>Rezerwacja do</p>
                             <p>{reservation}</p>
                         </StudentReservation>
-                        <Avatar ghUsername={ghUsername}/>
+                        {ghb.map(img => <Avatar ghUsername={img.avatar_url}/>)}
                         <StudentNameContent>{firstName} {lastName}</StudentNameContent>
                     </StudentHeader>}
             </StudentName>

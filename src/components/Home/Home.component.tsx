@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Header} from "../Header/Header.component";
 import {Route, Routes} from "react-router-dom";
 import {AvailableStudents} from "../../pages/AvailableStudents/AvailableStudents.component";
@@ -14,6 +14,7 @@ export const Home = () => {
         availableStudent: true,
         toTalk: false
     })
+
     return (
         <HomeWrap>
             <Header/>

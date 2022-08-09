@@ -22,13 +22,9 @@ export const CvBio: React.FC<ICvBioProps> = ({firstName, lastName, gh, phone, ma
 
     const history = useNavigate();
 
-
-
     useEffect(() => {
         getUserGH(setGhb, gh)
     }, [])
-
-    const img = ghb.map(img => img.avatar_url)
 
     return (
         <CvBioWrapper>
