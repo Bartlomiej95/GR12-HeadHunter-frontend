@@ -32,7 +32,7 @@ export interface StudentCVResponse {
     id: string;
     lastName: string;
     monthsOfCommercialExp: number;
-    portfolioUrls: string[];
+    portfolioUrls: string[] | null;
     projectDegree: number;
     projectUrls: string[];
     targetWorkCity: string;
