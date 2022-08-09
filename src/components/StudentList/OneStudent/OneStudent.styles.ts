@@ -30,3 +30,25 @@ export const Buttons = styled.div`
 
 export const DownChevron = styled(ChevronDown)`
   color: ${({theme}) => theme.color.filterIcon};`;
+
+export const StudentReservation = styled.div`
+  width: 10.1rem;
+  margin-right: 5.3rem;
+
+  p {
+    font-size: ${({theme}) => theme.color.textColorDark};
+    font-size: ${({theme}) => theme.size.xs};
+    line-height: 1.8rem;
+
+    &:nth-child(2) {
+      font-size: ${({theme}) => theme.color.textColor};
+      font-size: ${({theme}) => theme.size.l};
+      line-height: 2.7rem;
+      letter-spacing: 1.6px;
+    }
+  }`;
+
+export const StudentHeader = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 1.2rem;`

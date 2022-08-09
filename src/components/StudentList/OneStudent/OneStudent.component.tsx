@@ -1,7 +1,15 @@
 import React, {useState} from "react";
 import {Button} from "../../common/Button/Button.component";
 import {pl} from "../../../lang/pl";
-import {Buttons, DownChevron, StudentName, StudentNameContent, StudentWrap} from "./OneStudent.styles";
+import {
+    Buttons,
+    DownChevron,
+    StudentHeader,
+    StudentName,
+    StudentNameContent,
+    StudentReservation,
+    StudentWrap
+} from "./OneStudent.styles";
 import {IOneStudent} from "./OneStudent.types";
 import {
     handleAddToTalkStudent,
@@ -12,8 +20,19 @@ import {
 } from "./OneStudent.utils";
 import {NavLink} from "react-router-dom";
 import {LabelInfo} from "../../common/LabelInfo/LabelInfo.component";
+import {Avatar} from "../../common/Avatar/Avatar.component";
 
-export const OneStudent = ({firstName, lastName, index, show, setShow, active, id, setFreeStudents}: IOneStudent) => {
+export const OneStudent = ({
+                               firstName,
+                               lastName,
+                               index,
+                               show,
+                               setShow,
+                               active,
+                               id,
+                               setFreeStudents,
+                               reservation
+                           }: IOneStudent) => {
 
     const [labelActive, setLabelActive] = useState(false);
     const [message, setMessage] = useState('')
@@ -25,7 +44,15 @@ export const OneStudent = ({firstName, lastName, index, show, setShow, active, i
             <LabelInfo labelActive={labelActive}
                        message={message}/>
             <StudentName onClick={() => toggle(index, show, setShow)}>
-                <StudentNameContent>{firstName} {lastName}.</StudentNameContent>
+                {active.availableStudent ? <StudentNameContent>{firstName} {lastName}.</StudentNameContent> :
+                    <StudentHeader>
+                        <StudentReservation>
+                            <p>Rezerwacja do</p>
+                            <p>{reservation}</p>
+                        </StudentReservation>
+                        <Avatar/>
+                        <StudentNameContent>{firstName} {lastName}</StudentNameContent>
+                    </StudentHeader>}
             </StudentName>
             <Buttons>
                 {active.availableStudent ? <>

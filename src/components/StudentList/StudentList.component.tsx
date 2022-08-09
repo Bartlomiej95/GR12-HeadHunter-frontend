@@ -19,7 +19,7 @@ export const StudentList = ({students, active, setFreeStudents, activeFilter, fi
                     <OneStudent key={student.id} setFreeStudents={setFreeStudents} show={show} setShow={setShow}
                                 firstName={student.firstName}
                                 lastName={student.lastName}
-                                index={index} active={active} id={student.id}/>
+                                index={index} active={active} id={student.id} reservation={student.reservationEnd}/>
                     <OneStudentDescription show={show}
                                            index={index}
                                            freeWork={student.canTakeApprenticeship ? 'Tak' : 'Nie'}
@@ -47,7 +47,7 @@ export const StudentList = ({students, active, setFreeStudents, activeFilter, fi
                         <OneStudent key={student.id} setFreeStudents={setFreeStudents} show={show} setShow={setShow}
                                     firstName={student.firstName}
                                     lastName={student.lastName}
-                                    index={index} active={active} id={student.id}/>
+                                    index={index} active={active} id={student.id} reservation={student.reservationEnd}/>
                         <OneStudentDescription show={show}
                                                index={index}
                                                freeWork={student.canTakeApprenticeship ? 'Tak' : 'Nie'}

@@ -69,6 +69,8 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
         getStudentsToTalk(setStudentToTalk)
     }, [])
 
+    console.log(studentToTalk)
+
     return (
         <Container>
             <StudentWrap>
