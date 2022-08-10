@@ -61,6 +61,7 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
     })
 
     const [activeFilter, setActiveFilter] = useState(false)
+    const [countStudents, setCountStudents] = useState<number>(1);
 
     const showFiltered = (obj: Filtered) => {
         setFiltered(obj)
@@ -70,17 +71,24 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
         getStudentsToTalk(setStudentToTalk)
     }, [])
 
-    console.log(studentToTalk)
+    const students = [...studentToTalk]
+
+    const [start, setStart] = useState(0)
+    const [end, setEnd] = useState(countStudents)
+
+
 
     return (
         <Container>
             <StudentWrap>
                 <Tools activeFilter={setActiveFilter}/>
-                <StudentList students={studentToTalk} active={activePage} setFreeStudents={setStudentToTalk} activeFilter={activeFilter} filtered={filtered}/>
+                <StudentList students={studentToTalk} active={activePage} setFreeStudents={setStudentToTalk}
+                             activeFilter={activeFilter} filtered={filtered} start={start} end={end}
+                             />
             </StudentWrap>
-            <Pagination/>
+            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={()=>{}} setEnd={setEnd}/>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>
-        )
+    )
 
 }

@@ -8,4 +8,6 @@ export interface IStudents {
     setFreeStudents: Dispatch<SetStateAction<Students[]>>
     activeFilter: boolean
     filtered: Filtered
+    start: number
+    end: number
 }

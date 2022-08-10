@@ -13,11 +13,8 @@ export const AvailableStudents: React.FC<any> = ({activePage}) => {
     const [freeStudents, setFreeStudents] = useState<Students[]>([])
     const [activeFilter, setActiveFilter] = useState(false);
 
-    useEffect(() => {
-        getStudents(setFreeStudents)
-    }, [])
-
     const [filter, setFilter] = useState<boolean>(false)
+
     const [filtered, setFiltered] = useState<Filtered>({
         ratingCourse: {
             fiveStar: false,
@@ -65,17 +62,33 @@ export const AvailableStudents: React.FC<any> = ({activePage}) => {
         commercialExp: 0,
     })
 
-    const showFiltered = (obj: Filtered) => {
-        setFiltered(obj)
+    const students = [...freeStudents]
+    const [countStudents, setCountStudents] = useState(1);
+    const [start, setStart] = useState(0)
+    const [end, setEnd] = useState(countStudents)
+
+    const handleNext = () => {
+        setStart(start + countStudents)
+        setEnd(end + countStudents)
+        console.log(students.slice(start,end));
     }
+
+    const showFiltered = (obj: Filtered) => {
+        setFiltered(obj);
+    }
+
+    useEffect(() => {
+        getStudents(setFreeStudents);
+    }, [])
 
     return (
         <Container>
             <StudentWrap>
                 <Tools activeFilter={setFilter}/>
-                <StudentList students={freeStudents} setFreeStudents={setFreeStudents} active={activePage} activeFilter={activeFilter} filtered={filtered}/>
+                <StudentList students={freeStudents} setFreeStudents={setFreeStudents} active={activePage}
+                             activeFilter={activeFilter} filtered={filtered} start={start} end={end}/>
             </StudentWrap>
-            <Pagination/>
+            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={handleNext} setEnd={setEnd}/>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>
     )

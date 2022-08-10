@@ -6,7 +6,8 @@ export const PaginationWrapper = styled.div`
   margin: 0 auto;
   justify-content: flex-end;
   column-gap: 2rem;
-  padding: 4rem 0;`
+  padding: 4rem 0;
+`
 
 export const PaginationSelectWrapper = styled.div`
   display: flex;

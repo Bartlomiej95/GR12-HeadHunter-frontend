@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {ChevronLeft, ChevronRight, DownArrow} from "@styled-icons/boxicons-solid";
+import './Pagination.css';
 import {
     Options,
     PaginationPrevNext,
@@ -10,14 +11,15 @@ import {
     Option,
     PaginationBtn
 } from "./Pagination.styles";
+import {IPaginationProps} from "./Pagination.types";
 
-export const Pagination = () => {
+export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handleNext, setEnd}) => {
     const [select, setSelect] = useState(false);
-    const [number, setNumber] = useState(10)
 
     window.onclick = () => setSelect(false);
 
     return (
+
         <PaginationWrapper>
             <PaginationSelectWrapper>
                 <p>Ilość elementów</p>
@@ -26,17 +28,23 @@ export const Pagination = () => {
                         size={10}/></Select>
                     <Options className={select ? 'active' : ''}>
                         <Option
-                            onClick={() => setNumber(number === 10 ? 20 : 10 || number === 50 ? 10 : 20)}>
-                            <span>{number === 10 ? 20 : 10}</span></Option>
-                        <Option onClick={() => setNumber(number === 50 ? 20 : 50)}>
-                            <span>{number === 50 ? 20 : 50}</span></Option>
+                            onClick={() => {
+                                setNumber(number === 1 ? 2 : 1 || number === 5 ? 1 : 2)
+                                setEnd(number === 1 ? 2 : 1 || number === 5 ? 1 : 2)
+                            }}>
+                            <span>{number === 1 ? 2 : 1}</span></Option>
+                        <Option onClick={() => {
+                            setNumber(number === 5 ? 2 : 5)
+                            setEnd(number === 5 ? 2 : 5)
+                        }}>
+                            <span>{number === 5 ? 2 : 5}</span></Option>
                     </Options>
                 </PaginationSelect>
             </PaginationSelectWrapper>
             <PaginationPrevNext>
-                <p>10 z 90</p>
+                <p>1 z 5</p>
                 <PaginationBtn><ChevronLeft size={20}/></PaginationBtn>
-                <PaginationBtn className={'active'}><ChevronRight size={20}/></PaginationBtn>
+                <PaginationBtn className={'active'} onClick={()=> handleNext()}><ChevronRight size={20}/></PaginationBtn>
             </PaginationPrevNext>
         </PaginationWrapper>
     )

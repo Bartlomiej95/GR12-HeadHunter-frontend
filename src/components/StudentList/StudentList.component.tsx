@@ -5,17 +5,16 @@ import {IStudents} from "./StudentList.types";
 import {OneStudentDescription} from "./OneStudentDescription/OneStudentDescription.component";
 import {filterStudent} from "../../pages/AvailableStudents/AvailableStudents.utils";
 
-export const StudentList = ({students, active, setFreeStudents, activeFilter, filtered}: IStudents) => {
+export const StudentList = ({students, active, setFreeStudents, activeFilter, filtered, start, end}: IStudents) => {
 
     const [show, setShow] = useState<boolean | null | number>(false)
-
-    console.log(filterStudent(filtered))
-    console.log(students)
 
     return (
         <StudentsList>
             {!activeFilter ?
-                students.map((student, index: number) => <>
+
+                students.slice(start, end)
+                    .map((student, index: number) => <>
                     <OneStudent key={student.id} setFreeStudents={setFreeStudents} show={show} setShow={setShow}
                                 firstName={student.firstName}
                                 lastName={student.lastName}
@@ -33,7 +32,7 @@ export const StudentList = ({students, active, setFreeStudents, activeFilter, fi
                                            city={student.targetWorkCity}
                                            teamProjectDegree={student.teamProjectDegree}/></>)
                 :
-                students
+                students.slice(start, end)
                     .filter(user => user.monthsOfCommercialExp >= filterStudent(filtered).commercialExp)
                     .filter(user => (user.expectedSalary >= filterStudent(filtered).salaryPrice[0] && (filterStudent(filtered).salaryPrice[1] ? user.expectedSalary <= filterStudent(filtered).salaryPrice[1] : user.expectedSalary >= filterStudent(filtered).salaryPrice[0])) || ((filterStudent(filtered).salaryPrice[0] ? user.expectedSalary >= filterStudent(filtered).salaryPrice[0] : user.expectedSalary <= filterStudent(filtered).salaryPrice[1]) && user.expectedSalary <= filterStudent(filtered).salaryPrice[1]))
                     .filter(user => filterStudent(filtered).contractType.length !== 0 ? filterStudent(filtered).contractType.includes(user.expectedContractType) : !filterStudent(filtered).contractType.includes(user.expectedContractType))
