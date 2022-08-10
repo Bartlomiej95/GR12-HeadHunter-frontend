@@ -12,10 +12,10 @@ export interface StudentData {
     expectedTypeWork: ExpectedTypeWork;
     targetWorkCity: string;
     expectedContractType: ExpectedContractType;
-    expectedSalary: string | null;
-    canTakeApprenticeship: boolean;
+    expectedSalary: string | number;
+    canTakeApprenticeship: string;
     monthsOfCommercialExp: number;
-    education: string | null;
+    education: string;
     workExperience: string;
     courses: string;
 }
