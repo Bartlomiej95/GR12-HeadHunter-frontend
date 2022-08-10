@@ -61,7 +61,7 @@ export const handleEvents = (labelActive: boolean, setLabelActive: Dispatch<SetS
 
         setTimeout(() => {
             setLabelActive(false)
-        },1500)
+        },1200)
     }
 }
 

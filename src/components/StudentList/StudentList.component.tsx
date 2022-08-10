@@ -5,7 +5,7 @@ import {IStudents} from "./StudentList.types";
 import {OneStudentDescription} from "./OneStudentDescription/OneStudentDescription.component";
 import {filterStudent} from "../../pages/AvailableStudents/AvailableStudents.utils";
 
-export const StudentList = ({students, active, setFreeStudents, activeFilter, filtered, start, end}: IStudents) => {
+export const StudentList = ({students, active, setFreeStudents, activeFilter, filtered, start, end, steps}: IStudents) => {
 
     const [show, setShow] = useState<boolean | null | number>(false)
 
@@ -13,7 +13,9 @@ export const StudentList = ({students, active, setFreeStudents, activeFilter, fi
         <StudentsList>
             {!activeFilter ?
 
-                students.slice(start, end)
+                students
+
+                    .slice(start, end)
                     .map((student, index: number) => <>
                     <OneStudent key={student.id} setFreeStudents={setFreeStudents} show={show} setShow={setShow}
                                 firstName={student.firstName}

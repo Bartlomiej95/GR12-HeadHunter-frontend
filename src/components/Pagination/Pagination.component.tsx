@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {ChevronLeft, ChevronRight, DownArrow} from "@styled-icons/boxicons-solid";
-import './Pagination.css';
 import {
     Options,
     PaginationPrevNext,
@@ -13,10 +12,11 @@ import {
 } from "./Pagination.styles";
 import {IPaginationProps} from "./Pagination.types";
 
-export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handleNext, setEnd, pagesCount}) => {
+export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handleNext, setSteps, pagesCount, start, handlePrev}) => {
     const [select, setSelect] = useState(false);
 
     window.onclick = () => setSelect(false);
+    const [page, setPage] = useState(1)
 
     return (
 
@@ -30,21 +30,25 @@ export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handl
                         <Option
                             onClick={() => {
                                 setNumber(number === 1 ? 2 : 1 || number === 5 ? 1 : 2)
-                                setEnd(number === 1 ? 2 : 1 || number === 5 ? 1 : 2)
                             }}>
                             <span>{number === 1 ? 2 : 1}</span></Option>
                         <Option onClick={() => {
                             setNumber(number === 5 ? 2 : 5)
-                            setEnd(number === 5 ? 2 : 5)
                         }}>
                             <span>{number === 5 ? 2 : 5}</span></Option>
                     </Options>
                 </PaginationSelect>
             </PaginationSelectWrapper>
             <PaginationPrevNext>
-                <p>1 z {pagesCount}</p>
-                <PaginationBtn><ChevronLeft size={20}/></PaginationBtn>
-                <PaginationBtn className={'active'} onClick={()=> handleNext()}><ChevronRight size={20}/></PaginationBtn>
+                <p>{page} z {pagesCount}</p>
+                <PaginationBtn disabled={page === 1} className={page === 1 ? '' : 'active'} onClick={()=> {
+                    handlePrev()
+                    setPage(page-1)}}>
+                    <ChevronLeft size={20}/></PaginationBtn>
+                <PaginationBtn disabled={page === pagesCount} className={page === pagesCount ? '' : 'active'} onClick={()=> {
+                    handleNext()
+                    setPage(page+1)
+                }}><ChevronRight size={20}/></PaginationBtn>
             </PaginationPrevNext>
         </PaginationWrapper>
     )

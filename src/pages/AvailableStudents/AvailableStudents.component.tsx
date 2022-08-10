@@ -62,35 +62,43 @@ export const AvailableStudents: React.FC<any> = ({activePage}) => {
         commercialExp: 0,
     })
 
-    const students = [...freeStudents]
-    const [countStudents, setCountStudents] = useState(1);
-    const [start, setStart] = useState(0)
-    const [end, setEnd] = useState(countStudents)
+    const [countStudents, setCountStudents] = useState(10);
+    const [steps, setSteps] = useState(countStudents)
 
-    const pagesCount = (Math.ceil(students.length / end))
+    const [start, setStart] = useState(0)
+    const [end, setEnd] = useState(steps)
+
+    const pagesCount = (Math.ceil((freeStudents.length === 0 ? 1 : freeStudents.length) / steps))
+
 
     const handleNext = () => {
-        setStart(start + countStudents)
-        setEnd(end + countStudents)
-        console.log(students.slice(start,end));
+        setStart(start + steps)
+        setEnd(end + steps)
+    }
+    const handlePrev = () => {
+        setStart(start - steps)
+        setEnd(end - steps)
     }
 
     const showFiltered = (obj: Filtered) => {
         setFiltered(obj);
     }
 
+
     useEffect(() => {
         getStudents(setFreeStudents);
-    }, [])
+        setSteps(countStudents)
+        setEnd(countStudents)
+    }, [countStudents])
 
     return (
         <Container>
             <StudentWrap>
                 <Tools activeFilter={setFilter}/>
                 <StudentList students={freeStudents} setFreeStudents={setFreeStudents} active={activePage}
-                             activeFilter={activeFilter} filtered={filtered} start={start} end={end}/>
+                             activeFilter={activeFilter} filtered={filtered} start={start} end={end} steps={steps}/>
             </StudentWrap>
-            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={handleNext} setEnd={setEnd} pagesCount={pagesCount}/>
+            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={handleNext} setSteps={setSteps} pagesCount={pagesCount} start={start} handlePrev={handlePrev} setEnd={setEnd}/>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>
     )

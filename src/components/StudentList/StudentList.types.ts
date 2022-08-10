@@ -10,4 +10,5 @@ export interface IStudents {
     filtered: Filtered
     start: number
     end: number
+    steps: number
 }

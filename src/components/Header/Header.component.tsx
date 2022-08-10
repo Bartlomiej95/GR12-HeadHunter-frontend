@@ -3,15 +3,16 @@ import {Container} from "../Styles/Styles.component";
 import {Image, Wrap, HeaderBlock} from "./Header.styles";
 import logo from '../../assets/img/logo.webp';
 import {HeaderUser} from "./HeaderUser/HeaderUser.component";
+import { IHeaderProps } from "./Header.types";
 
-export const Header = () => (
+export const Header: React.FC<IHeaderProps> = ({firstName, lastName}) => (
     <Wrap>
         <Container>
             <HeaderBlock>
                 <div style={{width: "100%", height: "100%"}}>
                     <Image src={logo} alt="Logo MegaK"/>
                 </div>
-                <HeaderUser/>
+                <HeaderUser name={firstName} surname={lastName}/>
             </HeaderBlock>
         </Container>
     </Wrap>

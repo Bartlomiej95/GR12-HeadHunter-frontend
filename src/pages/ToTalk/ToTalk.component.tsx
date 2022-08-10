@@ -60,23 +60,33 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
         commercialExp: 0,
     })
 
-    const [activeFilter, setActiveFilter] = useState(false)
-    const [countStudents, setCountStudents] = useState<number>(1);
+    const [activeFilter, setActiveFilter] = useState<boolean>(false)
+    const [countStudents, setCountStudents] = useState<number>(10);
+    const [steps, setSteps] = useState(countStudents)
+    const [start, setStart] = useState(0)
+
+    const [end, setEnd] = useState(countStudents)
+    const pagesCount = (Math.ceil((studentToTalk.length === 0 ? 1 : studentToTalk.length) / end))
+
+    const handleNext = () => {
+        setStart(start + steps)
+        setEnd(end + steps)
+    }
+    const handlePrev = () => {
+        setStart(start - steps)
+        setEnd(end - steps)
+    }
+
+
+    useEffect(() => {
+        getStudentsToTalk(setStudentToTalk)
+        setSteps(countStudents)
+        setEnd(countStudents)
+    }, [])
 
     const showFiltered = (obj: Filtered) => {
         setFiltered(obj)
     }
-
-    useEffect(() => {
-        getStudentsToTalk(setStudentToTalk)
-    }, [])
-
-    const students = [...studentToTalk]
-
-    const [start, setStart] = useState(0)
-    const [end, setEnd] = useState(countStudents)
-
-    const pagesCount = (Math.ceil(students.length / end))
 
 
     return (
@@ -85,9 +95,9 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
                 <Tools activeFilter={setActiveFilter}/>
                 <StudentList students={studentToTalk} active={activePage} setFreeStudents={setStudentToTalk}
                              activeFilter={activeFilter} filtered={filtered} start={start} end={end}
-                             />
+                             steps={5}/>
             </StudentWrap>
-            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={()=>{}} setEnd={setEnd} pagesCount={pagesCount}/>
+            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={handleNext} setSteps={setSteps} pagesCount={pagesCount} start={start} handlePrev={handlePrev} setEnd={setEnd}/>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>
     )
