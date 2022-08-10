@@ -13,7 +13,7 @@ import {
 } from "./Pagination.styles";
 import {IPaginationProps} from "./Pagination.types";
 
-export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handleNext, setEnd}) => {
+export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handleNext, setEnd, pagesCount}) => {
     const [select, setSelect] = useState(false);
 
     window.onclick = () => setSelect(false);
@@ -42,7 +42,7 @@ export const Pagination: React.FC<IPaginationProps> = ({number, setNumber, handl
                 </PaginationSelect>
             </PaginationSelectWrapper>
             <PaginationPrevNext>
-                <p>1 z 5</p>
+                <p>1 z {pagesCount}</p>
                 <PaginationBtn><ChevronLeft size={20}/></PaginationBtn>
                 <PaginationBtn className={'active'} onClick={()=> handleNext()}><ChevronRight size={20}/></PaginationBtn>
             </PaginationPrevNext>

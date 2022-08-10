@@ -76,6 +76,7 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
     const [start, setStart] = useState(0)
     const [end, setEnd] = useState(countStudents)
 
+    const pagesCount = (Math.ceil(students.length / end))
 
 
     return (
@@ -86,7 +87,7 @@ export const ToTalk: React.FC<any> = ({activePage}) => {
                              activeFilter={activeFilter} filtered={filtered} start={start} end={end}
                              />
             </StudentWrap>
-            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={()=>{}} setEnd={setEnd}/>
+            <Pagination number={countStudents} setNumber={setCountStudents} handleNext={()=>{}} setEnd={setEnd} pagesCount={pagesCount}/>
             {filter ? <Filter filter={setFilter} showFiltered={showFiltered} setActiveFilter={setActiveFilter}/> : null}
         </Container>
     )

@@ -5,4 +5,5 @@ export interface IPaginationProps {
     setNumber: Dispatch<SetStateAction<number>>
     handleNext: () => void
     setEnd: Dispatch<SetStateAction<number>>
+    pagesCount: number
 }
