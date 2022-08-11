@@ -17,8 +17,6 @@ export const HeaderUser: React.FC<IHeaderUserProps> = ({name, surname, setLogin}
     const [load, setLoad] = useState(false)
     let navigate = useNavigate()
 
-    console.log(message)
-
     return (
         <div style={{position: "relative"}}>
             <User onMouseEnter={() => setActiveDrop(true)} onMouseLeave={() => setActiveDrop(false)}>

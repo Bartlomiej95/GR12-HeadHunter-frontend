@@ -8,12 +8,11 @@ import {LabelInfo} from "../../components/common/LabelInfo/LabelInfo.component";
 import {LoaderCSS} from "../../components/common/Loader/Loader.component";
 import {useNavigate} from "react-router-dom";
 
-export const Login = ({setLogin, getUsername}: ILoginProps) => {
+export const Login = ({setLogin}: ILoginProps) => {
 
     const [mail, setMail] = useState<string>('')
     const [pass, setPass] = useState<string>('')
     const [user, setUser] = useState<ILoginUser>({
-        role: '',
         firstName: '',
         lastName: ''
     })
@@ -30,7 +29,6 @@ export const Login = ({setLogin, getUsername}: ILoginProps) => {
     if (fetchLogin.logedIn) {
         document.cookie = 'login=true'
         setLogin(true);
-        getUsername(user.firstName, user.lastName, user.role)
     }
 
     const navigate = useNavigate()

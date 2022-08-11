@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {Header} from "../Header/Header.component";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {AvailableStudents} from "../../pages/AvailableStudents/AvailableStudents.component";
@@ -13,26 +13,54 @@ import {AccessDenied} from "../../pages/AccessDenied/AccessDenied.component";
 import {ChangeEmail} from "../../pages/ChangeEmail/ChangeEmail.component";
 import {ChangePassword} from "../../pages/ChangePassword/ChangePassword.component";
 import {Login} from "../../pages/Login/Login.component";
+import {ILoginUser} from "../../pages/Login/Login.types";
+import {loginCheck} from "./Home.utils";
 
-export const Home: React.FC<IHomeProps> = ({role, lastName, firstName, setLogin, login}) => {
+export const Home: React.FC<IHomeProps> = ({setLogin, login}) => {
 
     const [activePage, setActivePage] = useState<IActivePage>({
         availableStudent: true,
         toTalk: false,
     })
 
+    const [user, setUser] = useState<ILoginUser>({
+        firstName: '',
+        lastName: ''
+    })
+
+    const [roleUser, setRoleUser] = useState('')
+
+    useEffect(() => {
+        loginCheck(user, setUser, setRoleUser)
+    }, [])
+
+
 
     return (
         <HomeWrap>
-            <Header firstName={firstName} lastName={lastName} setLogin={setLogin}/>
+            <Header firstName={user.firstName} lastName={user.lastName} setLogin={setLogin}/>
             <Routes>
-                <Route path="/*" element={login ? role === 'recruiter' ? <><Menu setActivePage={setActivePage} activePage={activePage}/><AvailableStudents activePage={activePage}/></> : role === 'student' ? <Navigate to="/student-panel" replace /> : role === 'admin' ? <Navigate to="/admin-panel" replace /> : <><Menu setActivePage={setActivePage} activePage={activePage}/><AvailableStudents activePage={activePage}/></> : <Login setLogin={setLogin} getUsername={()=>{}}/>} />
-                <Route path="/to-talk" element={login ? role === 'recruiter' ? <><Menu setActivePage={setActivePage} activePage={activePage}/><ToTalk activePage={activePage}/></>: <AccessDenied/> : <Login setLogin={setLogin} getUsername={()=>{}}/>}/>
-                <Route path="/cv/:id" element={login ? role === 'recruiter' ? <Cv/> : <AccessDenied/> : <Login setLogin={setLogin} getUsername={()=>{}}/>}/>
-                <Route path="/admin-panel" element={login ? role === 'admin' ? <AdminPanel/> : <AccessDenied/> : <Login setLogin={setLogin} getUsername={()=>{}}/>} />
-                <Route path="/student-panel" element={login ? role === 'student' ? <StudentPanel/> : <AccessDenied/> : <Login setLogin={setLogin} getUsername={()=>{}}/>}/>
-                <Route path="/change-email" element={login ? <ChangeEmail/> : <Login setLogin={setLogin} getUsername={()=>{}}/>}/>
-                <Route path="/change-password" element={login ? <ChangePassword/> : <Login setLogin={setLogin} getUsername={()=>{}}/>}/>
+                <Route path="/*" element={login ? roleUser === 'recruiter' ? <><Menu setActivePage={setActivePage}
+                                                                                     activePage={activePage}/><AvailableStudents
+                    activePage={activePage}/></> : roleUser === 'student' ?
+                    <Navigate to="/student-panel" replace/> : roleUser === 'admin' ?
+                        <Navigate to="/admin-panel" replace/> : <><Menu setActivePage={setActivePage}
+                                                                        activePage={activePage}/><AvailableStudents
+                            activePage={activePage}/></> : <Login setLogin={setLogin}/>}/>
+                <Route path="/to-talk" element={login ? roleUser === 'recruiter' ? <><Menu setActivePage={setActivePage}
+                                                                                           activePage={activePage}/><ToTalk
+                    activePage={activePage}/></> : <AccessDenied/> : <Login setLogin={setLogin}/>}/>
+                <Route path="/cv/:id" element={login ? roleUser === 'recruiter' ? <Cv/> : <AccessDenied/> :
+                    <Login setLogin={setLogin}/>}/>
+                <Route path="/admin-panel" element={login ? roleUser === 'admin' ? <AdminPanel/> : <AccessDenied/> :
+                    <Login setLogin={setLogin}/>}/>
+                <Route path="/student-panel"
+                       element={login ? roleUser === 'student' ? <StudentPanel/> : <AccessDenied/> :
+                           <Login setLogin={setLogin}/>}/>
+                <Route path="/change-email"
+                       element={login ? <ChangeEmail/> : <Login setLogin={setLogin}/>}/>
+                <Route path="/change-password"
+                       element={login ? <ChangePassword/> : <Login setLogin={setLogin}/>}/>
             </Routes>
         </HomeWrap>
     )

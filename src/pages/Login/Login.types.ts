@@ -8,11 +8,9 @@ export interface IFetchLogin {
 
 export interface ILoginProps {
     setLogin: Dispatch<SetStateAction<boolean>>
-    getUsername: (firstName: string, lastName: string, role: string) => void
 }
 
 export interface ILoginUser {
-    role: string
     firstName: string
     lastName: string
 }

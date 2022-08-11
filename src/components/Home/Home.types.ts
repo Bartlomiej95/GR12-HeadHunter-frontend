@@ -6,9 +6,6 @@ export interface IActivePage {
 }
 
 export interface IHomeProps {
-    role: string
-    firstName: string
-    lastName: string
     setLogin: Dispatch<SetStateAction<boolean>>
     login: boolean
 }

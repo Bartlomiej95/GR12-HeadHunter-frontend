@@ -15,7 +15,7 @@ export const logIn = async (mail: string, pass: string, setLogin: Dispatch<SetSt
         .then(data => {
             setMessage(data.message)
             if(data.logedIn) {
-                setUser({...user, role:data.message.role, firstName: data.message.firstName, lastName: data.message.lastName})
+                setUser({...user, firstName: data.message.firstName, lastName: data.message.lastName})
             }
             setFetchLogin({...fetchLogin, logedIn: data.logedIn, message: data.message})
         })
