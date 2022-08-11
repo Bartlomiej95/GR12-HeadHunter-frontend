@@ -64,4 +64,8 @@ export const pl = {
     cvSectionProjectScrum: 'Projekt w zespole Scrumowym',
     cvSectionProjectEnd: 'Projekt na zaliczenie',
     cvSectionCommercial: 'Komercyjne doświadczenie w programowaniu',
+
+    changePassword: 'Zmień hasło',
+    changeEmail: 'Zmień e-mail',
+    logout: 'Wyloguj się',
 }
