@@ -68,4 +68,8 @@ export const pl = {
     changePassword: 'Zmień hasło',
     changeEmail: 'Zmień e-mail',
     logout: 'Wyloguj się',
+
+    oldPass: 'Twoje stare hasło',
+    newPass: 'Podaj nowe hasło',
+    repeatNewPass: 'Powtórz podane hasło',
 }

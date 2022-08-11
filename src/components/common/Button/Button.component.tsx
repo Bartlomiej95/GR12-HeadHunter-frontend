@@ -8,8 +8,11 @@ export const Button = ({text, handleClick, id, big}: IButtonProps) => {
         <>
             {
                 big === false ?
-                    <Btn onClick={() => handleClick(id)}>{text}</Btn> :
-                    <BtnCV onClick={() => handleClick(id)}>{text}</BtnCV>
+                    <Btn onClick={(e) => {
+                        e.preventDefault()
+                        handleClick(id)
+                    }}>{text}</Btn> :
+                    <BtnCV onClick={(e) => handleClick(id)}>{text}</BtnCV>
             }
         </>
     )

@@ -7,4 +7,5 @@ export const size = {
     xlx: '2rem',
     xxl: '2.2rem',
     xxxl: '2.4rem',
+    x4l: '3rem',
 }

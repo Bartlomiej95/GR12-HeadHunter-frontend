@@ -33,7 +33,6 @@ export const HeaderUser: React.FC<IHeaderUserProps> = ({name, surname, setLogin}
                     setTimeout(() => {
                         setLabelActive(false)
                         setLoad(false)
-                        // navigate('/')
                     }, 2300)
 
                     setTimeout(() => {
