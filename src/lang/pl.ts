@@ -72,4 +72,7 @@ export const pl = {
     oldPass: 'Twoje stare hasło',
     newPass: 'Podaj nowe hasło',
     repeatNewPass: 'Powtórz podane hasło',
+
+    newEmail: 'Podaj nowy email',
+    yourPassword: 'Podaj swoje hasło',
 }

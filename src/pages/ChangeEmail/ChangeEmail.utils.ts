@@ -1,28 +1,10 @@
 import {Dispatch, SetStateAction} from "react";
 import {NavigateFunction} from "react-router-dom";
 
-export const handleChangePass = async (oldPassword: string, newPassword: string, repeatNewPass: string, setMessage: Dispatch<SetStateAction<string>>, setLabelActive: Dispatch<SetStateAction<boolean>>, setLoad: Dispatch<SetStateAction<boolean>>, navigate: NavigateFunction) => {
-    if (newPassword !== repeatNewPass) {
-        setMessage('Podane hasła nie są takie same')
-        setLabelActive(true)
-        setTimeout(() => {
-            setLabelActive(false)
-        }, 1300)
-        return
-    }
-
-    if (newPassword.length < 8) {
-        setMessage('Podane hasło musi mieć długość conajmniej 8 znaków')
-        setLabelActive(true)
-        setTimeout(() => {
-            setLabelActive(false)
-        }, 1300)
-        return
-    }
-
-    return await fetch('http://localhost:3001/login/passchange', {
+export const handleChangeEmail = async (newEmail: string, password: string, setMessage: Dispatch<SetStateAction<string>>, setLabelActive: Dispatch<SetStateAction<boolean>>, setLoad: Dispatch<SetStateAction<boolean>>, navigate: NavigateFunction) => {
+    return await fetch('http://localhost:3001/login/emailchange', {
         method: 'PATCH',
-        body: JSON.stringify({oldPassword, newPassword}),
+        body: JSON.stringify({newEmail, password}),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -31,6 +13,7 @@ export const handleChangePass = async (oldPassword: string, newPassword: string,
         .then(data => {
             setMessage(data.message)
             setLoad(true)
+
             if(!data.actionStatus){
                 setTimeout(()=>{
                     setLabelActive(true)
@@ -43,11 +26,13 @@ export const handleChangePass = async (oldPassword: string, newPassword: string,
             }
             setTimeout(()=>{
                 setLabelActive(true)
+                setLoad(false)
                 setTimeout(() => {
                     setLabelActive(false)
-                    setLoad(false)
                     navigate('/')
                 }, 1300)
             },2000)
+
+
         })
 }

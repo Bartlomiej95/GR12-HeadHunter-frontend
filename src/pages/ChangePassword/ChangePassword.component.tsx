@@ -44,10 +44,7 @@ export const ChangePassword = () => {
                            onChange={e => setChangePass({...changePass, repeatNewPass: e.target.value})}/>
                 </InputBlock>
                 {load ? <LoaderCSS/> : <Button big={false} text={pl.changePassword} handleClick={() => {
-                    handleChangePass(changePass.oldPass, changePass.newPass, changePass.repeatNewPass, setMessage, setLabelActive, setLoad)
-                    setTimeout(() => {
-                        navigate('/')
-                    }, 4000)
+                    handleChangePass(changePass.oldPass, changePass.newPass, changePass.repeatNewPass, setMessage, setLabelActive, setLoad, navigate)
                 }} id=''/>}
             </Form>
             <LabelInfo labelActive={labelActive} message={message}/>
