@@ -10,7 +10,7 @@ import {Cv} from "../../pages/Cv/Cv.component";
 import {AdminPanel} from "../../pages/AdminPanel/AdminPanel.component";
 import {StudentPanel} from "../../pages/StudentPanel/StudentPanel.component";
 
-export const Home: React.FC<IHomeProps> = ({role, lastName, firstName}) => {
+export const Home: React.FC<IHomeProps> = ({role, lastName, firstName, setLogin}) => {
 
     const [activePage, setActivePage] = useState<IActivePage>({
         availableStudent: true,
@@ -19,7 +19,7 @@ export const Home: React.FC<IHomeProps> = ({role, lastName, firstName}) => {
 
     return (
         <HomeWrap>
-            <Header firstName={firstName} lastName={lastName}/>
+            <Header firstName={firstName} lastName={lastName} setLogin={setLogin}/>
             <Routes>
                 <Route path="/" element={role === 'recruiter' ? <><Menu setActivePage={setActivePage} activePage={activePage}/><AvailableStudents activePage={activePage}/></> : role === 'student' ? <StudentPanel/> : role === 'admin' ? <AdminPanel/> : null}/>
                 <Route path="/to-talk" element={role === 'recruiter' ? <><Menu setActivePage={setActivePage} activePage={activePage}/><ToTalk activePage={activePage}/></>: null}/>

@@ -20,6 +20,7 @@ export const MenuText = styled.p`
   left: 300%;
   display: flex;
   justify-content: flex-end;
+  padding: .5rem .3rem;
   transform: translateX(-50%);
   box-shadow: inset 10px 0 5px 0 rgba(0, 0, 0, .7);
   border-radius: 8px;
@@ -42,7 +43,7 @@ export const MenuText = styled.p`
   }
 
   &:nth-child(5) {
-    top: 9rem;
+    top: 9.5rem;
     transition: ${({theme}) => theme.transition.time};
     transition-delay: .1s;
     &.active {
@@ -51,7 +52,7 @@ export const MenuText = styled.p`
   }
 
   &:nth-child(6) {
-    top: 12rem;
+    top: 13rem;
     transition: ${({theme}) => theme.transition.time};
     transition-delay: .2s;
     &.active {
