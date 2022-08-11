@@ -6,6 +6,7 @@ import {IFetchLogin, ILogin, ILoginProps, ILoginUser} from "./Login.types";
 import {logIn} from "./Login.utils";
 import {LabelInfo} from "../../components/common/LabelInfo/LabelInfo.component";
 import {LoaderCSS} from "../../components/common/Loader/Loader.component";
+import {useNavigate} from "react-router-dom";
 
 export const Login = ({setLogin, getUsername}: ILoginProps) => {
 
@@ -32,6 +33,7 @@ export const Login = ({setLogin, getUsername}: ILoginProps) => {
         getUsername(user.firstName, user.lastName, user.role)
     }
 
+    const navigate = useNavigate()
     return (
         <Wrap>
             <LoginWrap>
@@ -48,6 +50,7 @@ export const Login = ({setLogin, getUsername}: ILoginProps) => {
                             e.preventDefault()
                             logIn(mail, pass, setLogin, setFetchLogin, fetchLogin, setMessage, setUser, user)
                             setLoad(true)
+                            navigate('/')
                             setTimeout(() => {
                                 setLoad(false)
                                 setLabelActive(true)

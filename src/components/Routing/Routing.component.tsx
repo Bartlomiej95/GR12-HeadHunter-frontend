@@ -17,7 +17,7 @@ export const Routing = ({login, setLogin}: IRoutingTypes) => {
     }
     return (
         <Routes>
-            <Route path="/*" element={login ? <Home role={user.role} firstName={user.firstName} lastName={user.lastName} setLogin={setLogin}/> : <Login setLogin={setLogin} getUsername={getUserName}/>}/>
+            <Route path="/*" element={login ? <Home role={user.role} firstName={user.firstName} lastName={user.lastName} setLogin={setLogin} login={login}/> : <Login setLogin={setLogin} getUsername={getUserName}/>}/>
         </Routes>
     )
 }

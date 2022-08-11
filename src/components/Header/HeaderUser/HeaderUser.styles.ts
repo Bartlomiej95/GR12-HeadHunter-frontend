@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {DownArrow} from "@styled-icons/boxicons-solid";
+import {NavLink} from "react-router-dom";
 
 export const User = styled.div`
   position: relative;
@@ -9,7 +10,8 @@ export const User = styled.div`
   align-items: center;
   justify-content: center;
   column-gap: 1.2rem;
-  cursor: pointer`;
+  cursor: pointer;
+  z-index: 99`;
 
 export const ArrowDown = styled(DownArrow)`
   color: ${({theme}) => theme.color.ratingGray};
@@ -20,7 +22,7 @@ export const MenuText = styled.p`
   left: 300%;
   display: flex;
   justify-content: flex-end;
-  padding: .5rem .3rem;
+  padding: .6rem 1.6rem .6rem 0;
   transform: translateX(-50%);
   box-shadow: inset 10px 0 5px 0 rgba(0, 0, 0, .7);
   border-radius: 8px;
@@ -35,27 +37,36 @@ export const MenuText = styled.p`
   }
 
   &:nth-child(4) {
-    top: 6rem;
+    top: 4.8rem;
     transition: ${({theme}) => theme.transition.time};
+
     &.active {
       left: 50%
     }
   }
 
   &:nth-child(5) {
-    top: 9.5rem;
+    top: 8.5rem;
     transition: ${({theme}) => theme.transition.time};
     transition-delay: .1s;
+
     &.active {
       left: 50%
     }
   }
 
   &:nth-child(6) {
-    top: 13rem;
+    top: 12.3rem;
     transition: ${({theme}) => theme.transition.time};
     transition-delay: .2s;
+
     &.active {
       left: 50%
     }
   }`
+
+export const AnimeLoad = styled.div`
+  position: absolute;
+  transform: rotate(45deg);
+  top: -.6rem;
+  right: -1rem`

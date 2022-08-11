@@ -10,4 +10,5 @@ export interface IHomeProps {
     firstName: string
     lastName: string
     setLogin: Dispatch<SetStateAction<boolean>>
+    login: boolean
 }

@@ -13,12 +13,11 @@ export const logIn = async (mail: string, pass: string, setLogin: Dispatch<SetSt
         })
     }).then(response => response.json())
         .then(data => {
-            console.log(data)
-            setFetchLogin({...fetchLogin, logedIn: data.logedIn, message: data.message})
             setMessage(data.message)
             if(data.logedIn) {
                 setUser({...user, role:data.message.role, firstName: data.message.firstName, lastName: data.message.lastName})
             }
+            setFetchLogin({...fetchLogin, logedIn: data.logedIn, message: data.message})
         })
 
 }
