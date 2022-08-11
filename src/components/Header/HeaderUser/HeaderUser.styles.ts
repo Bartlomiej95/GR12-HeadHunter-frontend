@@ -21,12 +21,13 @@ export const MenuText = styled.p`
   display: flex;
   justify-content: flex-end;
   transform: translateX(-50%);
-  box-shadow: inset 10px 0 5px 0 rgba(255, 255, 255, .05);
+  box-shadow: inset 10px 0 5px 0 rgba(0, 0, 0, .7);
   border-radius: 8px;
   font-size: ${({theme}) => theme.size.s};
-  width: 50%;
+  width: 70%;
   color: ${({theme}) => theme.color.textColor};
   cursor: pointer;
+  backdrop-filter: blur(50px);
 
   &:hover {
     box-shadow: inset 15px 0 5px 0 ${({theme}) => theme.color.accentColor};

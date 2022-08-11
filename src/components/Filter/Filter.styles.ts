@@ -7,7 +7,8 @@ export const FilterBackground = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: ${({theme}) => theme.color.bgFilter};`;
+  background-color: ${({theme}) => theme.color.bgFilter};
+backdrop-filter: blur(2px)`;
 
 export const FilterWrap = styled.div`
   position: fixed;
