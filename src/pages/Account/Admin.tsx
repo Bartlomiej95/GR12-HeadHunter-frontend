@@ -8,7 +8,7 @@ export const Admin = () => {
     return(
         <>
         <section>
-            <div className='AvailableStudents'>
+            <div className='AvailableStudents u-dar'>
                 <div >
                     <NavLink to="/add" className="c-btn__link">Dodawanie hr</NavLink>
                     <NavLink to="addStudents" className="c-btn__link" >Dodawanie studentów</NavLink>
