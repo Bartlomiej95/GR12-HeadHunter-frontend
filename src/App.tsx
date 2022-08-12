@@ -25,7 +25,7 @@ function App() {
                     if (data.logedIn) {
                         setLogin(true)
                         setName(data.message.firstName)
-                        setLastName(data.message.lasyName)
+                        setLastName(data.message.lastName)
                         setRole(data.message.role)
                     }
                 })
