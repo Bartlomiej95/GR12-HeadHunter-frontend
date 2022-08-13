@@ -1,6 +1,7 @@
 import React, {FormEvent, useEffect, useState} from 'react';
 import {ExpectedContractType, ExpectedTypeWork} from "../../utils/get-one-student-data";
 import {getStudentOwnData, StudentData} from "../../utils/get-student-own-data";
+import {InputUrlList} from "../InputUrlList/InputUrlList";
 
 export const StudentOwnData = () => {
     const [studentOwnData, setStudentOwnData] = useState<StudentData>({
@@ -22,25 +23,6 @@ export const StudentOwnData = () => {
         courses: ''
     });
 
-    const [form, setForm] = useState({
-        tel: '',
-        firstName: '',
-        lastName: '',
-        githubUsername: '',
-        portfolioUrls: '',
-        projectUrls: [],
-        bio: '',
-        expectedContractType: ExpectedContractType.IRRELEVANT,
-        targetWorkCity: '',
-        expectedTypeWork: ExpectedTypeWork.NO_MATTER,
-        expectedSalary: '',
-        canTakeApprenticeship: "false",
-        monthsOfCommercialExp: 0,
-        education: '',
-        workExperience: '',
-        courses: ''
-    })
-
     const {
         tel,
         firstName,
@@ -60,19 +42,29 @@ export const StudentOwnData = () => {
         courses
     } = studentOwnData;
 
-    const updateForm = (key: string, value: string | number | ExpectedContractType | ExpectedTypeWork | null) => {
-        setForm(form => ({
+    const updateStudentForm = (key: string, value: string | number | ExpectedContractType | ExpectedTypeWork | null) => {
+        setStudentOwnData(form => ({
             ...form,
             [key]: value,
         }));
     }
 
     const click = () => {
+        console.log('kliknięto')
+    }
 
-    };
-
-    const sendForm = (event: FormEvent) => {
+    const sendForm = async (event: FormEvent) => {
         event.preventDefault();
+        console.log(JSON.stringify(studentOwnData))
+
+        // const res = await fetch(StudentDataUpdate, {
+        //     method: 'PATCH',
+        //     headers: {'Content-Type': 'application/json'},
+        //     credentials: "include",
+        //     body: JSON.stringify({
+        //         studentOwnData
+        //     }),
+        // });
     };
 
     useEffect(() => {
@@ -82,12 +74,12 @@ export const StudentOwnData = () => {
         })();
     }, []);
 
-    console.log(studentOwnData);
     return <>
         <div className='AvailableStudents'>
             <div className="u-flex  u-flex__column">
                 <h1>Aktualizacja danych studenta</h1>
                 <form onSubmit={sendForm}>
+                    <InputUrlList labelName="TEST NEW Adresy URL do portfolio" urlList={portfolioUrls}/>
                     <label>
                         <p>Imię</p>
                         <input type="text"
@@ -96,7 +88,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={firstName}
                                required
-                               onChange={e => updateForm('firstName', e.target.value)}
+                               onChange={e => updateStudentForm('firstName', e.target.value)}
                         />
                     </label>
                     <label>
@@ -107,7 +99,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={lastName}
                                required
-                               onChange={e => updateForm('lastName', e.target.value)}
+                               onChange={e => updateStudentForm('lastName', e.target.value)}
                         />
                     </label>
                     <label>
@@ -118,7 +110,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={tel}
                                required
-                               onChange={e => updateForm('tel', e.target.value)}
+                               onChange={e => updateStudentForm('tel', e.target.value)}
                         />
                     </label>
                     <label>
@@ -129,7 +121,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={githubUsername}
                                required
-                               onChange={e => updateForm('githubUsername', e.target.value)}
+                               onChange={e => updateStudentForm('githubUsername', e.target.value)}
                         />
                     </label>
                     <label>
@@ -141,7 +133,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={String(portfolioUrls)}
                                required
-                               onChange={e => updateForm('portfolioUrls', e.target.value)}
+                               onChange={e => updateStudentForm('portfolioUrls', e.target.value)}
                         />
                     </label>
                     <label>
@@ -153,7 +145,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={String(projectUrls)}
                                required
-                               onChange={e => updateForm('projectUrls', e.target.value)}
+                               onChange={e => updateStudentForm('projectUrls', e.target.value)}
                         />
                     </label>
                     <label>
@@ -164,7 +156,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={bio}
                                required
-                               onChange={e => updateForm('bio', e.target.value)}
+                               onChange={e => updateStudentForm('bio', e.target.value)}
                         />
                     </label>
                     <label htmlFor="expectedContractType">
@@ -174,12 +166,13 @@ export const StudentOwnData = () => {
                             id="expectedContractType"
                             className="su-input su-input--border"
                             value={expectedContractType}
-                            onChange={e => updateForm('expectedContractType', e.target.value)}
+                            onChange={e => updateStudentForm('expectedContractType', e.target.value)}
+                            defaultValue="UZ/UoD"
                         >
                             <option value="UoP">Tylko UoP</option>
                             <option value="B2B">Możliwe B2B</option>
                             <option value="UZ/UoD">Możliwe UZ/UoD</option>
-                            <option value="irrelevant" selected={true}>Brak preferencji</option>
+                            <option value="irrelevant">Brak preferencji</option>
                         </select>
                     </label>
                     <label>
@@ -190,7 +183,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={targetWorkCity}
                                required
-                               onChange={e => updateForm('targetWorkCity', e.target.value)}
+                               onChange={e => updateStudentForm('targetWorkCity', e.target.value)}
                         />
                     </label>
                     <label htmlFor="expectedTypeWork">
@@ -200,7 +193,7 @@ export const StudentOwnData = () => {
                             id="expectedTypeWork"
                             className="su-input su-input--border"
                             value={expectedTypeWork}
-                            onChange={e => updateForm('expectedTypeWork', e.target.value)}
+                            onChange={e => updateStudentForm('expectedTypeWork', e.target.value)}
                         >
                             <option value="atLocation">Praca na miejscu</option>
                             <option value="changeOfLocation">Gotowość do przeprowadzki</option>
@@ -216,7 +209,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={expectedSalary}
                                required
-                               onChange={e => updateForm('expectedSalary', e.target.value)}
+                               onChange={e => updateStudentForm('expectedSalary', e.target.value)}
                         />
                     </label>
                     <label htmlFor="canTakeApprenticeship">
@@ -226,7 +219,7 @@ export const StudentOwnData = () => {
                             id="canTakeApprenticeship"
                             className="su-input su-input--border"
                             value={canTakeApprenticeship}
-                            onChange={e => updateForm('canTakeApprenticeship', e.target.value)}
+                            onChange={e => updateStudentForm('canTakeApprenticeship', e.target.value)}
                         >
                             <option value="true">TAK</option>
                             <option value="false" selected={true}>NIE</option>
@@ -240,7 +233,7 @@ export const StudentOwnData = () => {
                                min={0}
                                value={monthsOfCommercialExp}
                                required
-                               onChange={e => updateForm('monthsOfCommercialExp', e.target.value)}
+                               onChange={e => updateStudentForm('monthsOfCommercialExp', e.target.value)}
                         />
                     </label>
                     <label>
@@ -249,7 +242,7 @@ export const StudentOwnData = () => {
                             name="education"
                             className="su-input su-input--border su-input--textarea"
                             value={education}
-                            onChange={e => updateForm('education', e.target.value)}
+                            onChange={e => updateStudentForm('education', e.target.value)}
                         />
                     </label>
                     <label>
@@ -258,7 +251,7 @@ export const StudentOwnData = () => {
                             name="workExperience"
                             className="su-input su-input--border su-input--textarea"
                             value={workExperience}
-                            onChange={e => updateForm('workExperience', e.target.value)}
+                            onChange={e => updateStudentForm('workExperience', e.target.value)}
                         />
                     </label>
                     <label>
@@ -267,11 +260,11 @@ export const StudentOwnData = () => {
                             name="courses"
                             className="su-input su-input--border su-input--textarea"
                             value={courses}
-                            onChange={e => updateForm('courses', e.target.value)}
+                            onChange={e => updateStudentForm('courses', e.target.value)}
                         />
                     </label>
+                    <button className="c-btn" onClick={click}>Aktualizuj dane</button>
                 </form>
-                <button className="c-btn" onClick={click}>Aktualizuj dane</button>
             </div>
         </div>
     </>

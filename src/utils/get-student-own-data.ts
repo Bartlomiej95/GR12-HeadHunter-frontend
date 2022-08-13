@@ -1,5 +1,5 @@
 import {ExpectedContractType, ExpectedTypeWork} from "./get-one-student-data";
-import {StudentDataUpdate} from "./dictionaries";
+import {StudentDataPull} from "./dictionaries";
 
 export interface StudentData {
     tel: string;
@@ -21,7 +21,7 @@ export interface StudentData {
 }
 
 export const getStudentOwnData = async (): Promise<StudentData> => {
-    const res = await fetch(StudentDataUpdate, {
+    const res = await fetch(StudentDataPull, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         credentials: "include",
