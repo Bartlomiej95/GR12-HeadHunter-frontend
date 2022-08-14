@@ -1,38 +1,41 @@
-import React, {FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
 import {InputWithUrl} from "../InputWithUrl/InputWithUrl";
+
 
 interface Props {
     labelName: string;
     urlList: string[] | null;
+    studentPortfolio: string[] | null;
+    childToParent: (elem: string) => void;
 }
 
 export const InputUrlList = (props: Props) => {
     const [url, setUrl] = useState('');
     const [isClicked, setIsClicked] = useState(false);
-    const [myUrls, setMyUrls] = useState<string[]>([]);
 
-    const handleClick = (e: FormEvent) => {
+    const handleAddPortfolioBtn = (e: FormEvent) => {
         e.preventDefault();
         setIsClicked(true);
-        console.log(isClicked)
-    }
+        console.log('clicked add portfolio btn')
 
-    function handleSave(e: FormEvent) {
+    };
+
+    const handleSave = (e: FormEvent) => {
         e.preventDefault();
-        setMyUrls([
-            ...myUrls,
-            url
-        ])
+        props.childToParent(url)
+    };
 
-        console.log(myUrls)
-        console.log('myUrls: ', myUrls)
-    }
+    const handleAddNewPortfolio = (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        setUrl(e.target.value);
+        console.log(url)
+    };
 
     return <>
         <p>{props.labelName}</p>
         {!props.urlList
             ? <>
-                <button className="Button" onClick={handleClick}>Dodaj nowy adres z portfolio</button>
+                <button className="Button" onClick={handleAddPortfolioBtn}>Dodaj nowy adres z portfolio</button>
                 {isClicked
                     ? <>
                         <input
@@ -50,8 +53,22 @@ export const InputUrlList = (props: Props) => {
                 <ul>
                     {
                         [...props.urlList]
-                            .map((oneUrl, index) => <InputWithUrl address={oneUrl} key={index}></InputWithUrl>)
+                            .map((oneUrl, index) => <InputWithUrl address={oneUrl} index={index} key={index}/>)
                     }
+                    <button className="Button" onClick={handleAddPortfolioBtn}>Dodaj kolejne portfolio</button>
+                    {isClicked
+                        ? <>
+                            <input
+                                type="url"
+                                className="su-input su-input--border"
+                                placeholder="adres z portfolio"
+                                onChange={handleAddNewPortfolio}
+                            />
+                            <button className="Button" onClick={handleSave}>Zapisz</button>
+                        </>
+                        : null
+                    }
+
                 </ul>
             </>
         }

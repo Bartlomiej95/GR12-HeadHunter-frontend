@@ -42,6 +42,18 @@ export const StudentOwnData = () => {
         courses
     } = studentOwnData;
 
+    const [studentNewPortfolioUrl, setStudentNewPortfolioUrl] = useState<string>('');
+    const [studentPortfolio, setStudentPortfolio] = useState<string[] | null>(portfolioUrls);
+
+    const addNewPortfolioUrl = (url: string): void => {
+        // TODO: fix empty string in studentPortfolio when first click on save btn with new portfolio
+        setStudentNewPortfolioUrl(url);
+        if (studentPortfolio !== null) {
+            setStudentPortfolio([...studentPortfolio, studentNewPortfolioUrl])
+        }
+        console.log('nowy adres z protfolio', setStudentNewPortfolioUrl)
+    }
+
     const updateStudentForm = (key: string, value: string | number | ExpectedContractType | ExpectedTypeWork | null) => {
         setStudentOwnData(form => ({
             ...form,
@@ -71,6 +83,7 @@ export const StudentOwnData = () => {
         (async () => {
             const data = await getStudentOwnData();
             setStudentOwnData(data);
+            setStudentPortfolio(data.portfolioUrls);
         })();
     }, []);
 
@@ -79,7 +92,12 @@ export const StudentOwnData = () => {
             <div className="u-flex  u-flex__column">
                 <h1>Aktualizacja danych studenta</h1>
                 <form onSubmit={sendForm}>
-                    <InputUrlList labelName="TEST NEW Adresy URL do portfolio" urlList={portfolioUrls}/>
+                    <InputUrlList
+                        labelName="TEST NEW Adresy URL do portfolio"
+                        urlList={portfolioUrls}
+                        studentPortfolio={studentPortfolio}
+                        childToParent={addNewPortfolioUrl}
+                    />
                     <label>
                         <p>Imię</p>
                         <input type="text"
