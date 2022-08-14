@@ -68,22 +68,13 @@ export const StudentOwnData = () => {
         }));
     }
 
-    const click = () => {
-        console.log('kliknięto')
-    }
-
     const sendForm = async (event: FormEvent) => {
         event.preventDefault();
-        console.log(JSON.stringify(studentOwnData))
-
-        // TODO: need to fix update student data
         await fetch(StudentDataUpdate, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             credentials: "include",
-            body: JSON.stringify({
-                studentOwnData
-            }),
+            body: JSON.stringify(studentOwnData),
         });
     };
 
@@ -288,7 +279,7 @@ export const StudentOwnData = () => {
                             onChange={e => updateStudentForm('courses', e.target.value)}
                         />
                     </label>
-                    <button className="Button" onClick={click}>Aktualizuj dane</button>
+                    <button className="Button">Aktualizuj dane</button>
                 </form>
             </div>
         </div>
