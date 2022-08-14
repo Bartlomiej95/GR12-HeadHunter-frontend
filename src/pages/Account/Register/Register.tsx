@@ -40,7 +40,8 @@ export const Register = ()=>{
         <div className="u-flex  u-flex__column">
             <h1>Panel dodawania HR</h1>
             <input type="text"
-                   placeholder="Email" className="c-input c-input--border"
+                   placeholder="Email"
+                   className="c-input c-input--border"
                    onChange={e=> setEmail(e.target.value)}/>
             <input type="text"
                    placeholder="Imie" className="c-input c-input--border"
@@ -48,14 +49,16 @@ export const Register = ()=>{
             <input type="text"
                    placeholder="Nazwisko" className="c-input c-input--border"
                    onChange={e=> setLastName(e.target.value)}/>
+
             {/*<select className="c-input c-input--border" onChange={e=> setCompany(e.target.value)}>*/}
             {/*    <option value="hr">HR</option>*/}
             {/*</select>*/}
             <input type="number"
                    placeholder="Liczba zarezerwowanych kursantów "
                    className="c-input c-input--border"
+                   min='1'
                    onChange={e => setMaxReservedStudents(Number(e.target.value))}/>
-            <button className="c-btn" onClick={add}>Dodaj</button>
+            <button className="Button" onClick={add}>Dodaj</button>
 
             {error ? <ErrorMessage
                 error={error}
