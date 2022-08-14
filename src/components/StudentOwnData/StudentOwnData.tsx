@@ -2,6 +2,7 @@ import React, {FormEvent, useEffect, useState} from 'react';
 import {ExpectedContractType, ExpectedTypeWork} from "../../utils/get-one-student-data";
 import {getStudentOwnData, StudentData} from "../../utils/get-student-own-data";
 import {InputUrlList} from "../InputUrlList/InputUrlList";
+import {StudentDataUpdate} from "../../utils/dictionaries";
 
 export const StudentOwnData = () => {
     const [studentOwnData, setStudentOwnData] = useState<StudentData>({
@@ -42,17 +43,23 @@ export const StudentOwnData = () => {
         courses
     } = studentOwnData;
 
-    const [studentNewPortfolioUrl, setStudentNewPortfolioUrl] = useState<string>('');
-    const [studentPortfolio, setStudentPortfolio] = useState<string[] | null>(portfolioUrls);
+    // const [studentNewPortfolioUrl, setStudentNewPortfolioUrl] = useState<string>('');
+    // const [studentPortfolio, setStudentPortfolio] = useState<string[] | null>(portfolioUrls);
 
-    const addNewPortfolioUrl = (url: string): void => {
-        // TODO: fix empty string in studentPortfolio when first click on save btn with new portfolio
-        setStudentNewPortfolioUrl(url);
-        if (studentPortfolio !== null) {
-            setStudentPortfolio([...studentPortfolio, studentNewPortfolioUrl])
-        }
-        console.log('nowy adres z protfolio', setStudentNewPortfolioUrl)
-    }
+    // TODO: need to implement later
+    // const addNewPortfolioUrl = (url: string): void => {
+    //     // TODO: fix empty string in studentPortfolio when first click on save btn with new portfolio
+    //     setStudentNewPortfolioUrl(url);
+    //     if (studentPortfolio !== null) {
+    //         setStudentPortfolio([...studentPortfolio, studentNewPortfolioUrl])
+    //     }
+    //     console.log('nowy adres z protfolio', setStudentNewPortfolioUrl)
+    // }
+
+    const updateUrls = (key: string, value: string) => {
+        const arrayOfUrls = value.split(',');
+        setStudentOwnData(prev => ({...prev, [key]: arrayOfUrls}));
+    };
 
     const updateStudentForm = (key: string, value: string | number | ExpectedContractType | ExpectedTypeWork | null) => {
         setStudentOwnData(form => ({
@@ -69,21 +76,22 @@ export const StudentOwnData = () => {
         event.preventDefault();
         console.log(JSON.stringify(studentOwnData))
 
-        // const res = await fetch(StudentDataUpdate, {
-        //     method: 'PATCH',
-        //     headers: {'Content-Type': 'application/json'},
-        //     credentials: "include",
-        //     body: JSON.stringify({
-        //         studentOwnData
-        //     }),
-        // });
+        // TODO: need to fix update student data
+        await fetch(StudentDataUpdate, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            credentials: "include",
+            body: JSON.stringify({
+                studentOwnData
+            }),
+        });
     };
 
     useEffect(() => {
         (async () => {
             const data = await getStudentOwnData();
             setStudentOwnData(data);
-            setStudentPortfolio(data.portfolioUrls);
+            // setStudentPortfolio(data.portfolioUrls);
         })();
     }, []);
 
@@ -92,12 +100,12 @@ export const StudentOwnData = () => {
             <div className="u-flex  u-flex__column">
                 <h1>Aktualizacja danych studenta</h1>
                 <form onSubmit={sendForm}>
-                    <InputUrlList
-                        labelName="TEST NEW Adresy URL do portfolio"
-                        urlList={portfolioUrls}
-                        studentPortfolio={studentPortfolio}
-                        childToParent={addNewPortfolioUrl}
-                    />
+                    {/*<InputUrlList*/}
+                    {/*    labelName="TEST NEW Adresy URL do portfolio"*/}
+                    {/*    urlList={portfolioUrls}*/}
+                    {/*    studentPortfolio={studentPortfolio}*/}
+                    {/*    childToParent={addNewPortfolioUrl}*/}
+                    {/*/>*/}
                     <label>
                         <p>Imię</p>
                         <input type="text"
@@ -151,7 +159,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={String(portfolioUrls)}
                                required
-                               onChange={e => updateStudentForm('portfolioUrls', e.target.value)}
+                               onChange={e => updateUrls('portfolioUrls', e.target.value)}
                         />
                     </label>
                     <label>
@@ -163,7 +171,7 @@ export const StudentOwnData = () => {
                                className="su-input su-input--border"
                                value={String(projectUrls)}
                                required
-                               onChange={e => updateStudentForm('projectUrls', e.target.value)}
+                               onChange={e => updateUrls('projectUrls', e.target.value)}
                         />
                     </label>
                     <label>
@@ -185,7 +193,6 @@ export const StudentOwnData = () => {
                             className="su-input su-input--border"
                             value={expectedContractType}
                             onChange={e => updateStudentForm('expectedContractType', e.target.value)}
-                            defaultValue="UZ/UoD"
                         >
                             <option value="UoP">Tylko UoP</option>
                             <option value="B2B">Możliwe B2B</option>
@@ -216,7 +223,7 @@ export const StudentOwnData = () => {
                             <option value="atLocation">Praca na miejscu</option>
                             <option value="changeOfLocation">Gotowość do przeprowadzki</option>
                             <option value="manual">Wyłącznie zdalnie</option>
-                            <option value="irrelevant" selected={true}>Bez znaczenia</option>
+                            <option value="irrelevant">Bez znaczenia</option>
                         </select>
                     </label>
                     <label>
@@ -240,7 +247,7 @@ export const StudentOwnData = () => {
                             onChange={e => updateStudentForm('canTakeApprenticeship', e.target.value)}
                         >
                             <option value="true">TAK</option>
-                            <option value="false" selected={true}>NIE</option>
+                            <option value="false">NIE</option>
                         </select>
                     </label>
                     <label>
@@ -281,7 +288,7 @@ export const StudentOwnData = () => {
                             onChange={e => updateStudentForm('courses', e.target.value)}
                         />
                     </label>
-                    <button className="c-btn" onClick={click}>Aktualizuj dane</button>
+                    <button className="Button" onClick={click}>Aktualizuj dane</button>
                 </form>
             </div>
         </div>
