@@ -3,6 +3,7 @@ import {ExpectedContractType, ExpectedTypeWork} from "../../utils/get-one-studen
 import {getStudentOwnData, StudentData} from "../../utils/get-student-own-data";
 import {InputUrlList} from "../InputUrlList/InputUrlList";
 import {StudentDataUpdate} from "../../utils/dictionaries";
+import './StudentOwnData.css';
 
 export const StudentOwnData = () => {
     const [studentOwnData, setStudentOwnData] = useState<StudentData>({
@@ -56,9 +57,20 @@ export const StudentOwnData = () => {
     //     console.log('nowy adres z protfolio', setStudentNewPortfolioUrl)
     // }
 
+    const isValidUrl = (url: string) => {
+        const matchPattern = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+        return matchPattern.test(url);
+    };
+
     const updateUrls = (key: string, value: string) => {
         const arrayOfUrls = value.split(',');
-        setStudentOwnData(prev => ({...prev, [key]: arrayOfUrls}));
+        const arrayOfValidUrls: string[] = [...arrayOfUrls].filter(isValidUrl);
+
+        // TODO: typing ',' not working in input when set [key]: arrayOfValidUrls
+        setStudentOwnData(prev => ({
+            ...prev,
+            [key]: arrayOfUrls
+        }));
     };
 
     const updateStudentForm = (key: string, value: string | number | ExpectedContractType | ExpectedTypeWork | null) => {
@@ -279,7 +291,7 @@ export const StudentOwnData = () => {
                             onChange={e => updateStudentForm('courses', e.target.value)}
                         />
                     </label>
-                    <button className="Button">Aktualizuj dane</button>
+                    <button className="update-btn">Aktualizuj dane</button>
                 </form>
             </div>
         </div>
