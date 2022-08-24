@@ -41,6 +41,7 @@ Headhunter to projekt powstały w ramach etapu bonusowego kursu MegaK, w którym
   <img src="https://user-images.githubusercontent.com/105609653/184940742-d96c8f74-120c-4e15-a0f4-8809b525d80f.png" alt="" />
   <img src="https://user-images.githubusercontent.com/105609653/184940777-9f2d255b-eccd-46b5-b22b-ef077edd363d.png" alt="" />
   <img src="https://user-images.githubusercontent.com/105609653/184940888-eddae72a-4217-4fab-a33f-03843e27ad71.png" alt="" />
+<img src="https://user-images.githubusercontent.com/105609653/184940888-eddae72a-4217-4fab-a33f-03843e27ad71.png" alt="" />
 </div>
 
 <!-- Zastosowane technologie -->
