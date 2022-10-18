@@ -1,5 +1,7 @@
+import {StudentReservationRelease} from "./dictionaries";
+
 export const handleStudentReservationRelease = async (id: string) => {
-    const res = await fetch(`http://localhost:3001/recruiter/pushback/${id}`, {
+    const res = await fetch(`${StudentReservationRelease}/${id}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         credentials: "include",

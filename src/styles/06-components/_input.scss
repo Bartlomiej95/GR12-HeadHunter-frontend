@@ -1,4 +1,4 @@
-.c-input{
+.c-input, .su-input {
   width: 350px;
   height: 40px;
   background: #292A2B 0% 0% no-repeat padding-box;
@@ -9,20 +9,39 @@
   border-radius: 2px;
   padding: 6.5px 17px;
 
-  &--border{
-    font-size: 18px;
-    box-shadow: #7E7E7E 1px 1px 1px;
+  &--border {
+    border: $redX5 solid 2px;
+    border-radius: 10px;
   }
-  &__array{
+
+  &__array {
     width: 280px;
   }
-  &__bio{
+
+  &__bio {
     max-width: 350px;
     min-height: 150px;
     font-size: 18px;
   }
-  &__maxWidth{
+
+  &__maxWidth {
     max-width: 350px;
   }
 
+}
+
+.su-input {
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+  font-size: 16px;
+  color: #aaa;
+
+  &--textarea {
+    min-height: 80px;
+  }
+
+  &--border {
+    border: $redX3 solid 2px;
+  }
 }

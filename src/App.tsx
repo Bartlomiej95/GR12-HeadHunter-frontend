@@ -21,6 +21,7 @@ function App() {
                     if (data.logedIn) {
                         setLogin(true)
                         setName(data.message.firstName)
+                        // fixed return message.lasyName to message.lastName
                         setLastName(data.message.lastName)
                         setRole(data.message.role)
                     }
