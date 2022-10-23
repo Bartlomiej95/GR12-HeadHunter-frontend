@@ -1,46 +1,183 @@
-# Getting Started with Create React App
+<!-- Spis treści -->
+# :notebook_with_decorative_cover: Spis treści
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Wstęp](#pushpin-wstęp)
+- [Opis projektu](#star2-opis-projektu)
+  * [Screenshoty](#camera-screenshoty)
+  * [Zastosowane technologie](#space_invader-zastosowane-technologie)
+  * [Funkcjonalności](#dart-funkcjonalności)
+  * [Konfiguracja projektu](#key-konfiguracja-projektu)
+  * [Kolorystyka](#art-kolorystyka)
+- [Uruchomienie projektu](#toolbox-uruchomienie-projektu)
+  * [Instalacja](#gear-instalacja)
+  * [Uruchomienie lokalne](#running-uruchomienie-lokalne)
+- [Przeznaczenie projektu](#eyes-przeznaczenie-projektu)
+- [Endpointy](#mailbox_with_mail-endpointy)
+- [Przyszłe aktualizacje](#compass-przyszłe-aktualizacje)
+- [Licencja](#warning-licencja)
+- [Użyte paczki](#gem-użyte-paczki)
+- [Backend](#small_red_triangle_down-backend)
+- [Podziękowania](#handshake-podziękowania)
+  
+<!-- Wstęp -->
+## :pushpin: Wstęp
 
-## Available Scripts
+Headhunter to projekt powstały w ramach etapu bonusowego kursu MegaK, w którym uczestnicy próbują stworzyć platformę ułatwiającą kontakt z przedstawicielami HR w celu znalezienia przyszłej pracy.
 
-In the project directory, you can run:
+<!-- Opis projektu -->
+## :star2: Opis projektu
+  
+- Specyfikacja projektu: https://docs.google.com/document/d/1j3iltSfaJXB8lVi5dwApL9UU0ze7A8kz9DBDChIVwfw/edit
+- Makiety widoków: https://xd.adobe.com/view/864faeb9-d762-4277-a5d1-5b7565dcf543-d31c/
 
-### `npm start`
+<!-- Screenshoty -->
+### :camera: Screenshoty
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<div align="center"> 
+  <img src="https://user-images.githubusercontent.com/105609653/184940009-5e9aa2f6-fe55-491e-a177-2a261132eafe.png" alt="screenshot" />
+  <img src="https://user-images.githubusercontent.com/105609653/184940333-0363cf8c-ad0c-4fce-820f-c7a22bd9e8f4.png" alt="" />
+  <img src="https://user-images.githubusercontent.com/105609653/184940609-3a19c8c4-6ba6-418d-bd9c-71da95a4899f.png" alt="" />
+  <img src="https://user-images.githubusercontent.com/105609653/184940697-1c06ffe8-5f53-4651-846f-81fb6d59398a.png" alt="" />
+  <img src="https://user-images.githubusercontent.com/105609653/184940742-d96c8f74-120c-4e15-a0f4-8809b525d80f.png" alt="" />
+  <img src="https://user-images.githubusercontent.com/105609653/184940777-9f2d255b-eccd-46b5-b22b-ef077edd363d.png" alt="" />
+  <img src="https://user-images.githubusercontent.com/105609653/184940888-eddae72a-4217-4fab-a33f-03843e27ad71.png" alt="" />
+</div>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- Zastosowane technologie -->
+### :space_invader: Zastosowane technologie
 
-### `npm test`
+  Strona klienta
+  <ul>
+    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://sass-lang.com/">Sass</a></li>
+  </ul>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  Strona serwera
+  <ul>
+    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+    <li><a href="https://nestjs.com/">Nest.js</a></li>
+  </ul>
 
-### `npm run build`
+  Baza danych
+  <ul>
+    <li><a href="https://www.mysql.com/">MySQL</a></li>
+  </ul>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- Kolorystyka -->
+### :art: Kolorystyka
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Primary Color |  #222224 |
+| Secondary Color | #292A2B |
+| Accent Color | #E02735 |
+| Text Color | #F7F7F7, #7E7E7E |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- Funkcjonalności -->
+### :dart: Funkcjonalności
 
-### `npm run eject`
+- Dodawanie użytkowników z pliku JSON
+- Rejestrowanie użytkowników przy użyciu linka aktywacyjnego
+- Zaimplemetowanie autoryzacji i autentykacji przy użyciu JWT
+- Aktualizowanie danych profilowych
+- Zaimplementowanie powiadomień mailowych z użyciem cron
+- Podział na role z ograniczonym dostępem danych
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!-- Konfiguracja projektu -->
+### :key: Konfiguracja projektu
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+W celu prawidłowego skonfigurowania projektu i połączenia z bazą danych należy odpowiednio wypełnić pola w zmiennej lokalnej `databaseConfig` znajdującej się w pliku `ormConfig.ts`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Ponadto w folderze `import` znajduje się plik `simple-student.json` do zaimportowania testowych danych dla użytkowników oraz wypełnione tabele dla bazy danych w kolejnym podkatalogu `sql-insert`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Admin dodawany ręcznie, po uruchomieniu aplikacji nest i powstaniu struktury bazy danych w tabeli user zamieszczamy dane opisane w linku, w sekcji "Endpointy".
 
-## Learn More
+<!-- Uruchomienie projektu -->
+## 	:toolbox: Uruchomienie projektu
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+W tym projekcie domyślnym menadżerem paczek jest NPM.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- Instalacja -->
+### :gear: Instalacja
+
+W katalogu projektu zainstaluj niezbędne zależności i paczki za pomocą komendy:
+
+```bash
+  npm install
+```
+<!-- Uruchomienie lokalne -->
+### :running: Uruchomienie lokalne
+
+Uruchomienie aplikacji
+
+```bash
+  npm start
+```
+
+Zbudowanie wersji produkcyjnej aplikacji
+
+```bash
+  npm run build
+```
+
+<!-- Przeznaczenie projektu -->
+## :eyes: Przeznaczenie projektu
+
+Aplikacja pozwala w prosty sposób łączyć osoby z działów HR firm, w tym Headhunterów [HR], z osobami poszukującymi pracy w IT.
+
+Aplikacja ma pozwolić Kursantom Mega K [Kursant] zaprezentowanie swoich umiejętności, w sposób zunifikowany.
+
+Aplikacja ma pozwolić HR na łatwe znalezienie odpowiednich kandydatów do pracy, przeprowadzenie z nimi rozmów i zaproponowanie współpracy.
+
+Aplikacja ma pozwolić Administratorowi w zarządzaniu dostępem do bazy Kursantów.
+
+Aplikacja nie ma stanowić bezpośredniej konkurencji dla portali pracy. Celem produktu jest uzupełnienie rynku, ze szczególnym uwzględnieniem Kursantów Mega K.
+
+
+<!-- Endpointy -->
+
+## :mailbox_with_mail: Endpointy
+
+[Lista endpointów](https://drive.google.com/file/d/1fCRptKGHo0wQQazGJVz981u1Dqv9MKOQ/view?usp=sharing)
+
+<!-- Przyszłe aktualizacje -->
+## :compass: Przyszłe aktualizacje
+
+* [ ] widok RWD
+* [ ] dodanie testów jednostkowych i integracyjnych
+* [ ] zoptymalizowanie aplikacji
+
+<!-- Licencja -->
+## :warning: Licencja
+
+Distributed under the no License. See LICENSE.txt for more information.
+
+<!-- Użyte paczki -->
+## :gem: Użyte paczki
+
+ - [axios](https://www.npmjs.com/package/axios)
+ - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+ - [uuid](https://www.npmjs.com/package/uuid)
+ 
+ 
+<!-- Backend -->
+## :small_red_triangle_down: Backend
+
+[Readme](https://github.com/Bartlomiej95/GR12-HeadHunter-backend/blob/main/README.md)
+
+<!-- Podziękowania -->
+## :handshake: Podziękowania
+
+Serdeczne podziękowania dla grupy 12 za podjęcie wyzwania i wspólną pracę przy projekcie.
+
+W skład naszej grupy wchodzą:
+
+[Bartek](https://github.com/Bartlomiej95),
+[Hubert](https://github.com/hugobosy),
+[Arek](https://github.com/arekmastalerczuk),
+[Andrzej](https://github.com/enrju),
+[Mariusz](https://github.com/MariuszRudnik),
+[Mateusz](https://github.com/mogiel),
+[Darek](https://github.com/darone90),
+[Jakub](https://github.com/swierczekjakub),
