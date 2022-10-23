@@ -1,6 +1,6 @@
 {
   "name": "head-hunter-front",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@styled-icons/boxicons-logos": "^10.38.0",
